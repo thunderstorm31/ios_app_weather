@@ -1,0 +1,12 @@
+Pods-Weather:
+  LABEL: Pods-Weather
+  PROJECT_PATH: Pods.xcodeproj
+  UUID: 10B99686003B4D8467D8513296D055FE
+Pods-WeatherTests:
+  LABEL: Pods-WeatherTests
+  PROJECT_PATH: Pods.xcodeproj
+  UUID: BB310F9D2A14C2524E05866166ACC225
+SwiftLint:
+  LABEL: SwiftLint
+  PROJECT_PATH: SwiftLint.xcodeproj
+  UUID: DF739ADE66FA54F9BBFF97A8CB609E34

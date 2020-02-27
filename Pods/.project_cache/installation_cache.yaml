@@ -1,0 +1,25 @@
+BUILD_CONFIGURATIONS:
+  Debug: :debug
+  Release: :release
+CACHE_KEYS:
+  Pods-Weather:
+    BUILD_SETTINGS_CHECKSUM:
+      Debug: f76f7954c07e301c0ff722ae5c494b92
+      Release: f76f7954c07e301c0ff722ae5c494b92
+  Pods-WeatherTests:
+    BUILD_SETTINGS_CHECKSUM:
+      Debug: 8b5b38bcaeebfbc5674209bf0c4db5a1
+      Release: 8b5b38bcaeebfbc5674209bf0c4db5a1
+  SwiftLint:
+    BUILD_SETTINGS_CHECKSUM:
+      SwiftLint:
+        :debug: c1018662908999e114d53e63e0e6d866
+        :release: c1018662908999e114d53e63e0e6d866
+    CHECKSUM: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+    PROJECT_NAME: SwiftLint
+    SPECS:
+      - SwiftLint (0.38.2)
+OBJECT_VERSION: 50
+PLUGINS:
+  cocoapods-stats:
+    {}
