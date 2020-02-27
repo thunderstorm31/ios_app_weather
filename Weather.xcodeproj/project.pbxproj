@@ -38,6 +38,8 @@
 		60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C524083E860021FA6F /* UITableView+Tools.swift */; };
 		60CAF5DC24083E860021FA6F /* UIEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */; };
 		60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */; };
+		60CAF5DF24083EE70021FA6F /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */; };
+		60CAF5E124083F870021FA6F /* UITraitCollection+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5E024083F870021FA6F /* UITraitCollection+Tools.swift */; };
 		D3EA8FBB51D1EC438F86C9ED /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75782006B92CB170B8C77CA /* Pods_WeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		60CAF5C524083E860021FA6F /* UITableView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Tools.swift"; sourceTree = "<group>"; };
 		60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
 		60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
+		60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
+		60CAF5E024083F870021FA6F /* UITraitCollection+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Tools.swift"; sourceTree = "<group>"; };
 		625F460E15221F0FC6644762 /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		C75782006B92CB170B8C77CA /* Pods_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62BCFF5CB845FBABDFCAB8E /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +201,7 @@
 			children = (
 				60CAF56424083BD70021FA6F /* MainViewController.View.swift */,
 				60CAF56524083BD70021FA6F /* MainViewController.swift */,
+				60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 		60CAF5C324083E860021FA6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				60CAF5E024083F870021FA6F /* UITraitCollection+Tools.swift */,
 				60CAF5C424083E860021FA6F /* UICollectionView+Tools.swift */,
 				60CAF5C524083E860021FA6F /* UITableView+Tools.swift */,
 				60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */,
@@ -515,11 +521,13 @@
 				60CAF5D124083E860021FA6F /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				60CAF5D724083E860021FA6F /* UIView+AutoLayout.swift in Sources */,
 				60CAF56624083BD70021FA6F /* MainViewController.View.swift in Sources */,
+				60CAF5DF24083EE70021FA6F /* MainMenuButton.swift in Sources */,
 				60CAF5CF24083E860021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift in Sources */,
 				60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */,
 				60CAF5D224083E860021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
 				60CAF5D924083E860021FA6F /* UIView+AutoLayoutPinRelative.swift in Sources */,
 				60CAF5DC24083E860021FA6F /* UIEdgeInsets+Tools.swift in Sources */,
+				60CAF5E124083F870021FA6F /* UITraitCollection+Tools.swift in Sources */,
 				60CAF5CC24083E860021FA6F /* NSLayoutConstraint+AutoLayout.swift in Sources */,
 				60CAF5DA24083E860021FA6F /* UICollectionView+Tools.swift in Sources */,
 				60CAF5D324083E860021FA6F /* UIView+AutoLayoutPinEdges.swift in Sources */,

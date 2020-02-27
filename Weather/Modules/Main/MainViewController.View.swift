@@ -6,6 +6,9 @@ extension MainViewController {
     internal final class View: UIView {
         private let mapView = MKMapView()
         
+        internal let locationsButton = MainMenuButton()
+        internal let settingsButton = MainMenuButton()
+        
         internal init() {
             super.init(frame: UIScreen.main.bounds)
             
@@ -21,21 +24,32 @@ extension MainViewController {
 // MARK: Configure Views
 extension MainViewController.View {
     private func configureViews() {
-        [mapView]
+        [mapView, locationsButton, settingsButton]
             .disableTranslateAutoresizingMask()
             .add(to: self)
         
         configureMapView()
+        configureLocationsButton()
+        configureSettingsButton()
     }
     
     private func configureMapView() {
         mapView.pinEdgesToSuperview()
     }
-}
-
-// MARK: Layout Views
-extension MainViewController.View {
-    internal override func layoutSubviews() {
-        super.layoutSubviews()
+    
+    private func configureLocationsButton() {
+        locationsButton.pinTopToSuperview(layoutArea: .layoutMargins)
+        locationsButton.pinLeadingToSuperview(layoutArea: .layoutMargins)
+        locationsButton.pin(singleSize: 44)
+        
+        locationsButton.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+    }
+    
+    private func configureSettingsButton() {
+        settingsButton.pinTopToSuperview(layoutArea: .layoutMargins)
+        settingsButton.pinTrailingToSuperview(layoutArea: .layoutMargins)
+        settingsButton.pin(singleSize: 44)
+        
+        settingsButton.setImage(UIImage(systemName: "gear"), for: .normal)
     }
 }
