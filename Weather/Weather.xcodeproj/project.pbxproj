@@ -9,10 +9,34 @@
 /* Begin PBXBuildFile section */
 		60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF535240838AC0021FA6F /* AppDelegate.swift */; };
 		60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF537240838AC0021FA6F /* SceneDelegate.swift */; };
-		60CAF53A240838AC0021FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF539240838AC0021FA6F /* MainViewController.swift */; };
 		60CAF53F240838AE0021FA6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF53E240838AE0021FA6F /* Assets.xcassets */; };
 		60CAF542240838AE0021FA6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF540240838AE0021FA6F /* LaunchScreen.storyboard */; };
 		60CAF54D240838AE0021FA6F /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF54C240838AE0021FA6F /* WeatherTests.swift */; };
+		60CAF56624083BD70021FA6F /* MainViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56424083BD70021FA6F /* MainViewController.View.swift */; };
+		60CAF56724083BD70021FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56524083BD70021FA6F /* MainViewController.swift */; };
+		60CAF56D24083C260021FA6F /* Collection+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56C24083C260021FA6F /* Collection+Tools.swift */; };
+		60CAF58924083C480021FA6F /* UIView+LayoutAreaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57024083C480021FA6F /* UIView+LayoutAreaType.swift */; };
+		60CAF58A24083C480021FA6F /* UIView.Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57124083C480021FA6F /* UIView.Edge.swift */; };
+		60CAF58B24083C480021FA6F /* UIView.LayoutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57224083C480021FA6F /* UIView.LayoutArea.swift */; };
+		60CAF58C24083C480021FA6F /* UIView+ConstraintRelationsAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57324083C480021FA6F /* UIView+ConstraintRelationsAround.swift */; };
+		60CAF58D24083C480021FA6F /* NSLayoutConstraint+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57524083C480021FA6F /* NSLayoutConstraint+AutoLayout.swift */; };
+		60CAF58E24083C480021FA6F /* NSLayoutYAxisAnchor+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57624083C480021FA6F /* NSLayoutYAxisAnchor+AutoLayout.swift */; };
+		60CAF58F24083C480021FA6F /* Array+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57724083C480021FA6F /* Array+NSLayoutConstraint.swift */; };
+		60CAF59024083C480021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57824083C480021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift */; };
+		60CAF59124083C480021FA6F /* Collection+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57924083C480021FA6F /* Collection+AutoLayout.swift */; };
+		60CAF59224083C480021FA6F /* NSLayoutDimension+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57A24083C480021FA6F /* NSLayoutDimension+AutoLayout.swift */; };
+		60CAF59324083C480021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57B24083C480021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift */; };
+		60CAF59424083C480021FA6F /* UIView+AutoLayoutPinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57D24083C480021FA6F /* UIView+AutoLayoutPinEdges.swift */; };
+		60CAF59524083C480021FA6F /* UIView+AutoLayoutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57E24083C480021FA6F /* UIView+AutoLayoutArea.swift */; };
+		60CAF59624083C480021FA6F /* UIView+AutoLayoutPinDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF57F24083C480021FA6F /* UIView+AutoLayoutPinDimensions.swift */; };
+		60CAF59724083C480021FA6F /* UIView+AutoLayoutPinCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58024083C480021FA6F /* UIView+AutoLayoutPinCenter.swift */; };
+		60CAF59824083C480021FA6F /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58124083C480021FA6F /* UIView+AutoLayout.swift */; };
+		60CAF59924083C480021FA6F /* UIView+AutoLayoutPinAlign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58224083C480021FA6F /* UIView+AutoLayoutPinAlign.swift */; };
+		60CAF59A24083C480021FA6F /* UIView+AutoLayoutPinRelative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58324083C480021FA6F /* UIView+AutoLayoutPinRelative.swift */; };
+		60CAF59B24083C480021FA6F /* UICollectionView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58524083C480021FA6F /* UICollectionView+Tools.swift */; };
+		60CAF59C24083C480021FA6F /* UITableView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58624083C480021FA6F /* UITableView+Tools.swift */; };
+		60CAF59D24083C480021FA6F /* UIEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58724083C480021FA6F /* UIEdgeInsets+Tools.swift */; };
+		60CAF59E24083C480021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF58824083C480021FA6F /* NSDirectionalEdgeInsets+Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +53,37 @@
 		60CAF532240838AC0021FA6F /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CAF535240838AC0021FA6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60CAF537240838AC0021FA6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		60CAF539240838AC0021FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		60CAF53E240838AE0021FA6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60CAF541240838AE0021FA6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60CAF543240838AE0021FA6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60CAF548240838AE0021FA6F /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CAF54C240838AE0021FA6F /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		60CAF54E240838AE0021FA6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60CAF56424083BD70021FA6F /* MainViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.View.swift; sourceTree = "<group>"; };
+		60CAF56524083BD70021FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		60CAF56C24083C260021FA6F /* Collection+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Tools.swift"; sourceTree = "<group>"; };
+		60CAF57024083C480021FA6F /* UIView+LayoutAreaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutAreaType.swift"; sourceTree = "<group>"; };
+		60CAF57124083C480021FA6F /* UIView.Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.Edge.swift; sourceTree = "<group>"; };
+		60CAF57224083C480021FA6F /* UIView.LayoutArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.LayoutArea.swift; sourceTree = "<group>"; };
+		60CAF57324083C480021FA6F /* UIView+ConstraintRelationsAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintRelationsAround.swift"; sourceTree = "<group>"; };
+		60CAF57524083C480021FA6F /* NSLayoutConstraint+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57624083C480021FA6F /* NSLayoutYAxisAnchor+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutYAxisAnchor+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57724083C480021FA6F /* Array+NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
+		60CAF57824083C480021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutXAxisAnchor+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57924083C480021FA6F /* Collection+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57A24083C480021FA6F /* NSLayoutDimension+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutDimension+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57B24083C480021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Relations+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF57D24083C480021FA6F /* UIView+AutoLayoutPinEdges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinEdges.swift"; sourceTree = "<group>"; };
+		60CAF57E24083C480021FA6F /* UIView+AutoLayoutArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutArea.swift"; sourceTree = "<group>"; };
+		60CAF57F24083C480021FA6F /* UIView+AutoLayoutPinDimensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinDimensions.swift"; sourceTree = "<group>"; };
+		60CAF58024083C480021FA6F /* UIView+AutoLayoutPinCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinCenter.swift"; sourceTree = "<group>"; };
+		60CAF58124083C480021FA6F /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		60CAF58224083C480021FA6F /* UIView+AutoLayoutPinAlign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinAlign.swift"; sourceTree = "<group>"; };
+		60CAF58324083C480021FA6F /* UIView+AutoLayoutPinRelative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayoutPinRelative.swift"; sourceTree = "<group>"; };
+		60CAF58524083C480021FA6F /* UICollectionView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Tools.swift"; sourceTree = "<group>"; };
+		60CAF58624083C480021FA6F /* UITableView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Tools.swift"; sourceTree = "<group>"; };
+		60CAF58724083C480021FA6F /* UIEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
+		60CAF58824083C480021FA6F /* NSDirectionalEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +125,7 @@
 		60CAF534240838AC0021FA6F /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				60CAF56824083BF80021FA6F /* Framework Candidates */,
 				60CAF557240838F20021FA6F /* App */,
 				60CAF558240838F60021FA6F /* Modules */,
 				60CAF55B240839120021FA6F /* Supporting Files */,
@@ -121,7 +170,8 @@
 		60CAF55A240839090021FA6F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				60CAF539240838AC0021FA6F /* MainViewController.swift */,
+				60CAF56424083BD70021FA6F /* MainViewController.View.swift */,
+				60CAF56524083BD70021FA6F /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -134,6 +184,102 @@
 				60CAF53E240838AE0021FA6F /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60CAF56824083BF80021FA6F /* Framework Candidates */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF56A24083C0B0021FA6F /* Core UI */,
+				60CAF56924083C050021FA6F /* Core Logic */,
+			);
+			path = "Framework Candidates";
+			sourceTree = "<group>";
+		};
+		60CAF56924083C050021FA6F /* Core Logic */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF56B24083C1A0021FA6F /* Extensions */,
+			);
+			path = "Core Logic";
+			sourceTree = "<group>";
+		};
+		60CAF56A24083C0B0021FA6F /* Core UI */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF56E24083C480021FA6F /* Auto layout */,
+				60CAF58424083C480021FA6F /* Extensions */,
+			);
+			path = "Core UI";
+			sourceTree = "<group>";
+		};
+		60CAF56B24083C1A0021FA6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF56C24083C260021FA6F /* Collection+Tools.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60CAF56E24083C480021FA6F /* Auto layout */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF56F24083C480021FA6F /* Models */,
+				60CAF57424083C480021FA6F /* Extensions */,
+				60CAF57C24083C480021FA6F /* Pinning */,
+			);
+			name = "Auto layout";
+			path = "../../../../../HeartstoneAssessment/Heartstone/Hearthstone/Frameworks/UISupport/Auto layout";
+			sourceTree = "<group>";
+		};
+		60CAF56F24083C480021FA6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF57024083C480021FA6F /* UIView+LayoutAreaType.swift */,
+				60CAF57124083C480021FA6F /* UIView.Edge.swift */,
+				60CAF57224083C480021FA6F /* UIView.LayoutArea.swift */,
+				60CAF57324083C480021FA6F /* UIView+ConstraintRelationsAround.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60CAF57424083C480021FA6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF57524083C480021FA6F /* NSLayoutConstraint+AutoLayout.swift */,
+				60CAF57624083C480021FA6F /* NSLayoutYAxisAnchor+AutoLayout.swift */,
+				60CAF57724083C480021FA6F /* Array+NSLayoutConstraint.swift */,
+				60CAF57824083C480021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift */,
+				60CAF57924083C480021FA6F /* Collection+AutoLayout.swift */,
+				60CAF57A24083C480021FA6F /* NSLayoutDimension+AutoLayout.swift */,
+				60CAF57B24083C480021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60CAF57C24083C480021FA6F /* Pinning */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF57D24083C480021FA6F /* UIView+AutoLayoutPinEdges.swift */,
+				60CAF57E24083C480021FA6F /* UIView+AutoLayoutArea.swift */,
+				60CAF57F24083C480021FA6F /* UIView+AutoLayoutPinDimensions.swift */,
+				60CAF58024083C480021FA6F /* UIView+AutoLayoutPinCenter.swift */,
+				60CAF58124083C480021FA6F /* UIView+AutoLayout.swift */,
+				60CAF58224083C480021FA6F /* UIView+AutoLayoutPinAlign.swift */,
+				60CAF58324083C480021FA6F /* UIView+AutoLayoutPinRelative.swift */,
+			);
+			path = Pinning;
+			sourceTree = "<group>";
+		};
+		60CAF58424083C480021FA6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60CAF58524083C480021FA6F /* UICollectionView+Tools.swift */,
+				60CAF58624083C480021FA6F /* UITableView+Tools.swift */,
+				60CAF58724083C480021FA6F /* UIEdgeInsets+Tools.swift */,
+				60CAF58824083C480021FA6F /* NSDirectionalEdgeInsets+Tools.swift */,
+			);
+			name = Extensions;
+			path = ../../../../../HeartstoneAssessment/Heartstone/Hearthstone/Frameworks/UISupport/Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,9 +382,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60CAF53A240838AC0021FA6F /* MainViewController.swift in Sources */,
+				60CAF58B24083C480021FA6F /* UIView.LayoutArea.swift in Sources */,
+				60CAF56D24083C260021FA6F /* Collection+Tools.swift in Sources */,
+				60CAF59524083C480021FA6F /* UIView+AutoLayoutArea.swift in Sources */,
+				60CAF58924083C480021FA6F /* UIView+LayoutAreaType.swift in Sources */,
+				60CAF58F24083C480021FA6F /* Array+NSLayoutConstraint.swift in Sources */,
+				60CAF59124083C480021FA6F /* Collection+AutoLayout.swift in Sources */,
+				60CAF59624083C480021FA6F /* UIView+AutoLayoutPinDimensions.swift in Sources */,
 				60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */,
+				60CAF59E24083C480021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
 				60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */,
+				60CAF59224083C480021FA6F /* NSLayoutDimension+AutoLayout.swift in Sources */,
+				60CAF59824083C480021FA6F /* UIView+AutoLayout.swift in Sources */,
+				60CAF56624083BD70021FA6F /* MainViewController.View.swift in Sources */,
+				60CAF59024083C480021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift in Sources */,
+				60CAF59C24083C480021FA6F /* UITableView+Tools.swift in Sources */,
+				60CAF59324083C480021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
+				60CAF59A24083C480021FA6F /* UIView+AutoLayoutPinRelative.swift in Sources */,
+				60CAF59D24083C480021FA6F /* UIEdgeInsets+Tools.swift in Sources */,
+				60CAF58D24083C480021FA6F /* NSLayoutConstraint+AutoLayout.swift in Sources */,
+				60CAF59B24083C480021FA6F /* UICollectionView+Tools.swift in Sources */,
+				60CAF59424083C480021FA6F /* UIView+AutoLayoutPinEdges.swift in Sources */,
+				60CAF58A24083C480021FA6F /* UIView.Edge.swift in Sources */,
+				60CAF59924083C480021FA6F /* UIView+AutoLayoutPinAlign.swift in Sources */,
+				60CAF59724083C480021FA6F /* UIView+AutoLayoutPinCenter.swift in Sources */,
+				60CAF56724083BD70021FA6F /* MainViewController.swift in Sources */,
+				60CAF58C24083C480021FA6F /* UIView+ConstraintRelationsAround.swift in Sources */,
+				60CAF58E24083C480021FA6F /* NSLayoutYAxisAnchor+AutoLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
