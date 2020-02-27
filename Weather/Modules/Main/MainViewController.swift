@@ -16,5 +16,17 @@ internal final class MainViewController: UIViewController {
 extension MainViewController {
     internal override func loadView() {
         view = rootView
+        
+        rootView.locationsButton.addTarget(self, action: #selector(self.tappedLocationButton(_:)), for: .touchUpInside)
+    }
+}
+
+// MARK: User Interaction
+extension MainViewController {
+    @objc
+    private func tappedLocationButton(_ sender: UIButton) {
+        let presenter = CityPresenter()
+        
+        presenter.presentFrom(self)
     }
 }

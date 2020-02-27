@@ -39,6 +39,6 @@ extension MainMenuButton {
 // MARK: Misc
 extension MainMenuButton {
     private func updatedHighlightedState() {
-        backgroundColor = isHighlighted ? UIColor.systemFill : UIColor.secondarySystemFill
+        backgroundColor = UIColor.white.withAlphaComponent(isHighlighted ? 0.3 : 0.5)
     }
 }
