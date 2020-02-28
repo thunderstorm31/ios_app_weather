@@ -22,6 +22,8 @@ internal final class CityDetailTableAdapter: NSObject {
         tableView.register(cell: CityDetailsCityCell.self)
         tableView.register(cell: CityDetailsLoadingCell.self)
         tableView.register(cell: CityDetailsErrorCell.self)
+        tableView.register(cell: CityDetailTodayExpectationCell.self)
+        tableView.register(cell: CityDetailsWeatherIconCell.self)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -72,7 +74,16 @@ extension CityDetailTableAdapter {
     private func addCitySection() {
         let section = Section()
         
+        if let weather = todayWeather?.weather.first {
+            let symbolName = WeatherIdToSymbolHelper.symbolName(for: weather.id, isDayTime: true)
+            section.addItem(.todayWeatherIcon(symbolName))
+        }
+        
         section.addItem(.city(city))
+        
+        if let weather = todayWeather?.weather.first {
+            section.addItem(.expectation(weather.description))
+        }
         
         sections.append(section)
     }
@@ -134,6 +145,12 @@ extension CityDetailTableAdapter: UITableViewDataSource {
         case .error(let title, let message):
             return tableView.dequeueReusableCell(for: CityDetailsErrorCell.self, indexPath: indexPath)
                 .setErrorTitle(title, message: message)
+        case .expectation(let expection):
+            return tableView.dequeueReusableCell(for: CityDetailTodayExpectationCell.self, indexPath: indexPath)
+                .setExpectation(expection)
+        case .todayWeatherIcon(let symbolName):
+            return tableView.dequeueReusableCell(for: CityDetailsWeatherIconCell.self, indexPath: indexPath)
+                .setSymbolName(symbolName)
         }
     }
 }

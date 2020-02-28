@@ -36,7 +36,7 @@ extension CityDetailsErrorCell {
     }
     
     private func configureContentView() {
-        contentView.layoutMargins = UIEdgeInsets(horizontal: 20, vertical: 10)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(horizontal: 20, vertical: 10)
     }
     
     private func configureTitleLabel() {

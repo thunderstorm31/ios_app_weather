@@ -32,6 +32,8 @@ extension CityDetailsCityCell {
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
         
+        directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
+        
         configureCityNameLabel()
     }
     
@@ -39,7 +41,7 @@ extension CityDetailsCityCell {
         cityNameLabel.pinWidth(with: contentView, relation: .lessThanOrEqual)
         cityNameLabel.setContentHuggingPriority(.required, for: .horizontal)
         cityNameLabel.pinCenterHorizontalToSuperview()
-        cityNameLabel.pinEdgesVerticalToSuperview(padding: 10)
+        cityNameLabel.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
         
         cityNameLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
     }

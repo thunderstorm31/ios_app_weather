@@ -17,6 +17,7 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window.rootViewController = HomeViewController(viewModel: HomeViewModel())
         window.makeKeyAndVisible()
+        window.tintColor = .systemOrange
         
         self.window = window
     }
