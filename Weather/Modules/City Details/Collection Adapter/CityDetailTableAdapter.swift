@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailCollectionAdapter: NSObject {
+internal final class CityDetailTableAdapter: NSObject {
     private let city: City
     private var sections: [Section] = []
     
@@ -18,13 +18,16 @@ internal final class CityDetailCollectionAdapter: NSObject {
         reloadContent()
     }
     
-    internal func configure(_ collectionView: UICollectionView) {
-        collectionView.register(cell: CityDetailsCityCell.self)
-        collectionView.register(cell: CityDetailsLoadingCell.self)
-        collectionView.register(cell: CityDetailsErrorCell.self)
+    internal func configure(_ tableView: UITableView) {
+        tableView.register(cell: CityDetailsCityCell.self)
+        tableView.register(cell: CityDetailsLoadingCell.self)
+        tableView.register(cell: CityDetailsErrorCell.self)
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     internal func section(atIndex index: Int) -> Section? {
@@ -57,7 +60,7 @@ internal final class CityDetailCollectionAdapter: NSObject {
 }
 
 // MARK: - Content
-extension CityDetailCollectionAdapter {
+extension CityDetailTableAdapter {
     private func reloadContent() {
         sections.removeAll()
         
@@ -99,37 +102,37 @@ extension CityDetailCollectionAdapter {
     }
 }
 
-// MARK: - UICollectionViewDelegate
-extension CityDetailCollectionAdapter: UICollectionViewDelegate {
-    internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+// MARK: - UITableViewDelegate
+extension CityDetailTableAdapter: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as? CellLifecycle)?.cellWillDisplay(at: indexPath)
     }
 
-    internal func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as? CellLifecycle)?.cellDidEndDisplaying(from: indexPath)
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension CityDetailCollectionAdapter: UICollectionViewDataSource {
-    internal func numberOfSections(in collectionView: UICollectionView) -> Int { sections.count }
-    internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: - UITableViewDataSource
+extension CityDetailTableAdapter: UITableViewDataSource {
+    internal func numberOfSections(in tableView: UITableView) -> Int { sections.count }
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.section(atIndex: section)?.count ?? 0
     }
     
-    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let item = self.item(at: indexPath) else {
             fatalError("Could not retrieve item at: \(indexPath)")
         }
         
         switch item {
         case .city(let city):
-            return collectionView.dequeReusableCell(for: CityDetailsCityCell.self, indexPath: indexPath)
+            return tableView.dequeueReusableCell(for: CityDetailsCityCell.self, indexPath: indexPath)
                 .setCity(city)
         case .loading:
-            return collectionView.dequeReusableCell(for: CityDetailsLoadingCell.self, indexPath: indexPath)
+            return tableView.dequeueReusableCell(for: CityDetailsLoadingCell.self, indexPath: indexPath)
         case .error(let title, let message):
-            return collectionView.dequeReusableCell(for: CityDetailsErrorCell.self, indexPath: indexPath)
+            return tableView.dequeueReusableCell(for: CityDetailsErrorCell.self, indexPath: indexPath)
                 .setErrorTitle(title, message: message)
         }
     }

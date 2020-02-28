@@ -10,7 +10,7 @@ internal final class CityDetailsViewModel {
     }
     
     internal let city: City
-    internal let collectionAdapter: CityDetailCollectionAdapter
+    internal let tableAdapter: CityDetailTableAdapter
     
     internal private(set) var state: State = .loading {
         didSet {
@@ -27,7 +27,7 @@ internal final class CityDetailsViewModel {
     private var weatherService: WeatherService { services.get(WeatherService.self) }
     
     internal init(city: City, services: Services = .default) {
-        self.collectionAdapter = CityDetailCollectionAdapter(city: city)
+        self.tableAdapter = CityDetailTableAdapter(city: city)
         self.city = city
         self.services = services
         
@@ -64,7 +64,7 @@ internal final class CityDetailsViewModel {
 //            collectionAdapter.setWeather(todayWeather, forecastWeather: forecastWeather)
 //            self.state = .content
 //        } else {
-            collectionAdapter.setErrorTitle(Localization.WeatherDetails.loadingErrorTitle, message: Localization.WeatherDetails.loadingErrorMessage)
+            tableAdapter.setErrorTitle(Localization.WeatherDetails.loadingErrorTitle, message: Localization.WeatherDetails.loadingErrorMessage)
             self.state = .error
 //        }
     }

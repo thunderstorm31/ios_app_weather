@@ -1,14 +1,14 @@
 import UIKit
 
-internal final class CityDetailsCityCell: UICollectionViewCell {
+internal final class CityDetailsCityCell: UITableViewCell {
     private let cityNameLabel = UILabel()
     
     internal private(set) var city: City? {
         didSet { updatedCity() }
     }
     
-    internal override init(frame: CGRect) {
-        super.init(frame: frame)
+    internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureViews()
     }
@@ -32,13 +32,7 @@ extension CityDetailsCityCell {
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
         
-        configureContentView()
         configureCityNameLabel()
-    }
-    
-    private func configureContentView() {
-        contentView.disableTranslateAutoresizingMask()
-        contentView.pinEdgesToSuperview()
     }
     
     private func configureCityNameLabel() {

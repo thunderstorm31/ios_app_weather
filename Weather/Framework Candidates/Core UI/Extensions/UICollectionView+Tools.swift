@@ -69,7 +69,7 @@ extension UICollectionView {
      * dequeues a cell for the given type. The cell needs to be already registered via `register(cell:)`
      * If the type is not registered a fatalError will occur.
      */
-    public func dequeReusableCell<T: UICollectionViewCell>(for type: T.Type, indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UICollectionViewCell>(for type: T.Type, indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: reuseIndentifier(for: type), for: indexPath) as? T else {
             fatalError()
         }

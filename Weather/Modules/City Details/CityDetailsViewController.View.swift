@@ -3,14 +3,12 @@ import UIKit
 extension CityDetailsViewController {
     @objc(CityDetailsViewControllerView)
     internal final class View: UIView {
-        private let flowLayout = UICollectionViewFlowLayout()
-        private let collectionView: UICollectionView
+        private let tableView = UITableView(frame: .main)
         
         private let viewModel: CityDetailsViewModel
         
         internal init(viewModel: CityDetailsViewModel) {
             self.viewModel = viewModel
-            self.collectionView = UICollectionView(frame: .main, collectionViewLayout: self.flowLayout)
             
             super.init(frame: .main)
             
@@ -26,25 +24,25 @@ extension CityDetailsViewController {
 // MARK: - Configure Views
 extension CityDetailsViewController.View {
     private func configureViews() {        
-        [collectionView]
+        [tableView]
             .disableTranslateAutoresizingMask()
             .add(to: self)
         
-        configureCollectionView()
+        configureTableView()
     }
     
-    private func configureCollectionView() {
-        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    private func configureTableView() {
+        tableView.backgroundColor = .systemGroupedBackground
+        tableView.tableFooterView = UIView()
+        tableView.separatorColor = .clear
         
-        collectionView.backgroundColor = .systemGroupedBackground
-        
-        viewModel.collectionAdapter.configure(collectionView)
+        viewModel.tableAdapter.configure(tableView)
     }
 }
 
 // MARK: - Misc
 extension CityDetailsViewController.View {
     internal func reloadData() {
-        collectionView.reloadData()
+        tableView.reloadData()
     }
 }

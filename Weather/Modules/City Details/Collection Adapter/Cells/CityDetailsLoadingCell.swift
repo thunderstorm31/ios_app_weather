@@ -1,10 +1,10 @@
 import UIKit
 
-internal final class CityDetailsLoadingCell: UICollectionViewCell {
+internal final class CityDetailsLoadingCell: UITableViewCell {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     
-    internal override init(frame: CGRect) {
-        super.init(frame: frame)
+    internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureViews()
     }
@@ -27,8 +27,6 @@ extension CityDetailsLoadingCell {
     }
     
     private func configureContentView() {
-        contentView.disableTranslateAutoresizingMask()
-        contentView.pinEdgesToSuperview()
         contentView.pin(height: 100)
     }
 }

@@ -1,4 +1,4 @@
-extension CityDetailCollectionAdapter {
+extension CityDetailTableAdapter {
     internal enum Item {
         case city(City)
         case loading

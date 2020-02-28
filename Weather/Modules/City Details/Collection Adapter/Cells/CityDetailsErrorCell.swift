@@ -1,11 +1,11 @@
 import UIKit
 
-internal final class CityDetailsErrorCell: UICollectionViewCell {
+internal final class CityDetailsErrorCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let messageLabel = UILabel()
     
-    internal override init(frame: CGRect) {
-        super.init(frame: frame)
+    internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureViews()
     }
@@ -37,8 +37,6 @@ extension CityDetailsErrorCell {
     
     private func configureContentView() {
         contentView.layoutMargins = UIEdgeInsets(horizontal: 20, vertical: 10)
-        contentView.disableTranslateAutoresizingMask()
-        contentView.pinEdgesToSuperview()
     }
     
     private func configureTitleLabel() {
