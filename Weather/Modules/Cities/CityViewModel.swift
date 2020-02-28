@@ -12,7 +12,14 @@ internal struct CityViewModel {
     internal init(cityStorage: CityStorage) {
         self.cityStorage = cityStorage
         
+        configureStoredCityAdapter()
+    }
+    
+    private func configureStoredCityAdapter() {
         storedCityAdapter.cities = cityStorage.cities
+        storedCityAdapter.deleteItem = { [cityStorage] indexPath in
+            cityStorage.remove(cityAtIndex: indexPath.item)
+        }
     }
     
     internal func performQuery(_ query: String, completion: @escaping (() -> Void)) {
@@ -31,5 +38,10 @@ internal struct CityViewModel {
     internal func selectedSearchedCity(_ city: City) {
         cityStorage.add(city)
         storedCityAdapter.cities = cityStorage.cities
+    }
+    
+    internal func deleteAll() {
+        cityStorage.cities = []
+        storedCityAdapter.cities = []
     }
 }

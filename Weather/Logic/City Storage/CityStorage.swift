@@ -47,13 +47,22 @@ internal final class CityStorage {
     }
     
     internal func remove(_ city: City) -> Bool {
-        var cities = self.cities
-        
         guard let index = cities.firstIndex(of: city) else {
             return false
         }
         
+        return remove(cityAtIndex: index)
+    }
+    
+    internal func remove(cityAtIndex index: Int) -> Bool {
+        var cities = self.cities
+        
+        guard cities.indices.contains(index) else {
+            return false
+        }
+        
         cities.remove(at: index)
+        
         self.cities = cities
         
         return true

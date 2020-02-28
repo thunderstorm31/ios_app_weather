@@ -83,20 +83,20 @@ public final class CitiesManager {
                 return city.name.lowercased().contains(query)
             }
             
-            let sortedCities = filteredCities.sorted { first, second -> Bool in
-                guard let firstIndex = first.name.lowercased().range(of: query)?.lowerBound,
-                    let secondIndex = second.name.lowercased().range(of: query)?.lowerBound else {
-                        assertionFailure()
-                        return true
-                }
-                
-                return firstIndex < secondIndex
-            }
+//            let sortedCities = filteredCities.sorted { first, second -> Bool in
+//                guard let firstIndex = first.name.lowercased().range(of: query)?.lowerBound,
+//                    let secondIndex = second.name.lowercased().range(of: query)?.lowerBound else {
+//                        assertionFailure()
+//                        return true
+//                }
+//
+//                return firstIndex < secondIndex
+//            }
             
             if request.limit <= 0 {
-                return sortedCities
+                return filteredCities
             } else {
-                return Array(sortedCities.prefix(request.limit))
+                return Array(filteredCities.prefix(request.limit))
             }
         }, completed: { (cities) in
             completion(cities)

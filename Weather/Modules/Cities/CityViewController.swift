@@ -3,8 +3,9 @@ import UIKit
 internal final class CityViewController: UIViewController {
     private let viewModel: CityViewModel
     private lazy var rootView = View(viewModel: self.viewModel)
-    
+        
     private let searchBar = UISearchBar()
+    private let deleteAllBarButtonItem = UIBarButtonItem(title: Localization.Buttons.deleteAllTitle, style: .plain, target: nil, action: nil)
     
     internal init(viewModel: CityViewModel) {
         self.viewModel = viewModel
@@ -12,7 +13,10 @@ internal final class CityViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         configureNavigationItem()
+        configureDeleteAllBarButtonItem()
         configureViewModel()
+        
+        updateToolBarItems()
     }
 
     internal required init?(coder aDecoder: NSCoder) {
@@ -25,6 +29,12 @@ internal final class CityViewController: UIViewController {
         
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tappedCancel(_:)))
+    }
+    
+    private func configureDeleteAllBarButtonItem() {
+        deleteAllBarButtonItem.target = self
+        deleteAllBarButtonItem.action = #selector(self.tappedDeleteAll(_:))
+        deleteAllBarButtonItem.tintColor = .systemRed
     }
     
     private func configureViewModel() {
@@ -46,6 +56,23 @@ internal final class CityViewController: UIViewController {
         viewModel.selectedStoredCity(city)
         dismiss(animated: true)
     }
+    
+    internal override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        rootView.tableView.isEditing = editing
+        updateToolBarItems()
+    }
+    
+    private func updateToolBarItems() {
+        var items = [editButtonItem, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)]
+        
+        if isEditing {
+            items.append(deleteAllBarButtonItem)
+        }
+        
+        toolbarItems = items
+    }
 }
 
 // MARK: Load view
@@ -61,6 +88,12 @@ extension CityViewController {
         super.viewDidLoad()
         
         viewModel.storedCityAdapter.setActive(rootView.tableView)
+    }
+    
+    internal override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setToolbarHidden(false, animated: false)
     }
 }
 
@@ -85,6 +118,36 @@ extension CityViewController: UISearchBarDelegate {
 extension CityViewController {
     @objc
     private func tappedCancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+            searchBar.text = nil
+        } else {
+            dismiss(animated: true)
+        }
+    }
+    
+    @objc
+    private func tappedDeleteAll(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: Localization.Alerts.deleteAllTitle,
+                                                message: Localization.Alerts.deleteAllMessage,
+                                                preferredStyle: .actionSheet)
+        
+        let deleteAllAction = UIAlertAction(title: Localization.Buttons.deleteAllTitle, style: .destructive) { _ in
+            self.deleteAll()
+        }
+        let cancelAction = UIAlertAction(title: Localization.Buttons.cancelTitle, style: .cancel)
+        
+        alertController.addAction(deleteAllAction)
+        alertController.addAction(cancelAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        present(alertController, animated: true)
+    }
+    
+    private func deleteAll() {
+        viewModel.deleteAll()
+        rootView.tableView.reloadData()
+        setEditing(false, animated: true)
     }
 }
