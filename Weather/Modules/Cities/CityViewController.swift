@@ -101,10 +101,14 @@ extension CityViewController {
 extension CityViewController: UISearchBarDelegate {
     internal func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         viewModel.searchCityTableAdapter.setActive(rootView.tableView)
+        
+        navigationController?.setToolbarHidden(true, animated: true)
     }
 
     internal func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         viewModel.storedCityAdapter.setActive(rootView.tableView)
+        
+        navigationController?.setToolbarHidden(false, animated: true)
     }
 
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

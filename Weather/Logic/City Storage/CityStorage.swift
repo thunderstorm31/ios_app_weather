@@ -1,9 +1,31 @@
 import Foundation
 
-internal final class CityStorage {
-    private let container: StorageContainer<StorageKeys>
+internal protocol CityStorageServiceDelegate: AnyObject {
+    func cityStorageService(_ service: CityStorage, updatedStoredCities: [City])
+}
+
+internal protocol CityStorageService: Service {
+    var selectedCity: City? { get set }
+    var cities: [City] { get set }
     
-    internal init(storage: Storage) {
+    @discardableResult
+    func add(_ city: City) -> Bool
+    
+    @discardableResult
+    func remove(_ city: City) -> Bool
+    
+    @discardableResult
+    func remove(cityAtIndex index: Int) -> Bool
+    
+    func addDelegate(_ delegate: CityStorageServiceDelegate)
+    func removeDelegate(_ delegate: CityStorageServiceDelegate)
+}
+
+internal final class CityStorage: CityStorageService {
+    private let container: StorageContainer<StorageKeys>
+    private let delegates = WeakHashTable<CityStorageServiceDelegate>()
+    
+    internal init(storage: Storage = UserDefaults.standard) {
         container = storage.storageContainer(for: StorageKeys.self)
     }
     
@@ -27,7 +49,11 @@ internal final class CityStorage {
     }
     
     internal var cities: [City] {
-        set { container.setEncodable(newValue, for: .cities) }
+        set {
+            container.setEncodable(newValue, for: .cities)
+            
+            delegates.forEach { $0.cityStorageService(self, updatedStoredCities: newValue) }
+        }
         get { container.decodable(ofType: [City].self, for: .cities) ?? [] }
     }
     
@@ -66,6 +92,14 @@ internal final class CityStorage {
         self.cities = cities
         
         return true
+    }
+    
+    internal func addDelegate(_ delegate: CityStorageServiceDelegate) {
+        delegates.add(delegate)
+    }
+    
+    internal func removeDelegate(_ delegate: CityStorageServiceDelegate) {
+        delegates.remove(delegate)
     }
 }
 

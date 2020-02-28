@@ -1,21 +1,28 @@
 import Foundation
 import CoreLocation
 
-public final class CitiesManager {
-    public struct LocationRequest {
-        public let location: CLLocation
-        
-        /// Zero or negative will result in all the results being returend
-        public let limit: Int
-    }
+public protocol CitiesService: Service {
+    var isReady: Bool { get }
     
-    public struct SearchQueryRequest {
-        public let query: String
-        
-        /// Zero or negative will result in all the results being returend
-        public let limit: Int
-    }
+    func citiesFor(_ request: CityLocationRequest, completion: @escaping (([City]) -> Void))
+    func citiesFor(_ request: CitySearchQueryRequest, completion: @escaping (([City]) -> Void))
+}
+
+public struct CityLocationRequest {
+    public let location: CLLocation
     
+    /// Zero or negative will result in all the results being returend
+    public let limit: Int
+}
+
+public struct CitySearchQueryRequest {
+    public let query: String
+    
+    /// Zero or negative will result in all the results being returend
+    public let limit: Int
+}
+
+public final class CitiesManager: CitiesService {
     public private(set) var isReady: Bool = false
     
     private let searchAccelerator = SearchAccelerator<[City]>()
@@ -40,7 +47,7 @@ public final class CitiesManager {
         }
     }
     
-    public func citiesFor(_ request: LocationRequest, completion: @escaping (([City]) -> Void)) {
+    public func citiesFor(_ request: CityLocationRequest, completion: @escaping (([City]) -> Void)) {
         guard isReady else {
             return DispatchTools.onMain {
                 completion([])
@@ -65,7 +72,7 @@ public final class CitiesManager {
         })
     }
     
-    public func citiesFor(_ request: SearchQueryRequest, completion: @escaping (([City]) -> Void)) {
+    public func citiesFor(_ request: CitySearchQueryRequest, completion: @escaping (([City]) -> Void)) {
         guard isReady else {
             return DispatchTools.onMain {
                 completion([])
