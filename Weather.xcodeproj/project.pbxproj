@@ -31,13 +31,16 @@
 		60874AF62409477700C7725A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AF02409477700C7725A /* Service.swift */; };
 		60874AF72409477700C7725A /* InitializableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AF12409477700C7725A /* InitializableService.swift */; };
 		60874AF82409477700C7725A /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AF22409477700C7725A /* ServiceProvider.swift */; };
+		60874AFA24094E3100C7725A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AF924094E3100C7725A /* HomeViewModel.swift */; };
+		60874AFC24094F2800C7725A /* HomeViewController.MapAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */; };
+		60874AFE24094FE100C7725A /* HomeViewMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */; };
 		60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF535240838AC0021FA6F /* AppDelegate.swift */; };
 		60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF537240838AC0021FA6F /* SceneDelegate.swift */; };
 		60CAF53F240838AE0021FA6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF53E240838AE0021FA6F /* Assets.xcassets */; };
 		60CAF542240838AE0021FA6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF540240838AE0021FA6F /* LaunchScreen.storyboard */; };
 		60CAF54D240838AE0021FA6F /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF54C240838AE0021FA6F /* WeatherTests.swift */; };
-		60CAF56624083BD70021FA6F /* MainViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56424083BD70021FA6F /* MainViewController.View.swift */; };
-		60CAF56724083BD70021FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56524083BD70021FA6F /* MainViewController.swift */; };
+		60CAF56624083BD70021FA6F /* HomeViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56424083BD70021FA6F /* HomeViewController.View.swift */; };
+		60CAF56724083BD70021FA6F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF56524083BD70021FA6F /* HomeViewController.swift */; };
 		60CAF5AC24083E800021FA6F /* Collection+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5AB24083E800021FA6F /* Collection+Tools.swift */; };
 		60CAF5C824083E860021FA6F /* UIView+LayoutAreaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5AF24083E860021FA6F /* UIView+LayoutAreaType.swift */; };
 		60CAF5C924083E860021FA6F /* UIView.Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5B024083E860021FA6F /* UIView.Edge.swift */; };
@@ -61,7 +64,7 @@
 		60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C524083E860021FA6F /* UITableView+Tools.swift */; };
 		60CAF5DC24083E860021FA6F /* UIEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */; };
 		60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */; };
-		60CAF5DF24083EE70021FA6F /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */; };
+		60CAF5DF24083EE70021FA6F /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5DE24083EE70021FA6F /* HomeMenuButton.swift */; };
 		60CAF5E124083F870021FA6F /* UITraitCollection+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5E024083F870021FA6F /* UITraitCollection+Tools.swift */; };
 		60CAF5E5240849680021FA6F /* city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF5E4240849680021FA6F /* city.list.json */; };
 		60CAF5E7240849A10021FA6F /* CitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF5E6240849A10021FA6F /* CitiesManager.swift */; };
@@ -111,6 +114,9 @@
 		60874AF02409477700C7725A /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		60874AF12409477700C7725A /* InitializableService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializableService.swift; sourceTree = "<group>"; };
 		60874AF22409477700C7725A /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		60874AF924094E3100C7725A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.MapAdapter.swift; sourceTree = "<group>"; };
+		60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMapAnnotation.swift; sourceTree = "<group>"; };
 		60CAF532240838AC0021FA6F /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CAF535240838AC0021FA6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60CAF537240838AC0021FA6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,8 +126,8 @@
 		60CAF548240838AE0021FA6F /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CAF54C240838AE0021FA6F /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		60CAF54E240838AE0021FA6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60CAF56424083BD70021FA6F /* MainViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.View.swift; sourceTree = "<group>"; };
-		60CAF56524083BD70021FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		60CAF56424083BD70021FA6F /* HomeViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.View.swift; sourceTree = "<group>"; };
+		60CAF56524083BD70021FA6F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		60CAF5A024083D370021FA6F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
 		60CAF5A124083D370021FA6F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		60CAF5A424083DAB0021FA6F /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -148,7 +154,7 @@
 		60CAF5C524083E860021FA6F /* UITableView+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Tools.swift"; sourceTree = "<group>"; };
 		60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
 		60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Tools.swift"; sourceTree = "<group>"; };
-		60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
+		60CAF5DE24083EE70021FA6F /* HomeMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		60CAF5E024083F870021FA6F /* UITraitCollection+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Tools.swift"; sourceTree = "<group>"; };
 		60CAF5E4240849680021FA6F /* city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.list.json; sourceTree = "<group>"; };
 		60CAF5E6240849A10021FA6F /* CitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesManager.swift; sourceTree = "<group>"; };
@@ -332,7 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				60CAF5F02408514F0021FA6F /* Cities */,
-				60CAF55A240839090021FA6F /* Main */,
+				60CAF55A240839090021FA6F /* Home */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -346,14 +352,17 @@
 			path = System;
 			sourceTree = "<group>";
 		};
-		60CAF55A240839090021FA6F /* Main */ = {
+		60CAF55A240839090021FA6F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				60CAF56424083BD70021FA6F /* MainViewController.View.swift */,
-				60CAF56524083BD70021FA6F /* MainViewController.swift */,
-				60CAF5DE24083EE70021FA6F /* MainMenuButton.swift */,
+				60CAF56424083BD70021FA6F /* HomeViewController.View.swift */,
+				60CAF56524083BD70021FA6F /* HomeViewController.swift */,
+				60CAF5DE24083EE70021FA6F /* HomeMenuButton.swift */,
+				60874AF924094E3100C7725A /* HomeViewModel.swift */,
+				60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */,
+				60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */,
 			);
-			path = Main;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		60CAF55B240839120021FA6F /* Supporting Files */ = {
@@ -739,16 +748,18 @@
 				60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
 				60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */,
 				60874ADE24085D8400C7725A /* UserDefaults+Codable.swift in Sources */,
+				60874AFE24094FE100C7725A /* HomeViewMapAnnotation.swift in Sources */,
 				60CAF5D124083E860021FA6F /* NSLayoutDimension+AutoLayout.swift in Sources */,
 				60874AC72408552200C7725A /* SearchCityCell.swift in Sources */,
+				60874AFC24094F2800C7725A /* HomeViewController.MapAdapter.swift in Sources */,
 				60874ACF24085AB700C7725A /* KeyboardManager+Tools.swift in Sources */,
 				60CAF5D724083E860021FA6F /* UIView+AutoLayout.swift in Sources */,
 				60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */,
 				60CAF5F7240851AB0021FA6F /* Localization.swift in Sources */,
-				60CAF56624083BD70021FA6F /* MainViewController.View.swift in Sources */,
+				60CAF56624083BD70021FA6F /* HomeViewController.View.swift in Sources */,
 				60874AD224085AEB00C7725A /* WeakHashTable.swift in Sources */,
 				60874AF42409477700C7725A /* Services.swift in Sources */,
-				60CAF5DF24083EE70021FA6F /* MainMenuButton.swift in Sources */,
+				60CAF5DF24083EE70021FA6F /* HomeMenuButton.swift in Sources */,
 				60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */,
 				60CAF5CF24083E860021FA6F /* NSLayoutXAxisAnchor+AutoLayout.swift in Sources */,
 				60874AF62409477700C7725A /* Service.swift in Sources */,
@@ -765,6 +776,7 @@
 				60CAF5CC24083E860021FA6F /* NSLayoutConstraint+AutoLayout.swift in Sources */,
 				60CAF5DA24083E860021FA6F /* UICollectionView+Tools.swift in Sources */,
 				60CAF5D324083E860021FA6F /* UIView+AutoLayoutPinEdges.swift in Sources */,
+				60874AFA24094E3100C7725A /* HomeViewModel.swift in Sources */,
 				60874ADF24085D8400C7725A /* UserDefaults+CustomStringConvertibleKeys.swift in Sources */,
 				60CAF5C924083E860021FA6F /* UIView.Edge.swift in Sources */,
 				60CAF5D824083E860021FA6F /* UIView+AutoLayoutPinAlign.swift in Sources */,
@@ -774,7 +786,7 @@
 				60CAF5EF24084EB10021FA6F /* SearchAccelerator.swift in Sources */,
 				60874AF52409477700C7725A /* Services+Error.swift in Sources */,
 				60CAF5E7240849A10021FA6F /* CitiesManager.swift in Sources */,
-				60CAF56724083BD70021FA6F /* MainViewController.swift in Sources */,
+				60CAF56724083BD70021FA6F /* HomeViewController.swift in Sources */,
 				60CAF5E9240849AA0021FA6F /* City.swift in Sources */,
 				60874AE324085E9900C7725A /* Codable+Support.swift in Sources */,
 				60CAF5CB24083E860021FA6F /* UIView+ConstraintRelationsAround.swift in Sources */,

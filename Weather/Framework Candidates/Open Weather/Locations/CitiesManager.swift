@@ -9,10 +9,18 @@ public protocol CitiesService: Service {
 }
 
 public struct CityLocationRequest {
-    public let location: CLLocation
+    public let coordinate: CLLocationCoordinate2D
     
     /// Zero or negative will result in all the results being returend
     public let limit: Int
+    
+    public let maxDistance: CLLocationDistance
+    
+    internal init(coordinate: CLLocationCoordinate2D, limit: Int = 1, maxDistance: CLLocationDistance = 1_500) {
+        self.coordinate = coordinate
+        self.limit = limit
+        self.maxDistance = maxDistance
+    }
 }
 
 public struct CitySearchQueryRequest {
@@ -54,18 +62,20 @@ public final class CitiesManager: CitiesService {
             }
         }
         
+        let requestLocation = CLLocation(latitude: request.coordinate.latitude,
+                                         longitude: request.coordinate.longitude)
+        
         searchAccelerator.perform(searchClosure: { () -> [City] in
-            let sortedCities = self.cities.sorted { first, second -> Bool in
-                let firstDistance = first.location.distance(from: request.location)
-                let secondDistance = second.location.distance(from: request.location)
+            let sortedCitiesWithDistance = self.cities.compactMap { city -> (City, CLLocationDistance)? in
+                let distance = city.location.distance(from: requestLocation)
                 
-                return firstDistance < secondDistance
-            }
+                return distance < 1_500 ? (city, distance) : nil
+            }.sorted { $0.1 < $1.1 }
             
             if request.limit <= 0 {
-                return sortedCities
+                return sortedCitiesWithDistance.map { $0.0 }
             } else {
-                return Array(sortedCities.prefix(request.limit))
+                return Array(sortedCitiesWithDistance.prefix(request.limit)).map { $0.0 }
             }
         }, completed: { (cities) in
             completion(cities)

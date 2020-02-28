@@ -1,13 +1,13 @@
 import UIKit
 import MapKit
 
-extension MainViewController {
-    @objc(MainViewControllerView) 
+extension HomeViewController {
+    @objc(HomeViewControllerView) 
     internal final class View: UIView {
-        private let mapView = MKMapView()
+        internal let mapView = MKMapView()
         
-        internal let locationsButton = MainMenuButton()
-        internal let settingsButton = MainMenuButton()
+        internal let locationsButton = HomeMenuButton()
+        internal let settingsButton = HomeMenuButton()
         
         internal init() {
             super.init(frame: UIScreen.main.bounds)
@@ -22,7 +22,7 @@ extension MainViewController {
 }
 
 // MARK: Configure Views
-extension MainViewController.View {
+extension HomeViewController.View {
     private func configureViews() {
         [mapView, locationsButton, settingsButton]
             .disableTranslateAutoresizingMask()

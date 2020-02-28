@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class MainMenuButton: UIButton {
+internal final class HomeMenuButton: UIButton {
     internal override var isHighlighted: Bool {
         didSet { updatedHighlightedState() }
     }
@@ -20,14 +20,14 @@ internal final class MainMenuButton: UIButton {
 }
 
 // MARK: Configure Views
-extension MainMenuButton {
+extension HomeMenuButton {
     private func configureViews() {
         layer.cornerRadius = 8
     }
 }
 
 // MARK: Trait Collection
-extension MainMenuButton {
+extension HomeMenuButton {
     internal override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
@@ -37,7 +37,7 @@ extension MainMenuButton {
 }
 
 // MARK: Misc
-extension MainMenuButton {
+extension HomeMenuButton {
     private func updatedHighlightedState() {
         backgroundColor = UIColor.white.withAlphaComponent(isHighlighted ? 0.3 : 0.5)
     }

@@ -1,7 +1,7 @@
 import Foundation
 
 internal protocol CityStorageServiceDelegate: AnyObject {
-    func cityStorageService(_ service: CityStorage, updatedStoredCities: [City])
+    func cityStorageService(_ service: CityStorage, updatedStoredCities cities: [City])
 }
 
 internal protocol CityStorageService: Service {
