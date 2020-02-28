@@ -5,12 +5,12 @@ extension CityViewController {
     internal final class View: UIView {
         private let viewModel: CityViewModel
         
-        internal let tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped)
+        internal let tableView = UITableView(frame: .main, style: .grouped)
         
         internal init(viewModel: CityViewModel) {
             self.viewModel = viewModel
             
-            super.init(frame: UIScreen.main.bounds)
+            super.init(frame: .main)
             
             configureViews()
             

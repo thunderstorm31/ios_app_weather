@@ -10,7 +10,7 @@ extension HomeViewController {
         internal let settingsButton = HomeMenuButton()
         
         internal init() {
-            super.init(frame: UIScreen.main.bounds)
+            super.init(frame: .main)
             
             configureViews()
         }

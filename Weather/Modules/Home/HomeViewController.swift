@@ -30,11 +30,13 @@ extension HomeViewController {
         view = rootView
         
         rootView.locationsButton.addTarget(self, action: #selector(self.tappedLocationButton(_:)), for: .touchUpInside)
-        rootView.mapView.delegate = mapAdapter
+        
+        rootView.settingsButton.addTarget(self, action: #selector(self.tappedSettingsButton(_:)), for: .touchUpInside)
         
         let addCityRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.addLocation(_:)))
         
         rootView.mapView.addGestureRecognizer(addCityRecognizer)
+        rootView.mapView.delegate = mapAdapter
     }
 }
 
@@ -52,6 +54,13 @@ extension HomeViewController {
     @objc
     private func tappedLocationButton(_ sender: UIButton) {
         let presenter = CityPresenter()
+        
+        presenter.presentFrom(self)
+    }
+    
+    @objc
+    private func tappedSettingsButton(_ sender: UIButton) {
+        let presenter = SettingsPresenter()
         
         presenter.presentFrom(self)
     }

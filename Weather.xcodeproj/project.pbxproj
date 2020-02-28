@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5990FB413A5126F5A12D5D65 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62BCFF5CB845FBABDFCAB8E /* Pods_Weather.framework */; };
+		603C715124095D6F005892D7 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603C715024095D6F005892D7 /* SettingsTableCell.swift */; };
 		60874AC22408529D00C7725A /* CityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC12408529D00C7725A /* CityPresenter.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
@@ -34,6 +35,14 @@
 		60874AFA24094E3100C7725A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AF924094E3100C7725A /* HomeViewModel.swift */; };
 		60874AFC24094F2800C7725A /* HomeViewController.MapAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */; };
 		60874AFE24094FE100C7725A /* HomeViewMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */; };
+		60874B022409586E00C7725A /* SettingsViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B002409586E00C7725A /* SettingsViewController.View.swift */; };
+		60874B032409586E00C7725A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B012409586E00C7725A /* SettingsViewController.swift */; };
+		60874B052409588A00C7725A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B042409588A00C7725A /* SettingsPresenter.swift */; };
+		60874B07240958A200C7725A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B06240958A200C7725A /* SettingsViewModel.swift */; };
+		60874B092409590F00C7725A /* CGRect+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B082409590F00C7725A /* CGRect+Tools.swift */; };
+		60874B0B2409597F00C7725A /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B0A2409597F00C7725A /* SettingsTableController.swift */; };
+		60874B0E240959C800C7725A /* SettingsTableController.Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B0D240959C800C7725A /* SettingsTableController.Section.swift */; };
+		60874B10240959E500C7725A /* SettingsTableController.Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874B0F240959E500C7725A /* SettingsTableController.Item.swift */; };
 		60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF535240838AC0021FA6F /* AppDelegate.swift */; };
 		60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CAF537240838AC0021FA6F /* SceneDelegate.swift */; };
 		60CAF53F240838AE0021FA6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60CAF53E240838AE0021FA6F /* Assets.xcassets */; };
@@ -91,6 +100,7 @@
 		3942EA457A67C70B92849F82 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		460E01533CB7B1BF93241B8A /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		52263CC137D6E85A495F14C5 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		603C715024095D6F005892D7 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
 		60874AC12408529D00C7725A /* CityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPresenter.swift; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
@@ -117,6 +127,14 @@
 		60874AF924094E3100C7725A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.MapAdapter.swift; sourceTree = "<group>"; };
 		60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMapAnnotation.swift; sourceTree = "<group>"; };
+		60874B002409586E00C7725A /* SettingsViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.View.swift; sourceTree = "<group>"; };
+		60874B012409586E00C7725A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		60874B042409588A00C7725A /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		60874B06240958A200C7725A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		60874B082409590F00C7725A /* CGRect+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Tools.swift"; sourceTree = "<group>"; };
+		60874B0A2409597F00C7725A /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
+		60874B0D240959C800C7725A /* SettingsTableController.Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.Section.swift; sourceTree = "<group>"; };
+		60874B0F240959E500C7725A /* SettingsTableController.Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.Item.swift; sourceTree = "<group>"; };
 		60CAF532240838AC0021FA6F /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CAF535240838AC0021FA6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60CAF537240838AC0021FA6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +214,14 @@
 				C75782006B92CB170B8C77CA /* Pods_WeatherTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		603C714F24095D61005892D7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				603C715024095D6F005892D7 /* SettingsTableCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		60874AC52408551500C7725A /* Cells */ = {
@@ -283,6 +309,29 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		60874AFF2409586000C7725A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				603C714F24095D61005892D7 /* Cells */,
+				60874B0C240959BC00C7725A /* Table controller */,
+				60874B002409586E00C7725A /* SettingsViewController.View.swift */,
+				60874B012409586E00C7725A /* SettingsViewController.swift */,
+				60874B042409588A00C7725A /* SettingsPresenter.swift */,
+				60874B06240958A200C7725A /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		60874B0C240959BC00C7725A /* Table controller */ = {
+			isa = PBXGroup;
+			children = (
+				60874B0A2409597F00C7725A /* SettingsTableController.swift */,
+				60874B0D240959C800C7725A /* SettingsTableController.Section.swift */,
+				60874B0F240959E500C7725A /* SettingsTableController.Item.swift */,
+			);
+			path = "Table controller";
+			sourceTree = "<group>";
+		};
 		60CAF529240838AC0021FA6F = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +386,7 @@
 		60CAF558240838F60021FA6F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				60874AFF2409586000C7725A /* Settings */,
 				60CAF5F02408514F0021FA6F /* Cities */,
 				60CAF55A240839090021FA6F /* Home */,
 			);
@@ -400,9 +450,9 @@
 		60CAF56A24083C0B0021FA6F /* Core UI */ = {
 			isa = PBXGroup;
 			children = (
-				60874ACB24085AA400C7725A /* KeyboardManager */,
 				60CAF5AD24083E860021FA6F /* Auto layout */,
 				60CAF5C324083E860021FA6F /* Extensions */,
+				60874ACB24085AA400C7725A /* KeyboardManager */,
 			);
 			path = "Core UI";
 			sourceTree = "<group>";
@@ -491,6 +541,7 @@
 				60CAF5C524083E860021FA6F /* UITableView+Tools.swift */,
 				60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */,
 				60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */,
+				60874B082409590F00C7725A /* CGRect+Tools.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -737,7 +788,10 @@
 				60874AD724085D2900C7725A /* Storage.swift in Sources */,
 				60CAF5AC24083E800021FA6F /* Collection+Tools.swift in Sources */,
 				60CAF5D424083E860021FA6F /* UIView+AutoLayoutArea.swift in Sources */,
+				60874B092409590F00C7725A /* CGRect+Tools.swift in Sources */,
 				60874AE124085D8400C7725A /* UserDefaultsKeyProvidable.swift in Sources */,
+				60874B032409586E00C7725A /* SettingsViewController.swift in Sources */,
+				60874B10240959E500C7725A /* SettingsTableController.Item.swift in Sources */,
 				60CAF5F32408515F0021FA6F /* CityViewController.View.swift in Sources */,
 				60CAF5C824083E860021FA6F /* UIView+LayoutAreaType.swift in Sources */,
 				60CAF5CE24083E860021FA6F /* Array+NSLayoutConstraint.swift in Sources */,
@@ -747,6 +801,7 @@
 				60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */,
 				60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
 				60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */,
+				60874B0E240959C800C7725A /* SettingsTableController.Section.swift in Sources */,
 				60874ADE24085D8400C7725A /* UserDefaults+Codable.swift in Sources */,
 				60874AFE24094FE100C7725A /* HomeViewMapAnnotation.swift in Sources */,
 				60CAF5D124083E860021FA6F /* NSLayoutDimension+AutoLayout.swift in Sources */,
@@ -766,11 +821,14 @@
 				60CAF5EC24084D160021FA6F /* DispatchTools.swift in Sources */,
 				60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */,
 				60CAF5D224083E860021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
+				60874B0B2409597F00C7725A /* SettingsTableController.swift in Sources */,
 				60874AE024085D8400C7725A /* UserDefaults+Container.swift in Sources */,
 				60874ACD24085AA900C7725A /* KeyboardManager.swift in Sources */,
 				60874AE624085ECE00C7725A /* CityStorage.swift in Sources */,
 				60CAF5D924083E860021FA6F /* UIView+AutoLayoutPinRelative.swift in Sources */,
 				60CAF5DC24083E860021FA6F /* UIEdgeInsets+Tools.swift in Sources */,
+				60874B07240958A200C7725A /* SettingsViewModel.swift in Sources */,
+				60874B022409586E00C7725A /* SettingsViewController.View.swift in Sources */,
 				60CAF5E124083F870021FA6F /* UITraitCollection+Tools.swift in Sources */,
 				60874AF82409477700C7725A /* ServiceProvider.swift in Sources */,
 				60CAF5CC24083E860021FA6F /* NSLayoutConstraint+AutoLayout.swift in Sources */,
@@ -787,7 +845,9 @@
 				60874AF52409477700C7725A /* Services+Error.swift in Sources */,
 				60CAF5E7240849A10021FA6F /* CitiesManager.swift in Sources */,
 				60CAF56724083BD70021FA6F /* HomeViewController.swift in Sources */,
+				603C715124095D6F005892D7 /* SettingsTableCell.swift in Sources */,
 				60CAF5E9240849AA0021FA6F /* City.swift in Sources */,
+				60874B052409588A00C7725A /* SettingsPresenter.swift in Sources */,
 				60874AE324085E9900C7725A /* Codable+Support.swift in Sources */,
 				60CAF5CB24083E860021FA6F /* UIView+ConstraintRelationsAround.swift in Sources */,
 				60874AF72409477700C7725A /* InitializableService.swift in Sources */,
