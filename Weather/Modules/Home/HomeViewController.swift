@@ -20,7 +20,9 @@ internal final class HomeViewController: UIViewController {
     }
     
     private func configureMapAdapter() {
-        mapAdapter.selectedCity = { [weak self] _ in }
+        mapAdapter.selectedCity = { [weak self] city in
+            self?.selected(city)
+        }
     }
 }
 
@@ -73,6 +75,12 @@ extension HomeViewController {
         viewModel.addCity(forCoordinate: coordinate) { [weak self] result in
             self?.addedCityResult(result)
         }
+    }
+    
+    private func selected(_ city: City) {
+        let presenter = CityDetailsPresenter(city: city)
+        
+        presenter.presentFrom(self)
     }
     
     private func addedCityResult(_ result: HomeViewModel.AddCityResult) {
