@@ -5,7 +5,7 @@ public struct TodayWeather: Hashable, Codable {
     public let base: String
     public let name: String
     
-    public let coordinate: Coordinate
+    public let coordinate: Coordinates
     public let dayTime: TimeInterval
     public let timezone: Int
     
@@ -14,12 +14,12 @@ public struct TodayWeather: Hashable, Codable {
     public let sunTimes: SunTimes
     
     public let weather: [Weather]
-    public let todayWeather: DailyWeather
+    public let weatherDetails: WeatherDetails
     
-    public enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id, base, name, wind, clouds
         case coordinate = "coord", sunTimes = "sys"
-        case weather, todayWeather = "main"
+        case weather, weatherDetails = "main"
         case dayTime = "dt", timezone
     }
 }

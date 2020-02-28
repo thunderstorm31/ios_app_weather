@@ -1,3 +1,5 @@
+import Foundation
+
 internal protocol CityDetailsViewModelDelegate: AnyObject {
     func cityDetailsViewModel(_ model: CityDetailsViewModel, updated state: CityDetailsViewModel.State)
 }
@@ -17,6 +19,7 @@ internal final class CityDetailsViewModel {
     }
     
     internal private(set) var todayWeather: TodayWeather?
+    internal private(set) var forecastWeather: ForecastWeather?
     
     internal weak var delegate: CityDetailsViewModelDelegate?
     
@@ -32,15 +35,35 @@ internal final class CityDetailsViewModel {
     }
     
     private func loadDailyWeather() {
-        let request = TodayWeatherRequest(coordinate: city.location.coordinate)
+        let todayRequest = TodayWeatherRequest(coordinate: city.coordinates.coordinate)
+        let forecastRequest = ForecastWeatherRequest(coordinate: city.coordinates.coordinate)
         
-        weatherService.load(request) { [weak self] weather, error in
-            if let weather = weather {
+        DispatchTools.onBackground { [weatherService] in
+            let group = DispatchGroup()
+            
+            group.enter()
+            weatherService.load(todayRequest) { [weak self] weather, _ in
                 self?.todayWeather = weather
-                self?.state = .content
-            } else {
-                self?.state = .error
+                group.leave()
             }
+            
+            group.enter()
+            weatherService.load(forecastRequest) { [weak self] forecastWeather, _ in
+                self?.forecastWeather = forecastWeather
+                group.leave()
+            }
+            
+            group.notify(queue: .main) { [weak self] in
+                self?.finishedLoadingWeather()
+            }
+        }
+    }
+    
+    private func finishedLoadingWeather() {
+        if self.todayWeather != nil && self.forecastWeather != nil {
+            self.state = .content
+        } else {
+            self.state = .error
         }
     }
 }

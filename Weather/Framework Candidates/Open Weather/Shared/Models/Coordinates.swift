@@ -1,6 +1,6 @@
 import CoreLocation
 
-public struct Coordinate: Hashable, Codable {
+public struct Coordinates: Hashable, Codable {
     public let latitude: CLLocationDegrees
     public let longitude: CLLocationDegrees
     
@@ -8,7 +8,11 @@ public struct Coordinate: Hashable, Codable {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    public enum CodingKeys: String, CodingKey {
+    public var location: CLLocation {
+        CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
         case latitude = "lat"
         case longitude = "lon"
     }

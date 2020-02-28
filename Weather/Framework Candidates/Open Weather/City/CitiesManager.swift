@@ -67,7 +67,7 @@ public final class CitiesManager: CitiesService {
         
         searchAccelerator.perform(searchClosure: { () -> [City] in
             let sortedCitiesWithDistance = self.cities.compactMap { city -> (City, CLLocationDistance)? in
-                let distance = city.location.distance(from: requestLocation)
+                let distance = city.coordinates.location.distance(from: requestLocation)
                 
                 return distance < 1_500 ? (city, distance) : nil
             }.sorted { $0.1 < $1.1 }
