@@ -60,10 +60,12 @@ internal final class CityDetailsViewModel {
     }
     
     private func finishedLoadingWeather() {
-        if self.todayWeather != nil && self.forecastWeather != nil {
-            self.state = .content
-        } else {
+//        if let todayWeather = todayWeather, let forecastWeather = forecastWeather {
+//            collectionAdapter.setWeather(todayWeather, forecastWeather: forecastWeather)
+//            self.state = .content
+//        } else {
+            collectionAdapter.setErrorTitle(Localization.WeatherDetails.loadingErrorTitle, message: Localization.WeatherDetails.loadingErrorMessage)
             self.state = .error
-        }
+//        }
     }
 }

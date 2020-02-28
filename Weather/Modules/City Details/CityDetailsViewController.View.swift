@@ -23,7 +23,7 @@ extension CityDetailsViewController {
     }
 }
 
-// MARK: Configure Views
+// MARK: - Configure Views
 extension CityDetailsViewController.View {
     private func configureViews() {        
         [collectionView]
@@ -39,5 +39,12 @@ extension CityDetailsViewController.View {
         collectionView.backgroundColor = .systemGroupedBackground
         
         viewModel.collectionAdapter.configure(collectionView)
+    }
+}
+
+// MARK: - Misc
+extension CityDetailsViewController.View {
+    internal func reloadData() {
+        collectionView.reloadData()
     }
 }

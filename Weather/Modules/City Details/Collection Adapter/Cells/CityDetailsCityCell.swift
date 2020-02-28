@@ -3,7 +3,7 @@ import UIKit
 internal final class CityDetailsCityCell: UICollectionViewCell {
     private let cityNameLabel = UILabel()
     
-    internal var city: City? {
+    internal private(set) var city: City? {
         didSet { updatedCity() }
     }
     
@@ -15,6 +15,13 @@ internal final class CityDetailsCityCell: UICollectionViewCell {
     
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @discardableResult
+    internal func setCity(_ city: City) -> CityDetailsCityCell {
+        self.city = city
+        
+        return self
     }
 }
 

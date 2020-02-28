@@ -7,6 +7,7 @@ extension Localization {
     internal struct Buttons {}
     internal struct Cities {}
     internal struct Settings {}
+    internal struct WeatherDetails {}
 }
 
 extension Localization.Alerts {
@@ -68,6 +69,21 @@ extension Localization.Settings {
         NSLocalizedString("help.item.title",
                           tableName: "settings",
                           value: "Help",
+                          comment: "")
+    }
+}
+
+extension Localization.WeatherDetails {
+    internal static var loadingErrorTitle: String {
+        NSLocalizedString("loading.error.title",
+                          tableName: "weatherDetails",
+                          value: "Failed loading data",
+                          comment: "")
+    }
+    internal static var loadingErrorMessage: String {
+        NSLocalizedString("loading.error.message",
+                          tableName: "weatherDetails",
+                          value: "Failed loading weather data, please check your internet connection and try again",
                           comment: "")
     }
 }

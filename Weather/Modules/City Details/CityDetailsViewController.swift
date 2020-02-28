@@ -27,17 +27,33 @@ internal final class CityDetailsViewController: UIViewController {
     }
 }
 
-// MARK: Load view
+// MARK: - Load view
 extension CityDetailsViewController {
     internal override func loadView() {
         view = rootView
     }
 }
 
-// MARK: User Interaction
+// MARK: - Life cycle
+extension CityDetailsViewController {
+    internal override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel.delegate = self
+    }
+}
+
+// MARK: - User Interaction
 extension CityDetailsViewController {
     @objc
     private func tappedClose(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
+    }
+}
+
+// MARK: - CityDetailsViewModelDelegate
+extension CityDetailsViewController: CityDetailsViewModelDelegate {
+    internal func cityDetailsViewModel(_ model: CityDetailsViewModel, updated state: CityDetailsViewModel.State) {
+        rootView.reloadData()
     }
 }
