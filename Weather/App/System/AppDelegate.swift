@@ -11,6 +11,7 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         try? services.register(CityStorage(), forType: CityStorageService.self)
         try? services.register(CitiesManager(), forType: CitiesService.self)
+        try? services.register(WeatherBll(), forType: WeatherService.self)
     }
     
     // MARK: - UISceneSession Lifecycle

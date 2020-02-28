@@ -57,7 +57,9 @@ extension HomeViewController {
     private func tappedLocationButton(_ sender: UIButton) {
         let presenter = CityPresenter()
         
-        presenter.presentFrom(self)
+        presenter.presentFrom(self) { [weak self] city in
+            self?.selected(city)
+        }
     }
     
     @objc

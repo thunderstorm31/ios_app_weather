@@ -5,7 +5,6 @@ internal protocol CityStorageServiceDelegate: AnyObject {
 }
 
 internal protocol CityStorageService: Service {
-    var selectedCity: City? { get set }
     var cities: [City] { get set }
     
     @discardableResult
@@ -27,25 +26,6 @@ internal final class CityStorage: CityStorageService {
     
     internal init(storage: Storage = UserDefaults.standard) {
         container = storage.storageContainer(for: StorageKeys.self)
-    }
-    
-    internal var selectedCity: City? {
-        set {
-            if let newValue = newValue {
-                container.setEncodable(newValue, for: .selectedCity)
-            } else {
-                container.removeObject(for: .selectedCity)
-            }
-        }
-        get {
-            let cities = self.cities
-            
-            if let city = container.decodable(ofType: City.self, for: .selectedCity), cities.contains(city) {
-                return city
-            } else {
-                return cities.first
-            }
-        }
     }
     
     internal var cities: [City] {
@@ -106,7 +86,7 @@ internal final class CityStorage: CityStorageService {
 // MARK: - Storage and Legacy Keys
 extension CityStorage {
     internal enum StorageKeys: String, UserDefaultsKey {
-        case cities, selectedCity
+        case cities
         
         internal var storageKey: String {
             return "cities." + rawValue

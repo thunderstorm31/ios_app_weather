@@ -54,7 +54,9 @@ internal final class CityViewController: UIViewController {
     
     private func selectedStoredCity(_ city: City) {
         viewModel.selectedStoredCity(city)
-        dismiss(animated: true)
+        dismiss(animated: true) { [viewModel] in
+            viewModel.selectedStoredCity(city)
+        }
     }
     
     internal override func setEditing(_ editing: Bool, animated: Bool) {

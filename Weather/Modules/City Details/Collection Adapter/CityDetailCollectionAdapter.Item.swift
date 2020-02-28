@@ -1,4 +1,4 @@
-internal extension CityDetailCollectionAdapter {
+extension CityDetailCollectionAdapter {
     internal enum Item {
         case city(City)
     }

@@ -3,6 +3,10 @@ import Foundation
 internal protocol CityViewModelDelegate: AnyObject {}
 
 internal final class CityViewModel {
+    internal typealias SelectedCity = (City) -> Void
+    
+    private let selectedCity: SelectedCity
+    
     private let services: Services
     private var cityStorage: CityStorageService { services.get(CityStorageService.self) }
     private var citiesManager: CitiesService { services.get(CitiesService.self) }
@@ -14,8 +18,9 @@ internal final class CityViewModel {
     internal let searchCityTableAdapter = SearchCityTableAdapter()
     internal let storedCityAdapter = StoredCityAdapter()
     
-    internal init(services: Services = .default) {
+    internal init(services: Services = .default, selectedCity: @escaping SelectedCity) {
         self.services = services
+        self.selectedCity = selectedCity
         
         configureStoredCityAdapter()
         
@@ -39,7 +44,7 @@ internal final class CityViewModel {
     }
     
     internal func selectedStoredCity(_ city: City) {
-        cityStorage.selectedCity = city
+        selectedCity(city)
     }
     
     internal func selectedSearchedCity(_ city: City) {
