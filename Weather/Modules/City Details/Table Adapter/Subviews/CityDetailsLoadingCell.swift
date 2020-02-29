@@ -27,7 +27,7 @@ extension CityDetailsLoadingCell {
     }
     
     private func configureContentView() {
-        contentView.pin(height: 100)
+        contentView.pin(height: 110)
     }
 }
 

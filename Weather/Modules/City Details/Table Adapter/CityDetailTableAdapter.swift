@@ -82,11 +82,11 @@ extension CityDetailTableAdapter {
     private func reloadContent() {
         sections.removeAll()
         
+        addLoadingSection()
         addCitySection()
         addTodayWeatherSection()
         addForecastSection()
         
-        addLoadingSection()
         addErrorSection()
     }
     

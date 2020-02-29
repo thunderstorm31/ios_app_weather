@@ -71,6 +71,10 @@ extension HomeViewController {
     
     @objc
     private func addLocation(_ sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else {
+            return
+        }
+        
         let point = sender.location(in: rootView.mapView)
         let coordinate = rootView.mapView.convert(point, toCoordinateFrom: nil)
         

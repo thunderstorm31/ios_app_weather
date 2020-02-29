@@ -30,6 +30,7 @@ internal final class HomeViewModel {
     
     internal func addCity(forCoordinate coordinate: CLLocationCoordinate2D, completion: @escaping AddCityCallback) {
         let request = CityLocationRequest(coordinate: coordinate, limit: 1)
+        
         citiesService.citiesFor(request) { [weak self] cities in
             self?.addFirstCity(from: cities, completion: completion)
         }
