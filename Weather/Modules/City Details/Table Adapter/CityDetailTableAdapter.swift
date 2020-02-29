@@ -3,6 +3,7 @@ import UIKit
 internal final class CityDetailTableAdapter: NSObject {
     private let city: City
     private let fullDayFormatter = DateFormatter()
+    private let shortDateFormatter = DateFormatter()
     private let suntimesFormatter = DateFormatter()
     private var sections: [Section] = []
     
@@ -16,6 +17,8 @@ internal final class CityDetailTableAdapter: NSObject {
         self.city = city
         
         super.init()
+        
+        shortDateFormatter.setLocalizedDateFormatFromTemplate("dd MMM")
         
         fullDayFormatter.dateFormat = "EEEE"
         suntimesFormatter.dateStyle = .none
@@ -130,20 +133,24 @@ extension CityDetailTableAdapter {
         
         var items: [CurrentCondtionItemView.ViewModel] = []
         
+        let shortDate = shortDateFormatter.string(from: Date(timeIntervalSince1970: todayWeather.dayTime))
         let feelsLike = temperatureString(forTemperature: todayWeather.weatherDetails.feelsLike)
         let sunriseTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
         let sunsetTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
         let windSpeed = "\(Int(round(todayWeather.wind.speed)))"
         let windDirection = todayWeather.wind.windDirection.rawValue
         let clouds = "\(todayWeather.clouds.all)%"
+        let humidity = "\(todayWeather.weatherDetails.humidity)%"
         
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: shortDate, icon: UIImage(systemName: "calendar")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: feelsLike, icon: UIImage(systemName: "thermometer")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: sunriseTime, icon: UIImage(systemName: "sunrise")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: sunsetTime, icon: UIImage(systemName: "sunset")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: windSpeed, icon: UIImage(systemName: "wind")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: windDirection, icon: UIImage(systemName: "location")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: clouds, icon: UIImage(systemName: "cloud")))
-        
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: humidity, icon: UIImage(systemName: "drop.triangle")))
+                
         return CityDetailsCurrentConditionsCell.ViewModel(items: items)
     }
     

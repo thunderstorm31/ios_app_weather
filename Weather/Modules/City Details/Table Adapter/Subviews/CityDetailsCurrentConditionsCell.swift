@@ -72,9 +72,9 @@ extension CityDetailsCurrentConditionsCell {
         contentStackView.pinEdgesToSuperview(layoutArea: .layoutMargins)
         
         contentStackView.distribution = .fillEqually
-        contentStackView.alignment = .center
         contentStackView.axis = .horizontal
         contentStackView.spacing = 8
+        contentStackView.alignment = .top
     }
     
     private func configureRowStackViews() {
