@@ -5,6 +5,7 @@ extension CityDetailTableAdapter {
         case dailyWeather(CityDetailsDailyWeatherCell.ViewModel)
         case hourlyForecast(CityDetailsHourlyForecastCell.ViewModel)
         case dayTitle(CityDetailsDayTitleCell.ViewModel)
+        case currentConditions(CityDetailsCurrentConditionsCell.ViewModel)
         case loading
         case error(String, String)
     }

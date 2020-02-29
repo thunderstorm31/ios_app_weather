@@ -74,6 +74,7 @@ extension CityDetailsHourlyWeatherCell {
     private func configureIconView() {
         iconView.pinCenterToSuperview(layoutArea: .layoutMargins)
         iconView.pin(singleSize: 28)
+        iconView.contentMode = .scaleAspectFit
     }
     
     private func configureBackgroundView() {

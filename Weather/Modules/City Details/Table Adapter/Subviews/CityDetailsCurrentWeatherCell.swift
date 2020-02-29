@@ -45,9 +45,10 @@ extension CityDetailsCurrentWeatherCell {
     }
     
     private func configureIconImageView() {
-        iconImageView.pin(singleSize: 80)
+        iconImageView.pin(height: 80)
         iconImageView.pinTopToSuperview(layoutArea: .layoutMargins)
         iconImageView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
         iconImageView.pinCenterHorizontalToSuperview()
+        iconImageView.contentMode = .scaleAspectFill
     }
 }

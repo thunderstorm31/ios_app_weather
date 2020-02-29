@@ -3,6 +3,7 @@ import UIKit
 internal final class CityDetailTableAdapter: NSObject {
     private let city: City
     private let fullDayFormatter = DateFormatter()
+    private let suntimesFormatter = DateFormatter()
     private var sections: [Section] = []
     
     private var todayWeather: TodayWeather?
@@ -17,6 +18,8 @@ internal final class CityDetailTableAdapter: NSObject {
         super.init()
         
         fullDayFormatter.dateFormat = "EEEE"
+        suntimesFormatter.dateStyle = .none
+        suntimesFormatter.timeStyle = .short
         
         reloadContent()
     }
@@ -29,6 +32,7 @@ internal final class CityDetailTableAdapter: NSObject {
         tableView.register(cell: CityDetailsDailyWeatherCell.self)
         tableView.register(cell: CityDetailsHourlyForecastCell.self)
         tableView.register(cell: CityDetailsDayTitleCell.self)
+        tableView.register(cell: CityDetailsCurrentConditionsCell.self)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -119,6 +123,30 @@ extension CityDetailTableAdapter {
         sections.append(section)
     }
     
+    private func currentConditionsViewModel(for todayWeather: TodayWeather?) -> CityDetailsCurrentConditionsCell.ViewModel? {
+        guard let todayWeather = todayWeather else {
+            return nil
+        }
+        
+        var items: [CurrentCondtionItemView.ViewModel] = []
+        
+        let feelsLike = temperatureString(forTemperature: todayWeather.weatherDetails.feelsLike)
+        let sunriseTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
+        let sunsetTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
+        let windSpeed = "\(Int(round(todayWeather.wind.speed)))"
+        let windDirection = todayWeather.wind.windDirection.rawValue
+        let clouds = "\(todayWeather.clouds.all)%"
+        
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: feelsLike, icon: UIImage(systemName: "thermometer")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunriseTime, icon: UIImage(systemName: "sunrise")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunsetTime, icon: UIImage(systemName: "sunset")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: windSpeed, icon: UIImage(systemName: "wind")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: windDirection, icon: UIImage(systemName: "location")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: clouds, icon: UIImage(systemName: "cloud")))
+        
+        return CityDetailsCurrentConditionsCell.ViewModel(items: items)
+    }
+    
     private func addForecastSection() {
         guard let dayItems = forecastWeather?.dayItems, dayItems.isNotEmpty else {
             return
@@ -129,6 +157,10 @@ extension CityDetailTableAdapter {
         
         let todayViewModel = CityDetailsHourlyForecastCell.ViewModel(dayItem: dayItems[0])
         section.addItem(.hourlyForecast(todayViewModel))
+        
+        if let viewModel = currentConditionsViewModel(for: todayWeather) {
+            section.addItem(.currentConditions(viewModel))
+        }
         
         guard dayItems.count > 1 else {
             return
@@ -226,6 +258,9 @@ extension CityDetailTableAdapter: UITableViewDataSource {
                 .setViewModel(viewModel)
         case .dayTitle(let viewModel):
             return tableView.dequeueReusableCell(for: CityDetailsDayTitleCell.self, indexPath: indexPath)
+                .setViewModel(viewModel)
+        case .currentConditions(let viewModel):
+            return tableView.dequeueReusableCell(for: CityDetailsCurrentConditionsCell.self, indexPath: indexPath)
                 .setViewModel(viewModel)
         }
     }

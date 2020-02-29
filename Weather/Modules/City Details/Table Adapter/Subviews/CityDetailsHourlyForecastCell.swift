@@ -9,7 +9,7 @@ internal final class CityDetailsHourlyForecastCell: UITableViewCell {
         didSet { updatedViewModel() }
     }
     
-    private let hourDateFormatter = DateFormatter()
+    private let timeFormatter = DateFormatter()
     private let flowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
     private let leftGradientView = GradientView()
@@ -20,7 +20,7 @@ internal final class CityDetailsHourlyForecastCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        hourDateFormatter.dateFormat = "HH"
+        timeFormatter.dateFormat = "HH:mm"
         
         configureViews()
     }
@@ -111,7 +111,7 @@ extension CityDetailsHourlyForecastCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(for: CityDetailsHourlyWeatherCell.self, indexPath: indexPath)
         
         if let hourlyItem = viewModel?.dayItem.hourlyItems[safe: indexPath.item] {
-            let hourText = hourDateFormatter.string(from: hourlyItem.date)
+            let hourText = timeFormatter.string(from: hourlyItem.date)
             let temperatureText = temperatureString(forTemperature: hourlyItem.weatherDetails.temperature)
 
             let symbolName = WeatherIdToSymbolHelper.symbolName(for: hourlyItem.weather.first?.id ?? 0, isDayTime: true)

@@ -116,6 +116,8 @@
 		60F3C170240A996800DB4EED /* OpenWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F3C16F240A996800DB4EED /* OpenWeatherService.swift */; };
 		60F3C172240A9BE700DB4EED /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60F3C171240A9BE700DB4EED /* keys.plist */; };
 		60F3C177240AA39100DB4EED /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F3C176240AA39100DB4EED /* GradientView.swift */; };
+		60F3C179240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F3C178240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift */; };
+		60F3C17B240AA81600DB4EED /* CurrentCondtionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F3C17A240AA81600DB4EED /* CurrentCondtionItemView.swift */; };
 		D3EA8FBB51D1EC438F86C9ED /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75782006B92CB170B8C77CA /* Pods_WeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +250,8 @@
 		60F3C173240A9DAC00DB4EED /* .gitignore */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = .gitignore; sourceTree = "<group>"; };
 		60F3C174240A9DAC00DB4EED /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		60F3C176240AA39100DB4EED /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		60F3C178240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCurrentConditionsCell.swift; sourceTree = "<group>"; };
+		60F3C17A240AA81600DB4EED /* CurrentCondtionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCondtionItemView.swift; sourceTree = "<group>"; };
 		625F460E15221F0FC6644762 /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		C75782006B92CB170B8C77CA /* Pods_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62BCFF5CB845FBABDFCAB8E /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +328,7 @@
 				60F3C164240A76F500DB4EED /* CityDetailsHourlyForecastCell.swift */,
 				60F3C166240A7A0C00DB4EED /* CityDetailsHourlyWeatherCell.swift */,
 				60F3C168240A80BB00DB4EED /* CityDetailsDayTitleCell.swift */,
+				60F3C178240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 			children = (
 				60F3C16A240A82C300DB4EED /* MinMaxTemperatureView.swift */,
 				60F3C176240AA39100DB4EED /* GradientView.swift */,
+				60F3C17A240AA81600DB4EED /* CurrentCondtionItemView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -954,6 +960,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F3C17B240AA81600DB4EED /* CurrentCondtionItemView.swift in Sources */,
 				60F3C177240AA39100DB4EED /* GradientView.swift in Sources */,
 				60874AEA240860FB00C7725A /* StoredCityAdapter.swift in Sources */,
 				60CAF5CA24083E860021FA6F /* UIView.LayoutArea.swift in Sources */,
@@ -991,6 +998,7 @@
 				60874AFC24094F2800C7725A /* HomeViewController.MapAdapter.swift in Sources */,
 				60874ACF24085AB700C7725A /* KeyboardManager+Tools.swift in Sources */,
 				60CAF5D724083E860021FA6F /* UIView+AutoLayout.swift in Sources */,
+				60F3C179240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift in Sources */,
 				60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */,
 				60CAF5F7240851AB0021FA6F /* Localization.swift in Sources */,
 				60CAF56624083BD70021FA6F /* HomeViewController.View.swift in Sources */,
