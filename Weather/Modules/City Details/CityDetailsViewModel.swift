@@ -36,8 +36,8 @@ internal final class CityDetailsViewModel {
     }
     
     private func loadDailyWeather() {
-        let todayRequest = TodayWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem)
-        let forecastRequest = ForecastWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem)
+        let todayRequest = TodayWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem.openWeatherRequestValue)
+        let forecastRequest = ForecastWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem.openWeatherRequestValue)
         
         DispatchTools.onBackground { [weatherService] in
             let group = DispatchGroup()

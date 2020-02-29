@@ -7,11 +7,12 @@ extension HourlyForecasts {
         public let weatherDetails: WeatherDetails
         public let clouds: Clouds
         public let wind: Wind
+        public let rain: Rain?
         public let date: Date
         
         private enum CodingKeys: String, CodingKey {
             case timestamp = "dt", weatherDetails = "main", weather
-            case clouds, wind, date = "dt_txt"
+            case clouds, wind, rain, date = "dt_txt"
         }
         
         public static func < (lhs: HourlyForecasts.HourlyItem, rhs: HourlyForecasts.HourlyItem) -> Bool { lhs.date < rhs.date }

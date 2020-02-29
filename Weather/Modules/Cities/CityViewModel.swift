@@ -1,15 +1,25 @@
 import Foundation
 
-internal protocol CityViewModelDelegate: AnyObject {}
+internal protocol CityViewModelDelegate: AnyObject {
+    func reloadContent()
+}
 
 internal final class CityViewModel {
     internal typealias SelectedCity = (City) -> Void
     
     private let selectedCity: SelectedCity
+    private var weathers: [City: TodayWeather] = [:] {
+        didSet {
+            storedCityAdapter.weathers = weathers
+            delegate?.reloadContent()
+        }
+    }
     
     private let services: Services
     private var cityStorage: CityStorageService { services.get(CityStorageService.self) }
     private var citiesManager: CitiesService { services.get(CitiesService.self) }
+    private var weatherService: WeatherService { services.get(WeatherService.self) }
+    private var settingsService: SettingsService { services.get(SettingsService.self) }
     
     internal weak var delegate: CityViewModelDelegate?
     
@@ -43,6 +53,10 @@ internal final class CityViewModel {
         }
     }
     
+    internal func viewDidLoad() {
+        updateWeathers()
+    }
+    
     internal func selectedStoredCity(_ city: City) {
         selectedCity(city)
     }
@@ -50,11 +64,23 @@ internal final class CityViewModel {
     internal func selectedSearchedCity(_ city: City) {
         cityStorage.add(city)
         storedCityAdapter.cities = cityStorage.cities
+        updateWeathers()
     }
     
     internal func deleteAll() {
         cityStorage.cities = []
         storedCityAdapter.cities = []
+    }
+    
+    private func updateWeathers() {
+        cityStorage.cities.forEach {  city in
+            let request = TodayWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem.openWeatherRequestValue)
+            weatherService.load(request) { [weak self] weather, _ in
+                if let weather = weather {
+                    self?.weathers[city] = weather
+                }
+            }
+        }
     }
 }
 

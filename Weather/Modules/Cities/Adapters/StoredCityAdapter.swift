@@ -2,6 +2,7 @@ import UIKit
 
 internal final class StoredCityAdapter: NSObject {
     internal var cities: [City] = []
+    internal var weathers: [City: TodayWeather] = [:]
     
     internal var selectedCity: ((City) -> Void)?
     internal var deleteItem: ((IndexPath) -> Bool)?
@@ -47,15 +48,36 @@ extension StoredCityAdapter: UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { cities.count }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: SearchCityCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(for: StoredCityCell.self, indexPath: indexPath)
         
-        cell.setCity(city(for: indexPath))
+        configure(cell: cell, in: tableView, at: indexPath)
         
         return cell
     }
     
+    internal func configure(cell: UITableViewCell, in tableView: UITableView, at indexPath: IndexPath) {
+        guard let cell = cell as? StoredCityCell,
+            let city = self.city(for: indexPath) else {
+            return
+        }
+        
+        let icon: UIImage?
+        
+        if let weatherId = weathers[city]?.weather.first?.id {
+            let symbolName = WeatherIdToSymbolHelper.symbolName(for: weatherId, isDayTime: true)
+            
+            icon = UIImage(systemName: symbolName)
+        } else {
+            icon = nil
+        }
+        
+        let viewModel = StoredCityCell.ViewModel(primaryText: city.name, secondaryText: city.countryCode, icon: icon)
+        
+        cell.setViewModel(viewModel)
+    }
+    
     internal func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as? SearchCityCell)?.setCity(nil)
+        (cell as? StoredCityCell)?.setViewModel(nil)
     }
     
     internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

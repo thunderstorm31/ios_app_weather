@@ -12,6 +12,8 @@ extension CityViewController {
             
             super.init(frame: .main)
             
+            viewModel.delegate = self
+            
             configureViews()
             
             KeyboardManager.shared.add(delegate: self)
@@ -45,10 +47,10 @@ extension CityViewController.View {
     }
 }
 
-// MARK: Layout Views
-extension CityViewController.View {
-    internal override func layoutSubviews() {
-        super.layoutSubviews()
+// MARK: CityViewModelDelegate
+extension CityViewController.View: CityViewModelDelegate {
+    internal func reloadContent() {
+        tableView.reloadData()
     }
 }
 

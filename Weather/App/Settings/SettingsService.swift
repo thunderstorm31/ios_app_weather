@@ -1,7 +1,32 @@
 import Foundation
 
+internal enum UnitSystem: String, Codable {
+    case metric, imperial
+    
+    internal var openWeatherRequestValue: String {
+        switch self {
+        case .imperial: return "imperial"
+        case .metric: return "metric"
+        }
+    }
+    
+    internal var localizedSpeedAbbreviation: String {
+        switch self {
+        case .imperial: return Localization.UnitSystem.milesPerHourAbbreviation
+        case .metric: return Localization.UnitSystem.kilometersPerHourAbbreviation
+        }
+    }
+    
+    internal var localizedDistanceAbbreviation: String {
+        switch self {
+        case .imperial: return Localization.UnitSystem.milesAbbreviation
+        case .metric: return Localization.UnitSystem.kilometersAbbreviation
+        }
+    }
+}
+
 internal protocol SettingsService: Service {
-    var unitSystem: String { get set }
+    var unitSystem: UnitSystem { get set }
 }
 
 internal final class Settings {
@@ -25,16 +50,16 @@ internal final class Settings {
 }
 
 extension Settings: SettingsService {
-    internal var unitSystem: String {
+    internal var unitSystem: UnitSystem {
         get {
-            guard let value = storage.string(for: .unitSystem) else {
-                return "metric"
+            guard let value = storage.string(for: .unitSystem), let unit = UnitSystem(rawValue: value) else {
+                return .metric
             }
             
-            return value
+            return unit
         }
         set {
-            storage.set(newValue, key: .unitSystem)
+            storage.set(newValue.rawValue, key: .unitSystem)
         }
     }
 }

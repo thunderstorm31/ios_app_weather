@@ -90,6 +90,7 @@ extension CityViewController {
         super.viewDidLoad()
         
         viewModel.storedCityAdapter.setActive(rootView.tableView)
+        viewModel.viewDidLoad()
     }
     
     internal override func viewWillAppear(_ animated: Bool) {

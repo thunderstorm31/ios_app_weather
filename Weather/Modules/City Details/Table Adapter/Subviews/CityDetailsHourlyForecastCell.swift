@@ -34,7 +34,9 @@ internal final class CityDetailsHourlyForecastCell: UITableViewCell {
         return self
     }
     
-    private func updatedViewModel() {}
+    private func updatedViewModel() {
+        collectionView.reloadData()
+    }
 }
 
 // MARK: Configure Views
@@ -86,6 +88,13 @@ extension CityDetailsHourlyForecastCell {
     
     private var gradientColors: [UIColor] { [.systemBackground, .systemBackground, UIColor.systemBackground.withAlphaComponent(0)] }
     private var gradientLocations: [NSNumber] { [0, 0.2, 1] }
+}
+
+// MARK: UICollectionViewDelegate
+extension CityDetailsHourlyForecastCell: CellLifecycle {
+    internal func cellWillDisplay(at indexPath: IndexPath) {
+        collectionView.contentOffset.x = -collectionView.contentInset.left
+    }
 }
 
 // MARK: UICollectionViewDelegate

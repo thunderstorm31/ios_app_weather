@@ -56,10 +56,10 @@ extension SettingsTableController {
             Localization.Settings.unitSystemItemImperial
         ]
         
-        unitSystemItem.segmentSelectedIndex = settingsService.unitSystem == "metric" ? 0 : 1
+        unitSystemItem.segmentSelectedIndex = settingsService.unitSystem == .metric ? 0 : 1
         unitSystemItem.onSegmentChange = { [weak self] index in
             self?.unitSystemItem.segmentSelectedIndex = index
-            self?.settingsService.unitSystem = index == 0 ? "metric" : "imperial"
+            self?.settingsService.unitSystem = index == 0 ? .metric : .imperial
         }
     }
     

@@ -7,6 +7,7 @@ extension Localization {
     internal struct Buttons {}
     internal struct Cities {}
     internal struct Settings {}
+    internal struct UnitSystem {}
     internal struct WeatherDetails {}
 }
 
@@ -90,6 +91,43 @@ extension Localization.Settings {
         NSLocalizedString("unitSystem.item.imperial",
                           tableName: "settings",
                           value: "Imperial",
+                          comment: "")
+    }
+}
+
+extension Localization.UnitSystem {
+    internal static var kilometersPerHourAbbreviation: String {
+        NSLocalizedString("kilometersPerHour.abbreviation",
+                          tableName: "unitSystem",
+                          value: "km/h",
+                          comment: "")
+    }
+    
+    internal static var milesPerHourAbbreviation: String {
+        NSLocalizedString("milesPerHour.abbreviation",
+                          tableName: "unitSystem",
+                          value: "mi/h",
+                          comment: "")
+    }
+    
+    internal static var kilometersAbbreviation: String {
+        NSLocalizedString("kilometersPerHour.abbreviation",
+                          tableName: "unitSystem",
+                          value: "km",
+                          comment: "")
+    }
+    
+    internal static var milesAbbreviation: String {
+        NSLocalizedString("milesPerHour.abbreviation",
+                          tableName: "unitSystem",
+                          value: "mi",
+                          comment: "")
+    }
+    
+    internal static var millimeterAbbreviation: String {
+        NSLocalizedString("millimeter.abbreviation",
+                          tableName: "unitSystem",
+                          value: "mm",
                           comment: "")
     }
 }

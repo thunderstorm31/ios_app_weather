@@ -13,8 +13,12 @@ internal final class CityDetailTableAdapter: NSObject {
     private var errorTitle: String?
     private var errorMessage: String?
     
-    internal init(city: City) {
+    private let services: Services
+    private var settingsService: SettingsService { services.get(SettingsService.self) }
+    
+    internal init(city: City, services: Services = .default) {
         self.city = city
+        self.services = services
         
         super.init()
         
@@ -131,25 +135,44 @@ extension CityDetailTableAdapter {
             return nil
         }
         
+        let speedAbbreviation = settingsService.unitSystem.localizedSpeedAbbreviation
+        
         var items: [CurrentCondtionItemView.ViewModel] = []
         
         let shortDate = shortDateFormatter.string(from: Date(timeIntervalSince1970: todayWeather.dayTime))
         let feelsLike = temperatureString(forTemperature: todayWeather.weatherDetails.feelsLike)
         let sunriseTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
         let sunsetTime = suntimesFormatter.string(from: Date(timeIntervalSince1970: todayWeather.sunTimes.sunrise))
-        let windSpeed = "\(Int(round(todayWeather.wind.speed)))"
+        let windSpeed = "\(Int(round(todayWeather.wind.speed))) \(speedAbbreviation)"
         let windDirection = todayWeather.wind.windDirection.rawValue
         let clouds = "\(todayWeather.clouds.all)%"
         let humidity = "\(todayWeather.weatherDetails.humidity)%"
+        let rain = String(format: "%.1d \(Localization.UnitSystem.millimeterAbbreviation)", todayWeather.rain?.lastHour ?? 0)
         
         items.append(CurrentCondtionItemView.ViewModel(primaryText: shortDate, icon: UIImage(systemName: "calendar")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: feelsLike, icon: UIImage(systemName: "thermometer")))
-        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunriseTime, icon: UIImage(systemName: "sunrise")))
-        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunsetTime, icon: UIImage(systemName: "sunset")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: windSpeed, icon: UIImage(systemName: "wind")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: rain, icon: UIImage(systemName: "cloud.rain")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: windDirection, icon: UIImage(systemName: "location")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: clouds, icon: UIImage(systemName: "cloud")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunriseTime, icon: UIImage(systemName: "sunrise")))
+        items.append(CurrentCondtionItemView.ViewModel(primaryText: sunsetTime, icon: UIImage(systemName: "sunset")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: humidity, icon: UIImage(systemName: "drop.triangle")))
+        
+        if let visibility = todayWeather.visibility {
+            let kilometer = visibility / 1000
+            let value: String
+            let unitAbbreviation = settingsService.unitSystem.localizedDistanceAbbreviation
+            
+            switch settingsService.unitSystem {
+            case .imperial:
+                value = String(format: "%.1f \(unitAbbreviation)", kilometer * 0.62137)
+            case .metric:
+                value = String(format: "%.1f \(unitAbbreviation)", kilometer)
+            }
+            
+            items.append(CurrentCondtionItemView.ViewModel(primaryText: value, icon: UIImage(systemName: "eye")))
+        }
                 
         return CityDetailsCurrentConditionsCell.ViewModel(items: items)
     }
