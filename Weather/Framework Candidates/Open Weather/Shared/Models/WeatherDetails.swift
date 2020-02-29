@@ -9,8 +9,8 @@ public struct WeatherDetails: Hashable, Codable {
     public let humidity: Int
     
     public let pressure: Int
-    public let pressureSeaLevel: Int
-    public let pressureGroundLevel: Int
+    public let pressureSeaLevel: Int?
+    public let pressureGroundLevel: Int?
     
     private enum CodingKeys: String, CodingKey {
         case temperature = "temp", feelsLike = "feels_like", temperatureMinimum = "temp_min", temperatureMaximum = "temp_max"

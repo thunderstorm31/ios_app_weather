@@ -20,60 +20,39 @@ public protocol WeatherService: Service {
 public final class WeatherBll: WeatherService {
     private let dateFormatter = DateFormatter()
     
-    public init() {
+    private let services: Services
+    private var openWeatherService: OpenWeatherService { services.get(OpenWeatherService.self) }
+    
+    public init(services: Services = .default) {
+        self.services = services
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     }
     
     public func load(_ request: TodayWeatherRequest, completion: @escaping TodayWeatherCompletion) {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        var queryItems: [URLQueryItem] = []
         
-        DispatchTools.onBackground {
-            guard let url = Bundle(for: WeatherBll.self).url(forResource: "TodayWeather", withExtension: "json"),
-                let data = try? Data(contentsOf: url) else {
-                return assertionFailure("Could not find assets")
-            }
-            
-            do {
-                
-                let weather = try decoder.decode(TodayWeather.self, from: data)
-                
-                DispatchTools.onMain(withDelay: 1) {
-                    completion(weather, nil)
-                }
-            } catch {
-                assertionFailure("Failed loading today weather \(error)")
-                
-                DispatchTools.onMain {
-                    completion(nil, error)
-                }
-            }
+        queryItems.append(URLQueryItem(name: "lat", value: "\(request.coordinate.latitude)"))
+        queryItems.append(URLQueryItem(name: "lon", value: "\(request.coordinate.longitude)"))
+        
+        openWeatherService.get(endpoint: .currentWeather,
+                               query: queryItems,
+                               as: TodayWeather.self,
+                               dateFormatter: dateFormatter) { weather, _, error in
+                                completion(weather, error)
         }
     }
     
     public func load(_ request: ForecastWeatherRequest, completion: @escaping ForecastWeatherCompletion) {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        var queryItems: [URLQueryItem] = []
         
-        DispatchTools.onBackground {
-            guard let url = Bundle(for: WeatherBll.self).url(forResource: "ForecastWeather", withExtension: "json"),
-                let data = try? Data(contentsOf: url) else {
-                return assertionFailure("Could not find assets")
-            }
-            
-            do {
-                let forecastWeather = try decoder.decode(HourlyForecasts.self, from: data)
-                
-                DispatchTools.onMain(withDelay: 1) {
-                    completion(forecastWeather, nil)
-                }
-            } catch {
-                assertionFailure("Failed loading forecast weather \(error)")
-                
-                DispatchTools.onMain {
-                    completion(nil, error)
-                }
-            }
+        queryItems.append(URLQueryItem(name: "lat", value: "\(request.coordinate.latitude)"))
+        queryItems.append(URLQueryItem(name: "lon", value: "\(request.coordinate.longitude)"))
+        
+        openWeatherService.get(endpoint: .forecast,
+                               query: queryItems,
+                               as: HourlyForecasts.self,
+                               dateFormatter: dateFormatter) { forecast, _, error in
+                                completion(forecast, error)
         }
     }
 }
