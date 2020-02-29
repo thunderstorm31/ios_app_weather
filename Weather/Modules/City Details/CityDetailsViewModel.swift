@@ -25,6 +25,7 @@ internal final class CityDetailsViewModel {
     
     private let services: Services
     private var weatherService: WeatherService { services.get(WeatherService.self) }
+    private var settingsService: SettingsService { services.get(SettingsService.self) }
     
     internal init(city: City, services: Services = .default) {
         self.tableAdapter = CityDetailTableAdapter(city: city)
@@ -35,8 +36,8 @@ internal final class CityDetailsViewModel {
     }
     
     private func loadDailyWeather() {
-        let todayRequest = TodayWeatherRequest(coordinate: city.coordinates.coordinate)
-        let forecastRequest = ForecastWeatherRequest(coordinate: city.coordinates.coordinate)
+        let todayRequest = TodayWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem)
+        let forecastRequest = ForecastWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem)
         
         DispatchTools.onBackground { [weatherService] in
             let group = DispatchGroup()

@@ -47,7 +47,7 @@ extension CurrentCondtionItemView {
         
         directionalLayoutMargins = NSDirectionalEdgeInsets(horizontal: 10, vertical: 3)
         
-        layer.cornerRadius = 16
+        layer.cornerRadius = 12
         backgroundColor = .secondarySystemBackground
         
         configurePrimaryLabel()

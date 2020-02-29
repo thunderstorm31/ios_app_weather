@@ -71,6 +71,27 @@ extension Localization.Settings {
                           value: "Help",
                           comment: "")
     }
+    
+    internal static var unitSystemItemTitle: String {
+        NSLocalizedString("unitSystem.item.title",
+                          tableName: "settings",
+                          value: "Unit system",
+                          comment: "")
+    }
+    
+    internal static var unitSystemItemMetric: String {
+        NSLocalizedString("unitSystem.item.metric",
+                          tableName: "settings",
+                          value: "Metric",
+                          comment: "")
+    }
+    
+    internal static var unitSystemItemImperial: String {
+        NSLocalizedString("unitSystem.item.imperial",
+                          tableName: "settings",
+                          value: "Imperial",
+                          comment: "")
+    }
 }
 
 extension Localization.WeatherDetails {

@@ -8,6 +8,11 @@ extension SettingsTableController {
         
         internal var onSelect: (() -> Void)?
         internal var accessoryType: UITableViewCell.AccessoryType?
+        internal var isHighlightable: Bool = true
+        
+        internal var segmentSelectedIndex: Int?
+        internal var segmentItems: [String] = []
+        internal var onSegmentChange: ((Int) -> Void)?
         
         internal init(primaryText: String,
                       secondaryText: String? = nil,

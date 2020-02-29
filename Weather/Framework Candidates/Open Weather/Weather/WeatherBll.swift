@@ -3,10 +3,12 @@ import CoreLocation
 
 public struct TodayWeatherRequest {
     public let coordinate: CLLocationCoordinate2D
+    public let unitSystem: String?
 }
 
 public struct ForecastWeatherRequest {
     public let coordinate: CLLocationCoordinate2D
+    public let unitSystem: String?
 }
 
 public typealias TodayWeatherCompletion = ((TodayWeather?, Error?) -> Void)
@@ -34,6 +36,10 @@ public final class WeatherBll: WeatherService {
         queryItems.append(URLQueryItem(name: "lat", value: "\(request.coordinate.latitude)"))
         queryItems.append(URLQueryItem(name: "lon", value: "\(request.coordinate.longitude)"))
         
+        if let unitSystem = request.unitSystem {
+            queryItems.append(URLQueryItem(name: "units", value: unitSystem))
+        }
+        
         openWeatherService.get(endpoint: .currentWeather,
                                query: queryItems,
                                as: TodayWeather.self,
@@ -47,6 +53,10 @@ public final class WeatherBll: WeatherService {
         
         queryItems.append(URLQueryItem(name: "lat", value: "\(request.coordinate.latitude)"))
         queryItems.append(URLQueryItem(name: "lon", value: "\(request.coordinate.longitude)"))
+        
+        if let unitSystem = request.unitSystem {
+            queryItems.append(URLQueryItem(name: "units", value: unitSystem))
+        }
         
         openWeatherService.get(endpoint: .forecast,
                                query: queryItems,

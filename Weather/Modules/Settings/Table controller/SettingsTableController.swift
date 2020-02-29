@@ -2,8 +2,12 @@ import UIKit
 
 internal final class SettingsTableController: NSObject {
     private let services: Services
+    private var settingsService: SettingsService { services.get(SettingsService.self) }
     
     private var sections: [Section] = []
+    
+    private let unitSettingsSection = Section()
+    private let unitSystemItem = Item(primaryText: Localization.Settings.unitSystemItemTitle, cellIdentifier: SettingsSegmentTableCell.identifer)
     
     private let helpSection = Section()
     private let helpItem = Item(primaryText: Localization.Settings.helpItemTitle, accessoryType: .disclosureIndicator)
@@ -18,6 +22,7 @@ internal final class SettingsTableController: NSObject {
     
     internal func configure(_ tableView: UITableView) {
         tableView.register(SettingsTableCell.self, forCellReuseIdentifier: SettingsTableCell.identifer)
+        tableView.register(SettingsSegmentTableCell.self, forCellReuseIdentifier: SettingsSegmentTableCell.identifer)
         
         tableView.rowHeight = 44
         
@@ -37,9 +42,25 @@ internal final class SettingsTableController: NSObject {
 // MARK: - Configure sections
 extension SettingsTableController {
     private func configureSections() {
-        sections = [helpSection]
+        sections = [unitSettingsSection, helpSection]
         
+        configureUnitSettingsSection()
         configureHelpSection()
+    }
+    
+    private func configureUnitSettingsSection() {
+        unitSettingsSection.addItem(unitSystemItem)
+        
+        unitSystemItem.segmentItems = [
+            Localization.Settings.unitSystemItemMetric,
+            Localization.Settings.unitSystemItemImperial
+        ]
+        
+        unitSystemItem.segmentSelectedIndex = settingsService.unitSystem == "metric" ? 0 : 1
+        unitSystemItem.onSegmentChange = { [weak self] index in
+            self?.unitSystemItem.segmentSelectedIndex = index
+            self?.settingsService.unitSystem = index == 0 ? "metric" : "imperial"
+        }
     }
     
     private func configureHelpSection() {
@@ -57,6 +78,10 @@ extension SettingsTableController: UITableViewDelegate {
         }
         
         item.onSelect?()
+    }
+    
+    internal func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        item(at: indexPath)?.isHighlightable ?? false
     }
 }
 
@@ -84,6 +109,11 @@ extension SettingsTableController: UITableViewDataSource {
         
         if let accessoryType = item.accessoryType {
             cell.accessoryType = accessoryType
+        }
+        
+        if let segmentCell = cell as? SettingsSegmentTableCell {
+            segmentCell.onSegmentChange = item.onSegmentChange
+            segmentCell.setItems(item.segmentItems, index: item.segmentSelectedIndex ?? 0)
         }
     }
 }
