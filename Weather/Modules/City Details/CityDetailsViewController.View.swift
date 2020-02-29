@@ -32,6 +32,8 @@ extension CityDetailsViewController.View {
     }
     
     private func configureTableView() {
+        tableView.pinEdgesToSuperview()
+        
         tableView.backgroundColor = .systemGroupedBackground
         tableView.tableFooterView = UIView()
         tableView.separatorColor = .clear

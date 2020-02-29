@@ -57,6 +57,7 @@ extension CityDetailsHourlyForecastCell {
         collectionView.contentInset = UIEdgeInsets(horizontal: 20, vertical: 5)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = .systemGroupedBackground
         
         collectionView.pinEdgesToSuperview()
         collectionView.pin(height: 100)

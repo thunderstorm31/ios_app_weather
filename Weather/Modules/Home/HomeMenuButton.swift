@@ -39,6 +39,10 @@ extension HomeMenuButton {
 // MARK: Misc
 extension HomeMenuButton {
     private func updatedHighlightedState() {
-        backgroundColor = UIColor.white.withAlphaComponent(isHighlighted ? 0.3 : 0.5)
+        if isHighlighted {
+            backgroundColor = .tertiarySystemBackground
+        } else {
+            backgroundColor = .secondarySystemBackground
+        }
     }
 }

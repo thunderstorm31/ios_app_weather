@@ -5,6 +5,7 @@ internal final class SettingsPresenter {
         let viewModel = SettingsViewModel()
         let viewController = SettingsViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .formSheet
         
         presenter.present(navigationController, animated: true)
     }
