@@ -27,6 +27,7 @@ extension SettingsViewController.View {
             .disableTranslateAutoresizingMask()
             .add(to: self)
         
+        tableView.pinEdgesToSuperview()
         backgroundColor = .systemGroupedBackground
         
         viewModel.tableController.configure(tableView)

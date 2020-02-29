@@ -24,7 +24,7 @@ internal final class SettingsViewController: UIViewController {
                                                  target: self,
                                                  action: #selector(self.pressedClose(_:)))
         
-        navigationItem.rightBarButtonItem = closeBarButtonItem
+        navigationItem.leftBarButtonItem = closeBarButtonItem
     }
 }
 
@@ -39,6 +39,6 @@ extension SettingsViewController {
 extension SettingsViewController {
     @objc
     private func pressedClose(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+        viewModel.requestClose?()
     }
 }
