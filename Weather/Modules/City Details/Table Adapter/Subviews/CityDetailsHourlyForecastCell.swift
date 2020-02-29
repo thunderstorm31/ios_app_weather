@@ -84,7 +84,7 @@ extension CityDetailsHourlyForecastCell {
         rightGradientView.locations = gradientLocations
     }
     
-    private var gradientColors: [UIColor] { [.systemBackground, .systemBackground, .init(white: 1, alpha: 0)] }
+    private var gradientColors: [UIColor] { [.systemBackground, .systemBackground, UIColor.systemBackground.withAlphaComponent(0)] }
     private var gradientLocations: [NSNumber] { [0, 0.2, 1] }
 }
 

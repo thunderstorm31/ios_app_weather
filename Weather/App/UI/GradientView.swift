@@ -28,6 +28,6 @@ internal final class GradientView: UIView {
     }
     
     private func updateGradientColors() {
-        gradientLayer?.colors = colors.map { $0.cgColor }
+        gradientLayer?.colors = colors.map { $0.resolvedColor(with: traitCollection).cgColor }
     }
 }
