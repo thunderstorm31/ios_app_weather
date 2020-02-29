@@ -25,6 +25,20 @@ extension Localization.Alerts {
                           value: "Are you sure?",
                           comment: "")
     }
+    
+    internal static var noCityFoundTitle: String {
+        NSLocalizedString("noCityFound.title",
+                          tableName: "home",
+                          value: "Could not find any cities near your selection",
+                          comment: "")
+    }
+    
+    internal static var noCityFoundMessage: String {
+        NSLocalizedString("noCityFound.title",
+                          tableName: "home",
+                          value: "Please try another location.",
+                          comment: "")
+    }
 }
 
 extension Localization.Buttons {
@@ -47,6 +61,13 @@ extension Localization.Buttons {
                           value: "Delete all",
                           comment: "")
     }
+    
+    internal static var okTitle: String {
+        NSLocalizedString("ok.title",
+                          tableName: "alerts",
+                          value: "Ok",
+                          comment: "")
+    }
 }
 
 extension Localization.Cities {
@@ -57,7 +78,6 @@ extension Localization.Cities {
                           comment: "")
     }
 }
-
 extension Localization.Settings {
     internal static var navigationTitle: String {
         NSLocalizedString("settings.naviation.title",

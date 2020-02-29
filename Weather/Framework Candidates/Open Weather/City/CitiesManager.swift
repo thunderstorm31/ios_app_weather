@@ -69,7 +69,7 @@ public final class CitiesManager: CitiesService {
             let sortedCitiesWithDistance = self.cities.compactMap { city -> (City, CLLocationDistance)? in
                 let distance = city.coordinates.location.distance(from: requestLocation)
                 
-                return distance < 10_000 ? (city, distance) : nil
+                return distance < 20_000 ? (city, distance) : nil
             }.sorted { $0.1 < $1.1 }
             
             if request.limit <= 0 {

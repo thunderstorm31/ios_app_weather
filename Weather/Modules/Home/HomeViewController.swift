@@ -78,7 +78,7 @@ extension HomeViewController {
         let point = sender.location(in: rootView.mapView)
         let coordinate = rootView.mapView.convert(point, toCoordinateFrom: nil)
         
-        viewModel.addCity(forCoordinate: coordinate) { [weak self] result in
+        viewModel.addCity(for: coordinate) { [weak self] result in
             self?.addedCityResult(result)
         }
     }
@@ -91,12 +91,18 @@ extension HomeViewController {
     
     private func addedCityResult(_ result: HomeViewModel.AddCityResult) {
         switch result {
-        case .added:
-            break
-        case .alreadyAdded:
-            break
+        case .added(let city):
+            selected(city)
+        case .alreadyAdded(let city):
+            selected(city)
         case .notFound:
-            break
+            let alert = UIAlertController(title: Localization.Alerts.noCityFoundTitle,
+                                          message: Localization.Alerts.noCityFoundMessage,
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: Localization.Buttons.okTitle, style: .default, handler: nil))
+            
+            present(alert, animated: true)
         }
     }
 }
