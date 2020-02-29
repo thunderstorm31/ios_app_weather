@@ -74,12 +74,20 @@ extension Localization.Settings {
 }
 
 extension Localization.WeatherDetails {
+    internal static var today: String {
+        NSLocalizedString("today.text",
+                          tableName: "weatherDetails",
+                          value: "Today",
+                          comment: "")
+    }
+    
     internal static var loadingErrorTitle: String {
         NSLocalizedString("loading.error.title",
                           tableName: "weatherDetails",
                           value: "Failed loading data",
                           comment: "")
     }
+    
     internal static var loadingErrorMessage: String {
         NSLocalizedString("loading.error.message",
                           tableName: "weatherDetails",

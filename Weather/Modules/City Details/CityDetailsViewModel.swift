@@ -19,7 +19,7 @@ internal final class CityDetailsViewModel {
     }
     
     internal private(set) var todayWeather: TodayWeather?
-    internal private(set) var forecastWeather: ForecastWeather?
+    internal private(set) var forecastWeather: HourlyForecasts?
     
     internal weak var delegate: CityDetailsViewModelDelegate?
     

@@ -10,7 +10,7 @@ public struct ForecastWeatherRequest {
 }
 
 public typealias TodayWeatherCompletion = ((TodayWeather?, Error?) -> Void)
-public typealias ForecastWeatherCompletion = ((ForecastWeather?, Error?) -> Void)
+public typealias ForecastWeatherCompletion = ((HourlyForecasts?, Error?) -> Void)
 
 public protocol WeatherService: Service {
     func load(_ request: TodayWeatherRequest, completion: @escaping TodayWeatherCompletion)
@@ -18,7 +18,16 @@ public protocol WeatherService: Service {
 }
 
 public final class WeatherBll: WeatherService {
+    private let dateFormatter = DateFormatter()
+    
+    public init() {
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    }
+    
     public func load(_ request: TodayWeatherRequest, completion: @escaping TodayWeatherCompletion) {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
         DispatchTools.onBackground {
             guard let url = Bundle(for: WeatherBll.self).url(forResource: "TodayWeather", withExtension: "json"),
                 let data = try? Data(contentsOf: url) else {
@@ -26,9 +35,10 @@ public final class WeatherBll: WeatherService {
             }
             
             do {
-                let weather = try JSONDecoder().decode(TodayWeather.self, from: data)
                 
-                DispatchTools.onMain(withDelay: 3) {
+                let weather = try decoder.decode(TodayWeather.self, from: data)
+                
+                DispatchTools.onMain(withDelay: 1) {
                     completion(weather, nil)
                 }
             } catch {
@@ -42,6 +52,9 @@ public final class WeatherBll: WeatherService {
     }
     
     public func load(_ request: ForecastWeatherRequest, completion: @escaping ForecastWeatherCompletion) {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
         DispatchTools.onBackground {
             guard let url = Bundle(for: WeatherBll.self).url(forResource: "ForecastWeather", withExtension: "json"),
                 let data = try? Data(contentsOf: url) else {
@@ -49,9 +62,9 @@ public final class WeatherBll: WeatherService {
             }
             
             do {
-                let forecastWeather = try JSONDecoder().decode(ForecastWeather.self, from: data)
+                let forecastWeather = try decoder.decode(HourlyForecasts.self, from: data)
                 
-                DispatchTools.onMain(withDelay: 3) {
+                DispatchTools.onMain(withDelay: 1) {
                     completion(forecastWeather, nil)
                 }
             } catch {
