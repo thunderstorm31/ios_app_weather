@@ -62,7 +62,7 @@ extension CityViewController.View: KeyboardManagerDelegate {
             
             switch info.displayAction {
             case .willShow, .didShow:
-                bottomInset = info.endFrame.height - self.safeAreaInsets.bottom
+                bottomInset = self.bounds.height - manager.keyboardFrame(in: self).minY
             case .willHide, .didHide:
                 bottomInset = 0
             }

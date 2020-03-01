@@ -93,6 +93,13 @@ extension Localization.Settings {
                           comment: "")
     }
     
+    internal static var contactItemTitle: String {
+        NSLocalizedString("contact.item.title",
+                          tableName: "settings",
+                          value: "Contact support",
+                          comment: "")
+    }
+    
     internal static var unitSystemItemTitle: String {
         NSLocalizedString("unitSystem.item.title",
                           tableName: "settings",

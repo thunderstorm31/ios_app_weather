@@ -7,10 +7,11 @@ internal final class SettingsTableController: NSObject {
     private var sections: [Section] = []
     
     private let unitSettingsSection = Section()
-    private let unitSystemItem = Item(primaryText: Localization.Settings.unitSystemItemTitle, cellIdentifier: SettingsSegmentTableCell.identifer)
+    internal let unitSystemItem = Item(primaryText: Localization.Settings.unitSystemItemTitle, cellIdentifier: SettingsSegmentTableCell.identifer)
     
     private let helpSection = Section()
-    private let helpItem = Item(primaryText: Localization.Settings.helpItemTitle, accessoryType: .disclosureIndicator)
+    internal let helpItem = Item(primaryText: Localization.Settings.helpItemTitle, accessoryType: .disclosureIndicator)
+    internal let contactItem = Item(primaryText: Localization.Settings.contactItemTitle, accessoryType: .disclosureIndicator)
     
     internal init(services: Services) {
         self.services = services
@@ -65,6 +66,7 @@ extension SettingsTableController {
     
     private func configureHelpSection() {
         helpSection.addItem(helpItem)
+        helpSection.addItem(contactItem)
     }
 }
 

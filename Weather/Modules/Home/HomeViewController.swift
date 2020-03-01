@@ -31,10 +31,6 @@ extension HomeViewController {
     internal override func loadView() {
         view = rootView
         
-        rootView.locationsButton.addTarget(self, action: #selector(self.tappedLocationButton(_:)), for: .touchUpInside)
-        
-        rootView.settingsButton.addTarget(self, action: #selector(self.tappedSettingsButton(_:)), for: .touchUpInside)
-        
         let addCityRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.addLocation(_:)))
         
         rootView.mapView.addGestureRecognizer(addCityRecognizer)
@@ -52,23 +48,7 @@ extension HomeViewController {
 }
 
 // MARK: - User Interaction
-extension HomeViewController {
-    @objc
-    private func tappedLocationButton(_ sender: UIButton) {
-        let presenter = CityPresenter()
-        
-        presenter.presentFrom(self) { [weak self] city in
-            self?.selected(city)
-        }
-    }
-    
-    @objc
-    private func tappedSettingsButton(_ sender: UIButton) {
-        let presenter = SettingsPresenter()
-        
-        presenter.presentFrom(self)
-    }
-    
+extension HomeViewController {    
     @objc
     private func addLocation(_ sender: UILongPressGestureRecognizer) {
         guard sender.state == .began else {
@@ -83,7 +63,7 @@ extension HomeViewController {
         }
     }
     
-    private func selected(_ city: City) {
+    internal func selected(_ city: City) {
         let presenter = CityDetailsPresenter(city: city)
         
         presenter.presentFrom(self)
