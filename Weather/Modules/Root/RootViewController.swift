@@ -64,9 +64,7 @@ extension RootViewController {
         
         setDisplayMode(.main, animated: false)
         
-        leadingContainerAnimator.didHide()
-        trailingContainerAnimator.didHide()
-        overlayAnimator.didHide()
+        traitCollectionDidChange(nil)
     }
     
     private func configureMainViewController() {
@@ -90,7 +88,7 @@ extension RootViewController {
         trailingMenuButton.pinTrailingToSuperview(layoutArea: .layoutMargins)
         trailingMenuButton.pin(singleSize: 44)
         
-        trailingMenuButton.setImage(leadingSideMenuModel.menuButtonImage, for: .normal)
+        trailingMenuButton.setImage(trailingSideMenuModel.menuButtonImage, for: .normal)
         
         trailingMenuButton.addTarget(self, action: #selector(self.tappedTrailingMenuButton(_:)), for: .touchUpInside)
     }
@@ -104,33 +102,84 @@ extension RootViewController {
     }
     
     private var containerWidth: CGFloat {
-        let bounds = UIScreen.main.bounds
-        return min(450, min(bounds.height, bounds.width) - 60)
+        return min(320, max(view.bounds.width - 60, 100))
     }
     
     private func configureLeadingContainerView() {
-        leadingContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1, constant: 0).activate()
-        leadingContainerView.pinCenterVerticaltalToSuperview(layoutArea: .safeArea)
-        leadingContainerView.pinLeadingToSuperview(padding: 10)
+        leadingContainerView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
+        leadingContainerView.pinLeadingToSuperview(padding: leadingContainerAnimator.sidePadding)
                 
         leadingContainerView.pin(width: containerWidth)
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedLeadingContainer(_:)))
         
         leadingContainerView.addGestureRecognizer(panRecognizer)
+        
+        leadingContainerAnimator.updatedState = { [weak self] _ in
+            self?.updateAdditionalSafeAreaInsets()
+        }
     }
     
     private func configureTrailingContainerView() {
-        trailingContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1, constant: 0).activate()
-        trailingContainerView.pinCenterVerticaltalToSuperview(layoutArea: .safeArea)
-        trailingContainerView.pinTrailingToSuperview(padding: 10)
+        trailingContainerView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
+        trailingContainerView.pinTrailingToSuperview(padding: trailingContainerAnimator.sidePadding)
         
         trailingContainerView.pin(width: containerWidth)
-        trailingContainerView.isHidden = true
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedTrailingContainer(_:)))
         
         trailingContainerView.addGestureRecognizer(panRecognizer)
+        
+        trailingContainerAnimator.updatedState = { [weak self] _ in
+            self?.updateAdditionalSafeAreaInsets()
+        }
+    }
+}
+
+// MARK: - Layout
+extension RootViewController {
+    internal override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        updateLayoutMargins()
+        updateAdditionalSafeAreaInsets()
+    }
+    
+    internal override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        
+        updateLayoutMargins()
+    }
+    
+    private func updateLayoutMargins() {
+        let minimumMargin: CGFloat = 10
+        var layoutMargins = view.directionalLayoutMargins
+        
+        layoutMargins.top = view.safeAreaInsets.top < minimumMargin ? minimumMargin : 0
+        layoutMargins.bottom = view.safeAreaInsets.bottom < minimumMargin ? minimumMargin : 0
+        
+        view.directionalLayoutMargins = layoutMargins
+    }
+    
+    private func updateAdditionalSafeAreaInsets() {
+        guard traitCollection.horizontalSizeClass == .regular else {
+            mainViewController.additionalSafeAreaInsets = .zero
+            
+            return
+        }
+        
+        mainViewController.additionalSafeAreaInsets.left = leadingContainerAnimator.currentPanning
+        mainViewController.additionalSafeAreaInsets.right = trailingContainerAnimator.currentPanning
+    }
+}
+
+// MARK: - Trait collection
+extension RootViewController {
+    internal override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        overlayAnimator.traitCollection = traitCollection
+        updateAdditionalSafeAreaInsets()
     }
 }
 
