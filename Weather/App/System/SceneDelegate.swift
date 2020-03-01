@@ -42,7 +42,7 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         cityViewModel.selectedCity = { [weak self] city in
             self?.rootViewController?.setDisplayMode(.main, animated: true) {
-                homeViewController.selected(city)
+                homeViewController.selected(city, updateMapCenter: true)
             }
         }
         

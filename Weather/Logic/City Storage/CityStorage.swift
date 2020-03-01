@@ -2,13 +2,23 @@ import Foundation
 
 internal protocol CityStorageServiceDelegate: AnyObject {
     func cityStorageService(_ service: CityStorage, updatedStoredCities cities: [City])
+    func cityStorageService(_ service: CityStorage, added: City, origin: CityStorageAddCityOrigin)
+}
+
+internal enum CityStorageAddCityOrigin {
+    case map, search
+}
+
+extension CityStorageServiceDelegate {
+    internal func cityStorageService(_ service: CityStorage, updatedStoredCities cities: [City]) {}
+    internal func cityStorageService(_ service: CityStorage, added: City, origin: CityStorageAddCityOrigin) {}
 }
 
 internal protocol CityStorageService: Service {
     var cities: [City] { get set }
     
     @discardableResult
-    func add(_ city: City) -> Bool
+    func add(_ city: City, origin: CityStorageAddCityOrigin) -> Bool
     
     @discardableResult
     func remove(_ city: City) -> Bool
@@ -38,7 +48,7 @@ internal final class CityStorage: CityStorageService {
     }
     
     @discardableResult
-    internal func add(_ city: City) -> Bool {
+    internal func add(_ city: City, origin: CityStorageAddCityOrigin) -> Bool {
         var cities = self.cities
         
         guard cities.contains(city) == false else {
@@ -48,6 +58,8 @@ internal final class CityStorage: CityStorageService {
         cities.append(city)
         
         self.cities = cities
+        
+        delegates.forEach { $0.cityStorageService(self, added: city, origin: origin) }
         
         return true
     }

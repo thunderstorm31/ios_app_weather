@@ -21,7 +21,7 @@ internal final class HomeViewController: UIViewController {
     
     private func configureMapAdapter() {
         mapAdapter.selectedCity = { [weak self] city in
-            self?.selected(city)
+            self?.selected(city, updateMapCenter: false)
         }
     }
 }
@@ -63,7 +63,11 @@ extension HomeViewController {
         }
     }
     
-    internal func selected(_ city: City) {
+    internal func selected(_ city: City, updateMapCenter: Bool) {
+        if updateMapCenter {
+            rootView.mapView.setCenter(city.coordinates.coordinate, animated: true)
+        }
+        
         let presenter = CityDetailsPresenter(city: city)
         
         presenter.presentFrom(self)
@@ -72,9 +76,9 @@ extension HomeViewController {
     private func addedCityResult(_ result: HomeViewModel.AddCityResult) {
         switch result {
         case .added(let city):
-            selected(city)
+            selected(city, updateMapCenter: false)
         case .alreadyAdded(let city):
-            selected(city)
+            selected(city, updateMapCenter: false)
         case .notFound:
             let alert = UIAlertController(title: Localization.Alerts.noCityFoundTitle,
                                           message: Localization.Alerts.noCityFoundMessage,
@@ -100,9 +104,11 @@ extension HomeViewController {
 
 // MARK: - HomeViewModelDelegate
 extension HomeViewController: HomeViewModelDelegate {
-    internal func updatedCities(_ cities: [City]) {
+    internal func updated(_ cities: [City]) {
         updateAnnotations(with: cities)
     }
     
-    internal func updatedSelectedCity(_ city: [City]) {}
+    internal func centerOn(_ city: City) {
+        rootView.mapView.setCenter(city.coordinates.coordinate, animated: true)
+    }
 }

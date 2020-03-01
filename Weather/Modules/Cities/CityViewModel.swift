@@ -46,9 +46,9 @@ internal final class CityViewModel {
     internal func performQuery(_ query: String, completion: @escaping (() -> Void)) {
         let query = CitySearchQueryRequest(query: query, limit: 50)
         
-        citiesManager.citiesFor(query) { [searchCityTableAdapter] cities in
-            searchCityTableAdapter.cities = cities
-            completion()
+        citiesManager.citiesFor(query) { [weak self] cities in
+            self?.searchCityTableAdapter.cities = cities
+            self?.delegate?.reloadContent()
         }
     }
     
@@ -61,9 +61,7 @@ internal final class CityViewModel {
     }
     
     internal func selectedSearchedCity(_ city: City) {
-        cityStorage.add(city)
-        storedCityAdapter.cities = cityStorage.cities
-        updateWeathers()
+        cityStorage.add(city, origin: .search)
     }
     
     internal func deleteAll() {
@@ -84,5 +82,11 @@ internal final class CityViewModel {
 }
 
 extension CityViewModel: CityStorageServiceDelegate {
-    internal func cityStorageService(_ service: CityStorage, updatedStoredCities: [City]) {}
+    internal func cityStorageService(_ service: CityStorage, added: City, origin: CityStorageAddCityOrigin) {
+        storedCityAdapter.cities = service.cities
+        
+        delegate?.reloadContent()
+        
+        updateWeathers()
+    }
 }

@@ -11,6 +11,7 @@ internal final class CityDetailsPresenter {
         let viewModel = CityDetailsViewModel(city: city)
         let viewController = CityDetailsViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .formSheet
         
         presenter.present(navigationController, animated: true)
     }
