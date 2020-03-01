@@ -180,6 +180,8 @@
 		605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocationAccessView.swift; sourceTree = "<group>"; };
 		605576DA240C1358004060D6 /* PopupSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSettingsService.swift; sourceTree = "<group>"; };
 		605576DC240C1E4F004060D6 /* UIView+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Tools.swift"; sourceTree = "<group>"; };
+		605576DF240C25F4004060D6 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		605576E1240C25F4004060D6 /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -423,6 +425,23 @@
 			path = "Location manager";
 			sourceTree = "<group>";
 		};
+		605576DE240C25F4004060D6 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				605576DF240C25F4004060D6 /* help.html */,
+				605576E0240C25F4004060D6 /* css */,
+			);
+			path = html;
+			sourceTree = "<group>";
+		};
+		605576E0240C25F4004060D6 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				605576E1240C25F4004060D6 /* styles.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
 		60874AC52408551500C7725A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +555,7 @@
 			children = (
 				60F3C181240ABFAA00DB4EED /* README.md */,
 				60CAF59F24083D110021FA6F /* Misc */,
+				605576DE240C25F4004060D6 /* html */,
 				60CAF534240838AC0021FA6F /* Weather */,
 				60CAF54B240838AE0021FA6F /* WeatherTests */,
 				60CAF533240838AC0021FA6F /* Products */,
