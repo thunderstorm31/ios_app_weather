@@ -94,7 +94,7 @@ extension RootViewController {
     private func configureLeadingContainerView() {
         leadingContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1, constant: 0).activate()
         leadingContainerView.pinCenterVerticaltalToSuperview(layoutArea: .safeArea)
-        leadingContainerView.pinLeadingToSuperview(padding: 20)
+        leadingContainerView.pinLeadingToSuperview(padding: 10)
         leadingContainerView.isHidden = true
         
         let bounds = UIScreen.main.bounds
@@ -110,7 +110,7 @@ extension RootViewController {
     private func configureTrailingContainerView() {
         trailingContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1, constant: 0).activate()
         trailingContainerView.pinCenterVerticaltalToSuperview(layoutArea: .safeArea)
-        trailingContainerView.pinTrailingToSuperview(padding: 20)
+        trailingContainerView.pinTrailingToSuperview(padding: 10)
         trailingContainerView.isHidden = true
         
         let bounds = UIScreen.main.bounds
