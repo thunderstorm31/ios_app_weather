@@ -62,6 +62,7 @@ extension CurrentCondtionItemView {
         primaryLabel.setContentHuggingPriority(.required, for: .horizontal)
         primaryLabel.font = .preferredFont(forTextStyle: .caption1)
         primaryLabel.textColor = .secondaryLabel
+        primaryLabel.addParallax(intensity: 5)
     }
     
     private func configureIconView() {
@@ -69,6 +70,7 @@ extension CurrentCondtionItemView {
         iconView.pinCenterVerticaltalToSuperview(layoutArea: .layoutMargins)
         iconView.pin(singleSize: 22)
         iconView.contentMode = .scaleAspectFit
+        iconView.addParallax(intensity: 5)
     }
 }
 

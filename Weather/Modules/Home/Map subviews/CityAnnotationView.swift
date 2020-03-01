@@ -49,7 +49,6 @@ extension CityAnnotationView {
     private func configureLayer() {
         layer.shouldRasterize = true
         
-        layer.shadowOpacity = 0.3
         layer.shadowRadius = 5
         layer.shadowOffset = .zero
     }
@@ -118,6 +117,8 @@ extension CityAnnotationView {
         backgroundShapeLayer.strokeColor = UIColor(light: .black, dark: .white).withAlphaComponent(0.2).cgColor
         
         weatherIconView.layer.shadowColor = UIColor(light: UIColor(white: 0.2, alpha: 0.7), dark: .white).cgColor
+        
+        layer.shadowOpacity = traitCollection.value(light: 0.1, dark: 0.3)
     }
 }
 

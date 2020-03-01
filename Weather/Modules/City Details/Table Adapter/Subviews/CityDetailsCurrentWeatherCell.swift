@@ -51,5 +51,10 @@ extension CityDetailsCurrentWeatherCell {
         iconImageView.pinCenterHorizontalToSuperview()
         iconImageView.contentMode = .scaleAspectFill
         iconImageView.addParallax(intensity: 15)
+        
+        iconImageView.layer.shadowColor = UIColor.black.cgColor
+        iconImageView.layer.shadowRadius = 4
+        iconImageView.layer.shadowOpacity = 0.3
+        iconImageView.layer.shadowOffset = CGSize(width: 3, height: 3)
     }
 }

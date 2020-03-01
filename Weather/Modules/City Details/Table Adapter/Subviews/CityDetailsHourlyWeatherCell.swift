@@ -61,6 +61,7 @@ extension CityDetailsHourlyWeatherCell {
         
         hourLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         hourLabel.textColor = .secondaryLabel
+        hourLabel.addParallax(intensity: 10)
     }
 
     private func configureTemperatureLabel() {
@@ -69,12 +70,19 @@ extension CityDetailsHourlyWeatherCell {
         temperatureLabel.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
         
         temperatureLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        temperatureLabel.addParallax(intensity: 10)
     }
     
     private func configureIconView() {
         iconView.pinCenterToSuperview(layoutArea: .layoutMargins)
         iconView.pin(singleSize: 28)
         iconView.contentMode = .scaleAspectFit
+        iconView.addParallax(intensity: 10)
+        
+        iconView.layer.shadowColor = UIColor.black.cgColor
+        iconView.layer.shadowOpacity = 0.3
+        iconView.layer.shadowRadius = 5
+        iconView.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
     private func configureBackgroundView() {

@@ -13,10 +13,7 @@ internal final class CityDetailsDailyWeatherCell: CityDetailsTableCell {
         didSet { viewModelUpdated() }
     }
     
-    private let temperatureStackview = UIStackView()
-    private let maxTemperatureLabel = UILabel()
-    private let minTemperatureLabel = UILabel()
-    private let separatorLabel = UILabel()
+    private let minMaxTemperatureView = MinMaxTemperatureView()
     
     internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -37,46 +34,27 @@ internal final class CityDetailsDailyWeatherCell: CityDetailsTableCell {
 // MARK: Configure Views
 extension CityDetailsDailyWeatherCell {
     private func configureViews() {
-        [temperatureStackview]
+        [minMaxTemperatureView]
             .disableTranslateAutoresizingMask()
             .add(to: contentView)
-        
-        temperatureStackview.addArrangedSubview(maxTemperatureLabel.disableTranslateAutoresizingMask())
-        temperatureStackview.addArrangedSubview(separatorLabel.disableTranslateAutoresizingMask())
-        temperatureStackview.addArrangedSubview(minTemperatureLabel.disableTranslateAutoresizingMask())
                 
-        configureTemperatureStackview()
-        configureMaxTemperatureLabel()
-        configureMinTemperatureLabel()
-        configureSeparatorLabel()
+        configureImageView()
+        configureMinMaxTemperatureView()
     }
     
-    private func configureTemperatureStackview() {
-        temperatureStackview.spacing = 5
-        temperatureStackview.alignment = .center
-        temperatureStackview.axis = .horizontal
+    private func configureImageView() {
+        imageView?.layer.shadowColor = UIColor.black.cgColor
+        imageView?.layer.shadowOpacity = 0.3
+        imageView?.layer.shadowRadius = 5
+        imageView?.layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
+    
+    private func configureMinMaxTemperatureView() {
+        minMaxTemperatureView.pinCenterVerticaltalToSuperview(layoutArea: .layoutMargins)
+        minMaxTemperatureView.pinTrailingToSuperview(padding: 15, layoutArea: .layoutMargins)
         
-        temperatureStackview.pinCenterVerticaltalToSuperview(layoutArea: .layoutMargins)
-        temperatureStackview.pinTrailingToSuperview(padding: 15, layoutArea: .layoutMargins)
-        
-        temperatureStackview.setContentCompressionResistancePriority(.required, for: .horizontal)
-        temperatureStackview.setContentCompressionResistancePriority(.required, for: .vertical)
-    }
-    
-    private func configureMaxTemperatureLabel() {
-        maxTemperatureLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        maxTemperatureLabel.textColor = .systemOrange
-    }
-    
-    private func configureMinTemperatureLabel() {
-        separatorLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        separatorLabel.textColor = .secondaryLabel
-        separatorLabel.text = "|"
-    }
-    
-    private func configureSeparatorLabel() {
-        minTemperatureLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        minTemperatureLabel.textColor = .systemBlue
+        minMaxTemperatureView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        minMaxTemperatureView.setContentCompressionResistancePriority(.required, for: .vertical)
     }
 }
 
@@ -87,11 +65,7 @@ extension CityDetailsDailyWeatherCell {
         textLabel?.text = viewModel?.primaryText
         detailTextLabel?.text = viewModel?.secondaryText
         
-        maxTemperatureLabel.text = viewModel?.maxTemperature
-        minTemperatureLabel.text = viewModel?.minTemperature
-        
-        maxTemperatureLabel.isHidden = maxTemperatureLabel.text == nil
-        minTemperatureLabel.isHidden = minTemperatureLabel.text == nil
-        separatorLabel.isHidden = maxTemperatureLabel.isHidden || minTemperatureLabel.isHidden
+        let minMaxViewModel = MinMaxTemperatureView.ViewModel(maxTemperature: viewModel?.maxTemperature, minTemperature: viewModel?.minTemperature)
+        minMaxTemperatureView.setViewModel(minMaxViewModel)
     }
 }
