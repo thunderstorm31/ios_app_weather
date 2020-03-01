@@ -37,6 +37,10 @@
 		603C718D2409B7E0005892D7 /* CityDetailsCurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603C718C2409B7E0005892D7 /* CityDetailsCurrentWeatherCell.swift */; };
 		605576CF240BEE17004060D6 /* RootContainerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576CE240BEE17004060D6 /* RootContainerAnimator.swift */; };
 		605576D2240BF800004060D6 /* RootOverlayAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D1240BF800004060D6 /* RootOverlayAnimator.swift */; };
+		605576D5240C0A2A004060D6 /* DeviceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D4240C0A2A004060D6 /* DeviceLocationManager.swift */; };
+		605576D7240C0A35004060D6 /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D6240C0A35004060D6 /* DeviceLocationService.swift */; };
+		605576D9240C0C12004060D6 /* RequestLocationAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */; };
+		605576DB240C1358004060D6 /* PopupSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DA240C1358004060D6 /* PopupSettingsService.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
 		60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */; };
@@ -170,6 +174,10 @@
 		603C718C2409B7E0005892D7 /* CityDetailsCurrentWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCurrentWeatherCell.swift; sourceTree = "<group>"; };
 		605576CE240BEE17004060D6 /* RootContainerAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainerAnimator.swift; sourceTree = "<group>"; };
 		605576D1240BF800004060D6 /* RootOverlayAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootOverlayAnimator.swift; sourceTree = "<group>"; };
+		605576D4240C0A2A004060D6 /* DeviceLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocationManager.swift; sourceTree = "<group>"; };
+		605576D6240C0A35004060D6 /* DeviceLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
+		605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocationAccessView.swift; sourceTree = "<group>"; };
+		605576DA240C1358004060D6 /* PopupSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSettingsService.swift; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -404,6 +412,15 @@
 			path = Animators;
 			sourceTree = "<group>";
 		};
+		605576D3240C0A12004060D6 /* Location manager */ = {
+			isa = PBXGroup;
+			children = (
+				605576D4240C0A2A004060D6 /* DeviceLocationManager.swift */,
+				605576D6240C0A35004060D6 /* DeviceLocationService.swift */,
+			);
+			path = "Location manager";
+			sourceTree = "<group>";
+		};
 		60874AC52408551500C7725A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,9 +451,9 @@
 		60874AD324085CEE00C7725A /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				605576D3240C0A12004060D6 /* Location manager */,
 				603C71832409A286005892D7 /* Cell Lifecycle */,
 				60874AE424085EB500C7725A /* City Storage */,
-				60874AD424085CF400C7725A /* Storage */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -595,6 +612,7 @@
 				60874AF924094E3100C7725A /* HomeViewModel.swift */,
 				60874AFB24094F2800C7725A /* HomeViewController.MapAdapter.swift */,
 				60874AFD24094FE100C7725A /* HomeViewMapAnnotation.swift */,
+				605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -625,6 +643,7 @@
 			children = (
 				60CAF5AA24083E800021FA6F /* Extensions */,
 				60874AEB2409477700C7725A /* Services */,
+				60874AD424085CF400C7725A /* Storage */,
 				60CAF5EA24084D000021FA6F /* Threading */,
 				60874AD924085D8400C7725A /* UserDefaults */,
 				60874AD124085AEB00C7725A /* WeakHashTable.swift */,
@@ -811,6 +830,7 @@
 			isa = PBXGroup;
 			children = (
 				60F3C17D240AB8AC00DB4EED /* SettingsService.swift */,
+				605576DA240C1358004060D6 /* PopupSettingsService.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1012,6 +1032,7 @@
 				60F3C161240A531100DB4EED /* CityDetailsDailyWeatherCell.swift in Sources */,
 				603C71552409620C005892D7 /* CityDetailsViewController.View.swift in Sources */,
 				60F3C163240A71AF00DB4EED /* HourlyForecast.DayItem.swift in Sources */,
+				605576D7240C0A35004060D6 /* DeviceLocationService.swift in Sources */,
 				6034ED04240AE9B900C0F3D2 /* RootViewController.swift in Sources */,
 				601B6B9A240AEDA100E07BF4 /* RootViewContainer.swift in Sources */,
 				60CAF5F32408515F0021FA6F /* CityViewController.View.swift in Sources */,
@@ -1024,6 +1045,7 @@
 				603C71562409620C005892D7 /* CityDetailsViewController.swift in Sources */,
 				60CAF5F42408515F0021FA6F /* CityViewController.swift in Sources */,
 				60CAF5D024083E860021FA6F /* Collection+AutoLayout.swift in Sources */,
+				605576DB240C1358004060D6 /* PopupSettingsService.swift in Sources */,
 				60CAF5D524083E860021FA6F /* UIView+AutoLayoutPinDimensions.swift in Sources */,
 				60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */,
 				60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
@@ -1054,6 +1076,7 @@
 				60F3C183240ADADC00DB4EED /* Rain.swift in Sources */,
 				603C716A24097EEC005892D7 /* TodayWeather.swift in Sources */,
 				603C71642409658B005892D7 /* CityDetailsCityCell.swift in Sources */,
+				605576D5240C0A2A004060D6 /* DeviceLocationManager.swift in Sources */,
 				60CAF5EC24084D160021FA6F /* DispatchTools.swift in Sources */,
 				60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */,
 				60CAF5D224083E860021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
@@ -1089,6 +1112,7 @@
 				603C717C24099667005892D7 /* HourlyForecasts.swift in Sources */,
 				60874AF52409477700C7725A /* Services+Error.swift in Sources */,
 				603C71742409805E005892D7 /* WeatherDetails.swift in Sources */,
+				605576D9240C0C12004060D6 /* RequestLocationAccessView.swift in Sources */,
 				603C716E24097F02005892D7 /* Coordinates.swift in Sources */,
 				60F3C170240A996800DB4EED /* OpenWeatherService.swift in Sources */,
 				60CAF5E7240849A10021FA6F /* CitiesManager.swift in Sources */,

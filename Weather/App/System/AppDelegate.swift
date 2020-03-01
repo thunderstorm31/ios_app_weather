@@ -14,8 +14,12 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
         let services = Services.default
         
         try? services.register(Settings(), forType: SettingsService.self)
-        try? services.register(OpenWeatherDAL(appId: openWeatherAppId), forType: OpenWeatherService.self)
+        try? services.register(PopupSettings(), forType: PopupSettingsService.self)
         try? services.register(CityStorage(), forType: CityStorageService.self)
+        
+        try? services.register(DeviceLocationManager(), forType: DeviceLocationService.self)
+        
+        try? services.register(OpenWeatherDAL(appId: openWeatherAppId), forType: OpenWeatherService.self)
         try? services.register(CitiesManager(), forType: CitiesService.self)
         try? services.register(WeatherBll(), forType: WeatherService.self)
     }

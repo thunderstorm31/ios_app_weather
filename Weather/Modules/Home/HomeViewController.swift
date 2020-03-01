@@ -104,6 +104,10 @@ extension HomeViewController {
 
 // MARK: - HomeViewModelDelegate
 extension HomeViewController: HomeViewModelDelegate {
+    internal func updateShowUserLocationOnMap(_ show: Bool) {
+        rootView.mapView.showsUserLocation = show
+    }
+    
     internal func updated(_ cities: [City]) {
         updateAnnotations(with: cities)
     }

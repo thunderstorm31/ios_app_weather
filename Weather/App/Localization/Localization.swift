@@ -6,6 +6,7 @@ extension Localization {
     internal struct Alerts {}
     internal struct Buttons {}
     internal struct Cities {}
+    internal struct RequestLocationAccess {}
     internal struct Settings {}
     internal struct UnitSystem {}
     internal struct WeatherDetails {}
@@ -48,6 +49,7 @@ extension Localization.Buttons {
                           value: "Cancel",
                           comment: "")
     }
+    
     internal static var closeTitle: String {
         NSLocalizedString("close.title",
                           tableName: "buttons",
@@ -68,6 +70,20 @@ extension Localization.Buttons {
                           value: "Ok",
                           comment: "")
     }
+    
+    internal static var addCurrentLocationTitle: String {
+        NSLocalizedString("addCurrentLocation.title",
+                          tableName: "alerts",
+                          value: "Add current location",
+                          comment: "")
+    }
+    
+    internal static var noThanksTitle: String {
+        NSLocalizedString("noThanks.title",
+                          tableName: "alerts",
+                          value: "No thanks",
+                          comment: "")
+    }
 }
 
 extension Localization.Cities {
@@ -78,6 +94,23 @@ extension Localization.Cities {
                           comment: "")
     }
 }
+
+extension Localization.RequestLocationAccess {
+    internal static var title: String {
+        NSLocalizedString("title",
+                          tableName: "requestLocationAccess",
+                          value: "Add your current location?",
+                          comment: "")
+    }
+    
+    internal static var message: String {
+        NSLocalizedString("message",
+                          tableName: "requestLocationAccess",
+                          value: "We can add your current location for you.",
+                          comment: "")
+    }
+}
+
 extension Localization.Settings {
     internal static var navigationTitle: String {
         NSLocalizedString("settings.naviation.title",

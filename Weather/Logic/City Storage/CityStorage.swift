@@ -6,7 +6,7 @@ internal protocol CityStorageServiceDelegate: AnyObject {
 }
 
 internal enum CityStorageAddCityOrigin {
-    case map, search
+    case map, search, deviceLocation
 }
 
 extension CityStorageServiceDelegate {

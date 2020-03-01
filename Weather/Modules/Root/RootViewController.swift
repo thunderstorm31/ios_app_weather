@@ -1,4 +1,5 @@
 import UIKit
+import CoreLocation
 
 internal final class RootViewController: UIViewController {
     internal enum DisplayMode {
@@ -19,13 +20,25 @@ internal final class RootViewController: UIViewController {
     private let trailingContainerAnimator: RootContainerAnimator
     private let overlayAnimator: RootOverlayAnimator
     
+    private lazy var locationAccesView = RequestLocationAccessView()
+    
     private let overlayView = UIView()
     
     private var displayMode: DisplayMode = .main
+    private var addCityForCurrentLocation = false
+    
+    private let services: Services
+    private var deviceLocationService: DeviceLocationService { services.get(DeviceLocationService.self) }
+    private var popupSettings: PopupSettingsService { services.get(PopupSettingsService.self) }
+    private var cityStorageService: CityStorageService { services.get(CityStorageService.self) }
+    private var citiesService: CitiesService { services.get(CitiesService.self) }
     
     internal init(mainViewController: UIViewController,
                   leadingSideMenuModel: RootSideMenuModel,
-                  trailingSideMenuModel: RootSideMenuModel) {
+                  trailingSideMenuModel: RootSideMenuModel,
+                  services: Services = .default) {
+        self.services = services
+        
         self.mainViewController = mainViewController
         
         self.leadingSideMenuModel = leadingSideMenuModel
@@ -61,10 +74,13 @@ extension RootViewController {
         configureLeadingContainerView()
         configureTrailingContainerView()
         configureOverlayView()
+        configureLocationAccesView()
         
         setDisplayMode(.main, animated: false)
         
         traitCollectionDidChange(nil)
+        
+        deviceLocationService.addDelegate(self)
     }
     
     private func configureMainViewController() {
@@ -133,6 +149,21 @@ extension RootViewController {
         trailingContainerAnimator.updatedState = { [weak self] _ in
             self?.updateAdditionalSafeAreaInsets()
         }
+    }
+    
+    private func configureLocationAccesView() {
+        guard deviceLocationService.canRequestLocationAccess, popupSettings.didDismissAddCurrentLocationPopup == false else {
+            return
+        }
+        
+        view.addSubview(locationAccesView.disableTranslateAutoresizingMask())
+        
+        locationAccesView.pinCenterHorizontalToSuperview(layoutArea: .layoutMargins)
+        locationAccesView.pin(width: 414, relation: .lessThanOrEqual)
+        locationAccesView.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
+        locationAccesView.pinBottomToSuperview()
+        
+        locationAccesView.delegate = self
     }
 }
 
@@ -323,6 +354,57 @@ extension RootViewController {
             }
         default:
             break
+        }
+    }
+}
+
+// MARK: - RequestLocationAccessViewDelegate
+extension RootViewController: RequestLocationAccessViewDelegate {
+    internal func dismiss(addLocation: Bool) {
+        let height = locationAccesView.bounds.height
+        
+        popupSettings.didDismissAddCurrentLocationPopup = true
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.locationAccesView.transform = CGAffineTransform(translationX: 0, y: height)
+        }, completion: { _ in
+            self.locationAccesView.removeFromSuperview()
+        })
+        
+        if addLocation {
+            addCityForCurrentLocation = true
+            deviceLocationService.requestLocationAccess()
+        }
+    }
+}
+
+// MARK: - DeviceLocationServiceDelegate
+extension RootViewController: DeviceLocationServiceDelegate {
+    internal func deviceLocationServiceUpdatedAuthorization(_ service: DeviceLocationService) {
+        guard service.isAuthorized, addCityForCurrentLocation else {
+            return
+        }
+        
+        service.startUpdatingLocation()
+    }
+    
+    internal func deviceLocationService(_ service: DeviceLocationService, received locations: [CLLocation]) {
+        guard addCityForCurrentLocation, locations.isNotEmpty else {
+            return
+        }
+        
+        service.stopUpdatingLocation()
+        
+        let request = CityLocationRequest(coordinate: locations[0].coordinate, limit: 1, maxDistance: 15_000)
+        
+        citiesService.citiesFor(request) { [weak self] cities in
+            if let city = cities.first {
+                self?.addCityForCurrentLocation = false
+                
+                self?.cityStorageService.add(city, origin: .deviceLocation)
+            } else {
+                service.startUpdatingLocation()
+            }
         }
     }
 }
