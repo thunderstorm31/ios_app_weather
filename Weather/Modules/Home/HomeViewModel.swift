@@ -5,6 +5,7 @@ internal protocol HomeViewModelDelegate: AnyObject {
     func updated(_ cities: [City])
     func centerOn(_ city: City)
     func updateShowUserLocationOnMap(_ show: Bool)
+    func updatedWeathers(_ weathers: [City: TodayWeather])
 }
 
 internal final class HomeViewModel {
@@ -17,10 +18,16 @@ internal final class HomeViewModel {
     
     internal var showLocationOnMap: Bool { deviceLocationService.isAuthorized }
     
+    internal private(set) var weathers: [City: TodayWeather] = [:] {
+        didSet { delegate?.updatedWeathers(weathers) }
+    }
+    
     private let services: Services
     private var cityStorageService: CityStorageService { services.get(CityStorageService.self) }
     private var citiesService: CitiesService { services.get(CitiesService.self) }
     private var deviceLocationService: DeviceLocationService { services.get(DeviceLocationService.self) }
+    private var weatherService: WeatherService { services.get(WeatherService.self) }
+    private var settingsService: SettingsService { services.get(SettingsService.self) }
         
     internal init(services: Services = .default) {
         self.services = services
@@ -32,6 +39,8 @@ internal final class HomeViewModel {
     internal func viewDidLoad() {
         delegate?.updated(cityStorageService.cities)
         delegate?.updateShowUserLocationOnMap(deviceLocationService.isAuthorized)
+        
+        updateWeatherForAllCities()
     }
     
     internal func addCity(for coordinate: CLLocationCoordinate2D, completion: @escaping AddCityCallback) {
@@ -52,8 +61,25 @@ internal final class HomeViewModel {
         }
         
         cityStorageService.add(city, origin: .map)
+        updateWeather(for: city)
         
         completion(.added(city))
+    }
+    
+    private func updateWeatherForAllCities() {
+        cityStorageService.cities.forEach { city in
+            updateWeather(for: city)
+        }
+    }
+    
+    private func updateWeather(for city: City) {
+        let request = TodayWeatherRequest(coordinate: city.coordinates.coordinate, unitSystem: settingsService.unitSystem.openWeatherRequestValue)
+        
+        weatherService.load(request) { [weak self] (weather, _) in
+            if let weather = weather {
+                self?.weathers[city] = weather
+            }
+        }
     }
 }
 

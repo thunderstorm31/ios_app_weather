@@ -30,5 +30,6 @@ extension HomeViewController.View {
     
     private func configureMapView() {
         mapView.pinEdgesToSuperview()
+        mapView.showsCompass = false
     }
 }

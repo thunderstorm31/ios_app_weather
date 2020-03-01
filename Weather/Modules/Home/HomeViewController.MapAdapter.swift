@@ -12,6 +12,12 @@ extension HomeViewController {
             
             super.init()
         }
+        
+        internal func configure(_ mapView: MKMapView) {
+            mapView.register(CityAnnotationView.self, forAnnotationViewWithReuseIdentifier: CityAnnotationView.identifier)
+            
+            mapView.delegate = self
+        }
     }
 }
 
@@ -41,11 +47,15 @@ extension HomeViewController.MapAdapter: MKMapViewDelegate {
             return nil
         }
         
-        let view = MKAnnotationView()
+        let view: CityAnnotationView
         
-        view.disableTranslateAutoresizingMask()
-        view.pin(singleSize: 44)
-        view.backgroundColor = .red
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: CityAnnotationView.identifier, for: annotation) as? CityAnnotationView {
+            view = dequeuedView
+        } else {
+            view = CityAnnotationView(annotation: annotation, reuseIdentifier: CityAnnotationView.identifier)
+        }
+                
+        view.annotation = annotation
         
         return view
     }
