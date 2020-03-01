@@ -10,9 +10,8 @@ internal final class CityDetailsPresenter {
     internal func presentFrom(_ presenter: UIViewController) {
         let viewModel = CityDetailsViewModel(city: city)
         let viewController = CityDetailsViewController(viewModel: viewModel)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .formSheet
+        viewController.modalPresentationStyle = .formSheet
         
-        presenter.present(navigationController, animated: true)
+        presenter.present(viewController, animated: true)
     }
 }

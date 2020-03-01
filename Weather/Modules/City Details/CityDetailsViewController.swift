@@ -31,6 +31,8 @@ internal final class CityDetailsViewController: UIViewController {
 extension CityDetailsViewController {
     internal override func loadView() {
         view = rootView
+        
+        rootView.closeButton.addTarget(self, action: #selector(self.tappedClose(_:)), for: .touchUpInside)
     }
 }
 
@@ -46,7 +48,7 @@ extension CityDetailsViewController {
 // MARK: - User Interaction
 extension CityDetailsViewController {
     @objc
-    private func tappedClose(_ sender: UIBarButtonItem) {
+    private func tappedClose(_ sender: Any) {
         dismiss(animated: true)
     }
 }
