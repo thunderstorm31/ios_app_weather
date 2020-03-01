@@ -35,4 +35,18 @@ extension HomeViewController.MapAdapter: MKMapViewDelegate {
             }
         }
     }
+    
+    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? HomeViewMapAnnotation else {
+            return nil
+        }
+        
+        let view = MKAnnotationView()
+        
+        view.disableTranslateAutoresizingMask()
+        view.pin(singleSize: 44)
+        view.backgroundColor = .red
+        
+        return view
+    }
 }

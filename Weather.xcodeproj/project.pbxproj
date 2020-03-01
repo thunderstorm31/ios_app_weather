@@ -442,6 +442,13 @@
 			path = css;
 			sourceTree = "<group>";
 		};
+		605576E2240C26E6004060D6 /* Map subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Map subviews";
+			sourceTree = "<group>";
+		};
 		60874AC52408551500C7725A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +636,7 @@
 		60CAF55A240839090021FA6F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				605576E2240C26E6004060D6 /* Map subviews */,
 				60CAF56424083BD70021FA6F /* HomeViewController.View.swift */,
 				60CAF56524083BD70021FA6F /* HomeViewController.swift */,
 				60874AF924094E3100C7725A /* HomeViewModel.swift */,

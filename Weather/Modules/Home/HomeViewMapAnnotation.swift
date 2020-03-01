@@ -2,6 +2,7 @@ import MapKit
 
 internal final class HomeViewMapAnnotation: NSObject {
     internal let city: City
+    internal var weather: TodayWeather?
     
     internal init(city: City) {
         self.city = city
