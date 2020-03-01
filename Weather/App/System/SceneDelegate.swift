@@ -49,5 +49,13 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         settingsViewModel.requestClose = { [weak self] in
             self?.rootViewController?.setDisplayMode(.main, animated: true)
         }
+        
+        leadingModel.onWillDismiss = {
+            cityViewController.willDismiss()
+        }
+        
+        leadingModel.onDidDismiss = {
+            cityViewController.didDismiss()
+        }
     }
 }

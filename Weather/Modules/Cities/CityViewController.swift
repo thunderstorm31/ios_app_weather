@@ -95,6 +95,15 @@ extension CityViewController {
         
         navigationController?.setToolbarHidden(false, animated: false)
     }
+    
+    internal func willDismiss() {
+        searchBar.resignFirstResponder()
+    }
+    
+    internal func didDismiss() {
+        setEditing(false, animated: false)
+        searchBar.text = nil
+    }
 }
 
 // MARK: UISearchBarDelegate
@@ -103,6 +112,8 @@ extension CityViewController: UISearchBarDelegate {
         viewModel.searchCityTableAdapter.setActive(rootView.tableView)
         
         navigationController?.setToolbarHidden(true, animated: true)
+        
+        setEditing(false, animated: true)
     }
 
     internal func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

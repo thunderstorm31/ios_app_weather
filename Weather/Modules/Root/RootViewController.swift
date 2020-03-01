@@ -227,7 +227,7 @@ extension RootViewController {
             return
         }
         
-        preparAnimate(from: self.displayMode, to: displayMode)
+        prepareAnimate(from: self.displayMode, to: displayMode)
         
         let animations: () -> Void = {
             self.animate(from: self.displayMode, to: displayMode)
@@ -246,12 +246,14 @@ extension RootViewController {
         }
     }
     
-    private func preparAnimate(from previousDisplayMode: DisplayMode, to displayMode: DisplayMode) {
+    private func prepareAnimate(from previousDisplayMode: DisplayMode, to displayMode: DisplayMode) {
         switch previousDisplayMode {
         case .leadingContainer:
             leadingSideMenuModel.viewController.willMove(toParent: nil)
+            leadingSideMenuModel.willDismiss()
         case .trailingContainer:
             trailingSideMenuModel.viewController.willMove(toParent: nil)
+            trailingSideMenuModel.willDismiss()
         case .main:
             overlayAnimator.willShow()
         }
@@ -283,10 +285,12 @@ extension RootViewController {
             leadingContainerAnimator.didHide()
             leadingSideMenuModel.viewController.removeFromParent()
             leadingSideMenuModel.viewController.didMove(toParent: nil)
+            leadingSideMenuModel.didDismiss()
         case .trailingContainer:
             trailingContainerAnimator.didHide()
             trailingSideMenuModel.viewController.removeFromParent()
             trailingSideMenuModel.viewController.didMove(toParent: nil)
+            trailingSideMenuModel.didDismiss()
         case .main:
             overlayAnimator.didShow()
         }
