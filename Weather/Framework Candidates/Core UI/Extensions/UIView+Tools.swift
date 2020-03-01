@@ -14,4 +14,18 @@ extension UIView {
         
         return nil
     }
+    
+    public func findFirstSuper<T>(ofType type: T.Type) -> T? {
+        var currentView: UIView? = self
+        
+        repeat {
+            currentView = currentView?.superview
+            
+            if let t = currentView as? T {
+                return t
+            }
+        } while currentView != nil
+        
+        return nil
+    }
 }

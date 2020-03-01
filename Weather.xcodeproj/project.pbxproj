@@ -42,6 +42,7 @@
 		605576D9240C0C12004060D6 /* RequestLocationAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */; };
 		605576DB240C1358004060D6 /* PopupSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DA240C1358004060D6 /* PopupSettingsService.swift */; };
 		605576DD240C1E4F004060D6 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DC240C1E4F004060D6 /* UIView+Tools.swift */; };
+		605576E4240C33F3004060D6 /* NonePannableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E3240C33F3004060D6 /* NonePannableView.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
 		60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */; };
@@ -182,6 +183,7 @@
 		605576DC240C1E4F004060D6 /* UIView+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Tools.swift"; sourceTree = "<group>"; };
 		605576DF240C25F4004060D6 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		605576E1240C25F4004060D6 /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
+		605576E3240C33F3004060D6 /* NonePannableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonePannableView.swift; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 				60F3C16A240A82C300DB4EED /* MinMaxTemperatureView.swift */,
 				60F3C176240AA39100DB4EED /* GradientView.swift */,
 				60F3C17A240AA81600DB4EED /* CurrentCondtionItemView.swift */,
+				605576E3240C33F3004060D6 /* NonePannableView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				60CAF5D524083E860021FA6F /* UIView+AutoLayoutPinDimensions.swift in Sources */,
 				60CAF536240838AC0021FA6F /* AppDelegate.swift in Sources */,
 				60CAF5DD24083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift in Sources */,
+				605576E4240C33F3004060D6 /* NonePannableView.swift in Sources */,
 				60CAF538240838AC0021FA6F /* SceneDelegate.swift in Sources */,
 				60874B0E240959C800C7725A /* SettingsTableController.Section.swift in Sources */,
 				603C717224098006005892D7 /* Wind.swift in Sources */,

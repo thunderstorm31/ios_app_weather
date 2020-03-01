@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class StoredCityCell: UITableViewCell {
+internal final class StoredCityCell: UITableViewCell, NonePannable {
     internal struct ViewModel {
         internal let primaryText: String
         internal let secondaryText: String

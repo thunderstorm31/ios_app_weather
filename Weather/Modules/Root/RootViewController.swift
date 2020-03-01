@@ -423,7 +423,7 @@ extension RootViewController: UIGestureRecognizerDelegate {
         }
         
         guard let touchedView = view.hitTest(gestureRecognizer.location(in: view), with: nil),
-            touchedView.findFirstSuperview(ofType: UITableViewCell.self) != nil else {
+            touchedView.findFirstSuper(ofType: NonePannable.self) != nil else {
                 return true
         }
         
