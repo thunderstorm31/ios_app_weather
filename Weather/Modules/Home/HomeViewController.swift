@@ -34,7 +34,8 @@ extension HomeViewController {
         let addCityRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.addLocation(_:)))
         
         rootView.mapView.addGestureRecognizer(addCityRecognizer)
-        rootView.mapView.delegate = mapAdapter
+        
+        mapAdapter.configure(rootView.mapView)
     }
 }
 
@@ -96,7 +97,13 @@ extension HomeViewController {
     private func updateAnnotations(with cities: [City]) {
         rootView.mapView.removeAnnotations(rootView.mapView.annotations)
         
-        let annotations = cities.map { HomeViewMapAnnotation(city: $0) }
+        let annotations = cities.map { city -> HomeViewMapAnnotation in
+            let annotation = HomeViewMapAnnotation(city: city)
+            
+            annotation.weather = viewModel.weathers[city]
+            
+            return annotation
+        }
         
         rootView.mapView.addAnnotations(annotations)
     }
@@ -114,5 +121,15 @@ extension HomeViewController: HomeViewModelDelegate {
     
     internal func centerOn(_ city: City) {
         rootView.mapView.setCenter(city.coordinates.coordinate, animated: true)
+    }
+    
+    internal func updatedWeathers(_ weathers: [City: TodayWeather]) {
+        rootView.mapView.annotations
+            .compactMap { $0 as? HomeViewMapAnnotation }
+            .forEach {
+                if let weather = weathers[$0.city] {
+                    $0.weather = weather
+                }
+            }
     }
 }

@@ -43,6 +43,8 @@
 		605576DB240C1358004060D6 /* PopupSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DA240C1358004060D6 /* PopupSettingsService.swift */; };
 		605576DD240C1E4F004060D6 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DC240C1E4F004060D6 /* UIView+Tools.swift */; };
 		605576E4240C33F3004060D6 /* NonePannableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E3240C33F3004060D6 /* NonePannableView.swift */; };
+		605576E6240C34DA004060D6 /* CityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E5240C34DA004060D6 /* CityAnnotationView.swift */; };
+		605576E8240C4031004060D6 /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E7240C4031004060D6 /* UIColor+Tools.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
 		60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */; };
@@ -184,6 +186,8 @@
 		605576DF240C25F4004060D6 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		605576E1240C25F4004060D6 /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		605576E3240C33F3004060D6 /* NonePannableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonePannableView.swift; sourceTree = "<group>"; };
+		605576E5240C34DA004060D6 /* CityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAnnotationView.swift; sourceTree = "<group>"; };
+		605576E7240C4031004060D6 /* UIColor+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Tools.swift"; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -444,6 +448,14 @@
 			path = css;
 			sourceTree = "<group>";
 		};
+		605576E2240C26E6004060D6 /* Map subviews */ = {
+			isa = PBXGroup;
+			children = (
+				605576E5240C34DA004060D6 /* CityAnnotationView.swift */,
+			);
+			path = "Map subviews";
+			sourceTree = "<group>";
+		};
 		60874AC52408551500C7725A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +643,7 @@
 		60CAF55A240839090021FA6F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				605576E2240C26E6004060D6 /* Map subviews */,
 				60CAF56424083BD70021FA6F /* HomeViewController.View.swift */,
 				60CAF56524083BD70021FA6F /* HomeViewController.swift */,
 				60874AF924094E3100C7725A /* HomeViewModel.swift */,
@@ -771,6 +784,7 @@
 				60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */,
 				60874B082409590F00C7725A /* CGRect+Tools.swift */,
 				605576DC240C1E4F004060D6 /* UIView+Tools.swift */,
+				605576E7240C4031004060D6 /* UIColor+Tools.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1043,6 +1057,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60F3C17B240AA81600DB4EED /* CurrentCondtionItemView.swift in Sources */,
+				605576E6240C34DA004060D6 /* CityAnnotationView.swift in Sources */,
 				60F3C177240AA39100DB4EED /* GradientView.swift in Sources */,
 				60874AEA240860FB00C7725A /* StoredCityAdapter.swift in Sources */,
 				60CAF5CA24083E860021FA6F /* UIView.LayoutArea.swift in Sources */,
@@ -1109,6 +1124,7 @@
 				60CAF5DB24083E860021FA6F /* UITableView+Tools.swift in Sources */,
 				60CAF5D224083E860021FA6F /* NSLayoutConstraint+Relations+AutoLayout.swift in Sources */,
 				60874B0B2409597F00C7725A /* SettingsTableController.swift in Sources */,
+				605576E8240C4031004060D6 /* UIColor+Tools.swift in Sources */,
 				603C715D240963E0005892D7 /* CityDetailTableAdapter.swift in Sources */,
 				60874AE024085D8400C7725A /* UserDefaults+Container.swift in Sources */,
 				603C7180240997F8005892D7 /* HourlyForecasts.HourlyItem.swift in Sources */,

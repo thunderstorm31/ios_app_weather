@@ -1,7 +1,16 @@
 import MapKit
 
+internal protocol HomeViewMapAnnotationDelegate: AnyObject {
+    func weatherUpdated(annotation: HomeViewMapAnnotation)
+}
+
 internal final class HomeViewMapAnnotation: NSObject {
     internal let city: City
+    internal var weather: TodayWeather? {
+        didSet { delegate?.weatherUpdated(annotation: self) }
+    }
+    
+    internal weak var delegate: HomeViewMapAnnotationDelegate?
     
     internal init(city: City) {
         self.city = city
