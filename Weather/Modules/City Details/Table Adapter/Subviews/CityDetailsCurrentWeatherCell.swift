@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsCurrentWeatherCell: UITableViewCell {
+internal final class CityDetailsCurrentWeatherCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let icon: UIImage?
     }
@@ -50,5 +50,6 @@ extension CityDetailsCurrentWeatherCell {
         iconImageView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
         iconImageView.pinCenterHorizontalToSuperview()
         iconImageView.contentMode = .scaleAspectFill
+        iconImageView.addParallax(intensity: 15)
     }
 }

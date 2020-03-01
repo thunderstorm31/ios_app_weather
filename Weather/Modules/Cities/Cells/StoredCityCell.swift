@@ -16,6 +16,8 @@ internal final class StoredCityCell: UITableViewCell, NonePannable {
         
         imageView?.pin(size: CGSize(width: 44, height: 44))
         imageView?.contentMode = .scaleAspectFit
+        
+        contentView.addParallax(intensityX: 25, intensityY: 5)
     }
     
     internal required init?(coder aDecoder: NSCoder) {

@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsDailyWeatherCell: UITableViewCell {
+internal final class CityDetailsDailyWeatherCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let iconImage: UIImage?
         internal let primaryText: String?

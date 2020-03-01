@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsLoadingCell: UITableViewCell {
+internal final class CityDetailsLoadingCell: CityDetailsTableCell {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     internal override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

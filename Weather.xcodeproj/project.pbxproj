@@ -45,6 +45,7 @@
 		605576E4240C33F3004060D6 /* NonePannableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E3240C33F3004060D6 /* NonePannableView.swift */; };
 		605576E6240C34DA004060D6 /* CityAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E5240C34DA004060D6 /* CityAnnotationView.swift */; };
 		605576E8240C4031004060D6 /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576E7240C4031004060D6 /* UIColor+Tools.swift */; };
+		605576F0240C4673004060D6 /* CityDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576EF240C4673004060D6 /* CityDetailsTableCell.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
 		60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */; };
@@ -188,6 +189,7 @@
 		605576E3240C33F3004060D6 /* NonePannableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonePannableView.swift; sourceTree = "<group>"; };
 		605576E5240C34DA004060D6 /* CityAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAnnotationView.swift; sourceTree = "<group>"; };
 		605576E7240C4031004060D6 /* UIColor+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Tools.swift"; sourceTree = "<group>"; };
+		605576EF240C4673004060D6 /* CityDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsTableCell.swift; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				60F3C166240A7A0C00DB4EED /* CityDetailsHourlyWeatherCell.swift */,
 				60F3C168240A80BB00DB4EED /* CityDetailsDayTitleCell.swift */,
 				60F3C178240AA7B100DB4EED /* CityDetailsCurrentConditionsCell.swift */,
+				605576EF240C4673004060D6 /* CityDetailsTableCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				605576E6240C34DA004060D6 /* CityAnnotationView.swift in Sources */,
 				60F3C177240AA39100DB4EED /* GradientView.swift in Sources */,
 				60874AEA240860FB00C7725A /* StoredCityAdapter.swift in Sources */,
+				605576F0240C4673004060D6 /* CityDetailsTableCell.swift in Sources */,
 				60CAF5CA24083E860021FA6F /* UIView.LayoutArea.swift in Sources */,
 				60874AF32409477700C7725A /* Services+ServiceId.swift in Sources */,
 				60F3C167240A7A0C00DB4EED /* CityDetailsHourlyWeatherCell.swift in Sources */,

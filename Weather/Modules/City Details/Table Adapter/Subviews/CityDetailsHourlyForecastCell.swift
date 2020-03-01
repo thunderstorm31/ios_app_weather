@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsHourlyForecastCell: UITableViewCell {
+internal final class CityDetailsHourlyForecastCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let dayItem: HourlyForecasts.DayItem
     }

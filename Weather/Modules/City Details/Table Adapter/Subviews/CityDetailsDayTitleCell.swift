@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsDayTitleCell: UITableViewCell {
+internal final class CityDetailsDayTitleCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let primaryText: String?
         internal let maxTemperatureText: String?

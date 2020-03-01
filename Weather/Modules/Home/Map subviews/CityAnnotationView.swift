@@ -20,6 +20,8 @@ internal final class CityAnnotationView: MKAnnotationView {
         configureViews()
         
         traitCollectionDidChange(nil)
+        
+        weatherIconView.addParallax(intensity: 6)
     }
     
     internal required init?(coder aDecoder: NSCoder) {
@@ -55,7 +57,7 @@ extension CityAnnotationView {
     private func configureActivityIndicatorView() {
         activityIndicatorView.pinCenterHorizontalToSuperview()
         activityIndicatorView.pinTopToSuperview(padding: 3)
-        activityIndicatorView.color = .systemBackground
+        activityIndicatorView.color = UIColor(light: .black, dark: .white)
     }
     
     private func configureWeatherIconView() {

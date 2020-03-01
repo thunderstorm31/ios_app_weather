@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsCurrentConditionsCell: UITableViewCell {
+internal final class CityDetailsCurrentConditionsCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let items: [CurrentCondtionItemView.ViewModel]
     }
@@ -55,7 +55,7 @@ internal final class CityDetailsCurrentConditionsCell: UITableViewCell {
 
 // MARK: Configure Views
 extension CityDetailsCurrentConditionsCell {
-    private func configureViews() {
+    private func configureViews() {        
         [contentStackView]
             .disableTranslateAutoresizingMask()
             .add(to: contentView)

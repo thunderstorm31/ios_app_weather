@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsCityCell: UITableViewCell {
+internal final class CityDetailsCityCell: CityDetailsTableCell {
     internal struct ViewModel {
         internal let cityName: String
         internal let currentCondition: String?

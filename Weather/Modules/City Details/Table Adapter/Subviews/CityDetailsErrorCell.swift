@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class CityDetailsErrorCell: UITableViewCell {
+internal final class CityDetailsErrorCell: CityDetailsTableCell {
     private let titleLabel = UILabel()
     private let messageLabel = UILabel()
     
