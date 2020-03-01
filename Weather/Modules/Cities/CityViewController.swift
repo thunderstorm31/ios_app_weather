@@ -59,7 +59,7 @@ internal final class CityViewController: UIViewController {
     internal override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        rootView.tableView.isEditing = editing
+        rootView.tableView.setEditing(editing, animated: animated)
         updateToolBarItems()
     }
     

@@ -129,6 +129,7 @@ extension RootViewController {
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedLeadingContainer(_:)))
         
+        panRecognizer.delegate = self
         leadingContainerView.addGestureRecognizer(panRecognizer)
         
         leadingContainerAnimator.updatedState = { [weak self] _ in
@@ -143,6 +144,7 @@ extension RootViewController {
         trailingContainerView.pin(width: containerWidth)
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedTrailingContainer(_:)))
+        panRecognizer.delegate = self
         
         trailingContainerView.addGestureRecognizer(panRecognizer)
         
@@ -406,5 +408,21 @@ extension RootViewController: DeviceLocationServiceDelegate {
                 service.startUpdatingLocation()
             }
         }
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension RootViewController: UIGestureRecognizerDelegate {
+    internal func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let view = gestureRecognizer.view else {
+            return true
+        }
+        
+        guard let touchedView = view.hitTest(gestureRecognizer.location(in: view), with: nil),
+            touchedView.findFirstSuperview(ofType: UITableViewCell.self) != nil else {
+                return true
+        }
+        
+        return false
     }
 }

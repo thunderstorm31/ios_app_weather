@@ -41,6 +41,7 @@
 		605576D7240C0A35004060D6 /* DeviceLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D6240C0A35004060D6 /* DeviceLocationService.swift */; };
 		605576D9240C0C12004060D6 /* RequestLocationAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */; };
 		605576DB240C1358004060D6 /* PopupSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DA240C1358004060D6 /* PopupSettingsService.swift */; };
+		605576DD240C1E4F004060D6 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605576DC240C1E4F004060D6 /* UIView+Tools.swift */; };
 		60874AC4240854AD00C7725A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC3240854AD00C7725A /* CityViewModel.swift */; };
 		60874AC72408552200C7725A /* SearchCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC62408552200C7725A /* SearchCityCell.swift */; };
 		60874ACA240855B900C7725A /* SearchCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */; };
@@ -178,6 +179,7 @@
 		605576D6240C0A35004060D6 /* DeviceLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocationService.swift; sourceTree = "<group>"; };
 		605576D8240C0C12004060D6 /* RequestLocationAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocationAccessView.swift; sourceTree = "<group>"; };
 		605576DA240C1358004060D6 /* PopupSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSettingsService.swift; sourceTree = "<group>"; };
+		605576DC240C1E4F004060D6 /* UIView+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Tools.swift"; sourceTree = "<group>"; };
 		60874AC3240854AD00C7725A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		60874AC62408552200C7725A /* SearchCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityCell.swift; sourceTree = "<group>"; };
 		60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityTableAdapter.swift; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 				60CAF5C624083E860021FA6F /* UIEdgeInsets+Tools.swift */,
 				60CAF5C724083E860021FA6F /* NSDirectionalEdgeInsets+Tools.swift */,
 				60874B082409590F00C7725A /* CGRect+Tools.swift */,
+				605576DC240C1E4F004060D6 /* UIView+Tools.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				60CAF5AC24083E800021FA6F /* Collection+Tools.swift in Sources */,
 				60CAF5D424083E860021FA6F /* UIView+AutoLayoutArea.swift in Sources */,
 				60874B092409590F00C7725A /* CGRect+Tools.swift in Sources */,
+				605576DD240C1E4F004060D6 /* UIView+Tools.swift in Sources */,
 				60874AE124085D8400C7725A /* UserDefaultsKeyProvidable.swift in Sources */,
 				60874B032409586E00C7725A /* SettingsViewController.swift in Sources */,
 				60874B10240959E500C7725A /* SettingsTableController.Item.swift in Sources */,
