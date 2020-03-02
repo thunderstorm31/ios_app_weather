@@ -10,7 +10,7 @@ public struct Wind: Hashable, Codable {
     
     public var windDirection: WindDirectionAbbreviation {
         guard let degree = degree else {
-            return .unknown
+            return .none
         }
         
         switch Double(degree) {
@@ -50,6 +50,6 @@ public struct Wind: Hashable, Codable {
         case WNW
         case NW
         case NNW
-        case unknown
+        case none = "-"
     }
 }

@@ -147,7 +147,13 @@ extension CityDetailTableAdapter {
         let windDirection = todayWeather.wind.windDirection.rawValue
         let clouds = "\(todayWeather.clouds.all)%"
         let humidity = "\(todayWeather.weatherDetails.humidity)%"
-        let rain = String(format: "%.1d \(Localization.UnitSystem.millimeterAbbreviation)", todayWeather.rain?.lastHour ?? 0)
+        let rain: String
+        
+        if let lastHourPrecipitation = todayWeather.rain?.lastHour, lastHourPrecipitation > 0 {
+            rain = String(format: "%.1d \(Localization.UnitSystem.millimeterAbbreviation)", lastHourPrecipitation)
+        } else {
+            rain = "-"
+        }
         
         items.append(CurrentCondtionItemView.ViewModel(primaryText: shortDate, icon: UIImage(systemName: "calendar")))
         items.append(CurrentCondtionItemView.ViewModel(primaryText: feelsLike, icon: UIImage(systemName: "thermometer")))
