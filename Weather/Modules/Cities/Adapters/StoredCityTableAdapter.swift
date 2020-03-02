@@ -1,11 +1,12 @@
 import UIKit
 
-internal final class StoredCityAdapter: NSObject {
+internal final class StoredCityTableAdapter: NSObject {
     internal var cities: [City] = []
     internal var weathers: [City: TodayWeather] = [:]
     
     internal var selectedCity: ((City) -> Void)?
     internal var deleteItem: ((IndexPath) -> Bool)?
+    internal var movedItem: ((_ from: IndexPath, _ to: IndexPath) -> Void)?
     
     internal func configure(_ tableView: UITableView) {
         tableView.register(cell: StoredCityCell.self)
@@ -21,7 +22,7 @@ internal final class StoredCityAdapter: NSObject {
 }
 
 // MARK: UITableViewDelegate
-extension StoredCityAdapter: UITableViewDelegate {
+extension StoredCityTableAdapter: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if deleteItem == nil {
             return .none
@@ -31,6 +32,7 @@ extension StoredCityAdapter: UITableViewDelegate {
     }
     
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 88 }
+    internal func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool { true }
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -44,7 +46,7 @@ extension StoredCityAdapter: UITableViewDelegate {
 }
 
 // MARK: UITableViewDataSource
-extension StoredCityAdapter: UITableViewDataSource {
+extension StoredCityTableAdapter: UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { cities.count }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,6 +76,10 @@ extension StoredCityAdapter: UITableViewDataSource {
         let viewModel = StoredCityCell.ViewModel(primaryText: city.name, secondaryText: city.countryCode, icon: icon)
         
         cell.setViewModel(viewModel)
+    }
+    
+    internal func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        movedItem?(sourceIndexPath, destinationIndexPath)
     }
     
     internal func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

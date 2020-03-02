@@ -26,7 +26,7 @@ internal final class CityViewModel {
     internal var searchBarPlaceholder: String { Localization.Cities.searchBarPlaceholder }
     
     internal let searchCityTableAdapter = SearchCityTableAdapter()
-    internal let storedCityAdapter = StoredCityAdapter()
+    internal let storedCityAdapter = StoredCityTableAdapter()
     
     internal init(services: Services = .default) {
         self.services = services
@@ -40,6 +40,14 @@ internal final class CityViewModel {
         storedCityAdapter.cities = cityStorage.cities
         storedCityAdapter.deleteItem = { [cityStorage] indexPath in
             cityStorage.remove(cityAtIndex: indexPath.item)
+        }
+        
+        storedCityAdapter.movedItem = { [cityStorage] from, to in
+            var  cities = cityStorage.cities
+            let city = cities.remove(at: from.item)
+            cities.insert(city, at: to.item)
+            
+            cityStorage.cities = cities
         }
     }
     

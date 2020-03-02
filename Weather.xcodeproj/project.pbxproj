@@ -61,7 +61,7 @@
 		60874AE324085E9900C7725A /* Codable+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AE224085E9900C7725A /* Codable+Support.swift */; };
 		60874AE624085ECE00C7725A /* CityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AE524085ECE00C7725A /* CityStorage.swift */; };
 		60874AE8240860E600C7725A /* StoredCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AE7240860E600C7725A /* StoredCityCell.swift */; };
-		60874AEA240860FB00C7725A /* StoredCityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AE9240860FB00C7725A /* StoredCityAdapter.swift */; };
+		60874AEA240860FB00C7725A /* StoredCityTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AE9240860FB00C7725A /* StoredCityTableAdapter.swift */; };
 		60874AF32409477700C7725A /* Services+ServiceId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AEC2409477700C7725A /* Services+ServiceId.swift */; };
 		60874AF42409477700C7725A /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AED2409477700C7725A /* Services.swift */; };
 		60874AF52409477700C7725A /* Services+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60874AEE2409477700C7725A /* Services+Error.swift */; };
@@ -205,7 +205,7 @@
 		60874AE224085E9900C7725A /* Codable+Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Codable+Support.swift"; sourceTree = "<group>"; };
 		60874AE524085ECE00C7725A /* CityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityStorage.swift; sourceTree = "<group>"; };
 		60874AE7240860E600C7725A /* StoredCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCityCell.swift; sourceTree = "<group>"; };
-		60874AE9240860FB00C7725A /* StoredCityAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCityAdapter.swift; sourceTree = "<group>"; };
+		60874AE9240860FB00C7725A /* StoredCityTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCityTableAdapter.swift; sourceTree = "<group>"; };
 		60874AEC2409477700C7725A /* Services+ServiceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Services+ServiceId.swift"; sourceTree = "<group>"; };
 		60874AED2409477700C7725A /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		60874AEE2409477700C7725A /* Services+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Services+Error.swift"; sourceTree = "<group>"; };
@@ -472,7 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				60874AC9240855B900C7725A /* SearchCityTableAdapter.swift */,
-				60874AE9240860FB00C7725A /* StoredCityAdapter.swift */,
+				60874AE9240860FB00C7725A /* StoredCityTableAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -1062,7 +1062,7 @@
 				60F3C17B240AA81600DB4EED /* CurrentCondtionItemView.swift in Sources */,
 				605576E6240C34DA004060D6 /* CityAnnotationView.swift in Sources */,
 				60F3C177240AA39100DB4EED /* GradientView.swift in Sources */,
-				60874AEA240860FB00C7725A /* StoredCityAdapter.swift in Sources */,
+				60874AEA240860FB00C7725A /* StoredCityTableAdapter.swift in Sources */,
 				605576F0240C4673004060D6 /* CityDetailsTableCell.swift in Sources */,
 				60CAF5CA24083E860021FA6F /* UIView.LayoutArea.swift in Sources */,
 				60874AF32409477700C7725A /* Services+ServiceId.swift in Sources */,

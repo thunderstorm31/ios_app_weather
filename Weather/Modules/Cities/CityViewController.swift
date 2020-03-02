@@ -7,6 +7,9 @@ internal final class CityViewController: UIViewController {
     private let searchBar = UISearchBar()
     private let deleteAllBarButtonItem = UIBarButtonItem(title: Localization.Buttons.deleteAllTitle, style: .plain, target: nil, action: nil)
     
+    private let cancelBarButtonItem = UIBarButtonItem(title: Localization.Buttons.cancelTitle, style: .plain, target: nil, action: nil)
+    private let closeBarButtonItem = UIBarButtonItem(title: Localization.Buttons.closeTitle, style: .plain, target: nil, action: nil)
+    
     internal init(viewModel: CityViewModel) {
         self.viewModel = viewModel
         
@@ -28,7 +31,13 @@ internal final class CityViewController: UIViewController {
         searchBar.delegate = self
         
         navigationItem.titleView = searchBar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tappedCancel(_:)))
+        navigationItem.rightBarButtonItem = closeBarButtonItem
+        
+        closeBarButtonItem.target = self
+        closeBarButtonItem.action = #selector(self.tappedClose(_:))
+        
+        cancelBarButtonItem.target = self
+        cancelBarButtonItem.action = #selector(self.tappedCancel(_:))
     }
     
     private func configureDeleteAllBarButtonItem() {
@@ -39,6 +48,8 @@ internal final class CityViewController: UIViewController {
     
     private func configureViewModel() {
         viewModel.searchCityTableAdapter.selectedCity = { [weak self] city in
+            self?.searchBar.resignFirstResponder()
+            self?.searchBar.text = nil
             self?.selectedSearchedCity(city)
         }
         
@@ -112,6 +123,7 @@ extension CityViewController: UISearchBarDelegate {
         viewModel.searchCityTableAdapter.setActive(rootView.tableView)
         
         navigationController?.setToolbarHidden(true, animated: true)
+        navigationItem.setRightBarButton(cancelBarButtonItem, animated: true)
         
         setEditing(false, animated: true)
     }
@@ -120,6 +132,7 @@ extension CityViewController: UISearchBarDelegate {
         viewModel.storedCityAdapter.setActive(rootView.tableView)
         
         navigationController?.setToolbarHidden(false, animated: true)
+        navigationItem.setRightBarButton(closeBarButtonItem, animated: true)
     }
 
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -132,13 +145,14 @@ extension CityViewController: UISearchBarDelegate {
 // MARK: User Interaction
 extension CityViewController {
     @objc
+    private func tappedClose(_ sender: UIBarButtonItem) {
+        viewModel.requestClose?()
+    }
+    
+    @objc
     private func tappedCancel(_ sender: UIBarButtonItem) {
-        if searchBar.isFirstResponder {
-            searchBar.resignFirstResponder()
-            searchBar.text = nil
-        } else {
-            viewModel.requestClose?()
-        }
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
     }
     
     @objc

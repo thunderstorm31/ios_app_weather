@@ -52,7 +52,7 @@ extension CityAnnotationView {
         layer.shouldRasterize = true
         
         layer.shadowRadius = 5
-        layer.shadowOffset = .zero
+        layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
     private func configureActivityIndicatorView() {
