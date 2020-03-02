@@ -42,6 +42,7 @@ extension CityDetailsViewController.View {
         tableView.backgroundColor = .systemBackground
         tableView.tableFooterView = UIView()
         tableView.separatorColor = .clear
+        tableView.contentInset.top = 44
         tableView.contentInset.bottom = 20
         
         viewModel.tableAdapter.configure(tableView)
@@ -74,6 +75,15 @@ extension CityDetailsViewController.View {
         
         closeButton.setTitleColor(.systemBlue, for: .normal)
         closeButton.setTitle(Localization.Buttons.closeTitle, for: .normal)
+    }
+}
+
+// MARK: - Layout subviews
+extension CityDetailsViewController.View {
+    internal override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        tableView.verticalScrollIndicatorInsets.top = 0.8 * closeButtonGradientView.bounds.height
     }
 }
 
