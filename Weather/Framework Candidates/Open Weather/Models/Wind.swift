@@ -2,13 +2,17 @@ import Foundation
 
 public struct Wind: Hashable, Codable {
     public let speed: Double
-    public let degree: Int
+    public let degree: Int?
     
     private enum CodingKeys: String, CodingKey {
         case speed, degree = "deg"
     }
     
     public var windDirection: WindDirectionAbbreviation {
+        guard let degree = degree else {
+            return .unknown
+        }
+        
         switch Double(degree) {
         case 11.251..<33.751: return .NNE
         case 33.751..<56.251: return .NE
@@ -46,5 +50,6 @@ public struct Wind: Hashable, Codable {
         case WNW
         case NW
         case NNW
+        case unknown
     }
 }
