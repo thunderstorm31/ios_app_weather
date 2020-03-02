@@ -33,6 +33,10 @@ internal final class RootViewController: UIViewController {
     private var cityStorageService: CityStorageService { services.get(CityStorageService.self) }
     private var citiesService: CitiesService { services.get(CitiesService.self) }
     
+    internal override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        traitCollection.value(phone: UIInterfaceOrientationMask.portrait, pad: .all)
+    }
+    
     internal init(mainViewController: UIViewController,
                   leadingSideMenuModel: RootSideMenuModel,
                   trailingSideMenuModel: RootSideMenuModel,
