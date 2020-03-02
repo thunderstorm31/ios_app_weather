@@ -20,7 +20,7 @@ internal final class RootViewController: UIViewController {
     private let trailingContainerAnimator: RootContainerAnimator
     private let overlayAnimator: RootOverlayAnimator
     
-    private lazy var locationAccesView = RequestLocationAccessView()
+    private lazy var locationAccessView = RequestLocationAccessView()
     
     private let overlayView = UIView()
     
@@ -78,7 +78,7 @@ extension RootViewController {
         configureLeadingContainerView()
         configureTrailingContainerView()
         configureOverlayView()
-        configureLocationAccesView()
+        configurelocationAccessView()
         
         setDisplayMode(.main, animated: false)
         
@@ -154,20 +154,20 @@ extension RootViewController {
         container.contentViewController.didMove(toParent: self)
     }
     
-    private func configureLocationAccesView() {
+    private func configurelocationAccessView() {
         guard deviceLocationService.canRequestLocationAccess, popupSettings.didDismissAddCurrentLocationPopup == false else {
             return
         }
         
-        view.addSubview(locationAccesView.disableTranslateAutoresizingMask())
+        view.addSubview(locationAccessView.disableTranslateAutoresizingMask())
         
-        locationAccesView.pinCenterHorizontalToSuperview(layoutArea: .layoutMargins)
-        locationAccesView.pin(width: 414, relation: .lessThanOrEqual)
-        locationAccesView.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
-        locationAccesView.pinBottomToSuperview(layoutArea: .safeArea, relation: .greaterThanOrEqual)
-        locationAccesView.pinBottomToSuperview(padding: 20, relation: .greaterThanOrEqual)
+        locationAccessView.pinCenterHorizontalToSuperview(layoutArea: .layoutMargins)
+        locationAccessView.pin(width: 414, relation: .lessThanOrEqual)
+        locationAccessView.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
+        locationAccessView.pinBottomToSuperview(layoutArea: .safeArea, relation: .greaterThanOrEqual)
+        locationAccessView.pinBottomToSuperview(padding: 20, relation: .greaterThanOrEqual)
         
-        locationAccesView.delegate = self
+        locationAccessView.delegate = self
     }
 }
 
@@ -359,14 +359,14 @@ extension RootViewController {
 // MARK: - RequestLocationAccessViewDelegate
 extension RootViewController: RequestLocationAccessViewDelegate {
     internal func dismiss(addLocation: Bool) {
-        let height = locationAccesView.bounds.height
+        let translateY = locationAccessView.bounds.height + view.safeAreaInsets.bottom
         
         popupSettings.didDismissAddCurrentLocationPopup = true
         
         UIView.animate(withDuration: 0.25, animations: {
-            self.locationAccesView.transform = CGAffineTransform(translationX: 0, y: height)
+            self.locationAccessView.transform = CGAffineTransform(translationX: 0, y: translateY)
         }, completion: { _ in
-            self.locationAccesView.removeFromSuperview()
+            self.locationAccessView.removeFromSuperview()
         })
         
         if addLocation {
