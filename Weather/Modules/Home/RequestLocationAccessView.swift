@@ -13,6 +13,8 @@ internal final class RequestLocationAccessView: UIView {
     
     private let maskLayer = CAShapeLayer()
     
+    private let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    
     internal weak var delegate: RequestLocationAccessViewDelegate?
     
     internal override init(frame: CGRect) {
@@ -31,19 +33,24 @@ internal final class RequestLocationAccessView: UIView {
 // MARK: Configure Views
 extension RequestLocationAccessView {
     private func configureViews() {
-        [titleLabel, messageLabel, confirmButton, declineButton]
+        [backgroundView, titleLabel, messageLabel, confirmButton, declineButton]
             .disableTranslateAutoresizingMask()
             .add(to: self)
      
         layer.mask = maskLayer
         
-        backgroundColor = .systemBackground
+        backgroundColor = .clear
         directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         
+        configureBackgroundView()
         configureTitleLabel()
         configureMessageLabel()
         configureConfirmButton()
         configureDeclineButton()
+    }
+    
+    private func configureBackgroundView() {
+        backgroundView.pinEdgesToSuperview()
     }
     
     private func configureTitleLabel() {
@@ -140,7 +147,7 @@ extension RequestLocationAccessView {
     
     private func layoutMaskLayer() {
         maskLayer.frame = bounds
-        maskLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 12, height: 12)).cgPath
+        maskLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 2, dy: 2), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 20, height: 20)).cgPath
     }
 }
 
