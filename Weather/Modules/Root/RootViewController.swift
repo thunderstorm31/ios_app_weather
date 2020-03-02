@@ -159,11 +159,11 @@ extension RootViewController {
             return
         }
         
-        view.addSubview(locationAccessView.disableTranslateAutoresizingMask())
+        mainViewController.view.addSubview(locationAccessView.disableTranslateAutoresizingMask())
         
-        locationAccessView.pinCenterHorizontalToSuperview(layoutArea: .layoutMargins)
+        locationAccessView.pinCenterHorizontalToSuperview(layoutArea: .safeArea)
         locationAccessView.pin(width: 414, relation: .lessThanOrEqual)
-        locationAccessView.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
+        locationAccessView.pinEdgesHorizontalToSuperview(layoutArea: .safeArea, relation: .greaterThanOrEqual)
         locationAccessView.pinBottomToSuperview(layoutArea: .safeArea, relation: .greaterThanOrEqual)
         locationAccessView.pinBottomToSuperview(padding: 20, relation: .greaterThanOrEqual)
         
