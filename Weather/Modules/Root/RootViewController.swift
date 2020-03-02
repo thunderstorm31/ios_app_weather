@@ -126,35 +126,32 @@ extension RootViewController {
     }
     
     private func configureLeadingContainerView() {
-        leadingContainerView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
+        configureContainer(leadingContainerView, animator: leadingContainerAnimator, panTarget: #selector(self.pannedLeadingContainer(_:)))
+        
         leadingContainerView.pinLeadingToSuperview(padding: leadingContainerAnimator.sidePadding)
-                
-        leadingContainerView.pin(width: containerWidth)
+    }
+
+    private func configureTrailingContainerView() {
+        configureContainer(trailingContainerView, animator: trailingContainerAnimator, panTarget: #selector(self.pannedTrailingContainer(_:)))
         
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedLeadingContainer(_:)))
-        
-        panRecognizer.delegate = self
-        leadingContainerView.addGestureRecognizer(panRecognizer)
-        
-        leadingContainerAnimator.updatedState = { [weak self] _ in
-            self?.updateAdditionalSafeAreaInsets()
-        }
+        trailingContainerView.pinTrailingToSuperview(padding: trailingContainerAnimator.sidePadding)
     }
     
-    private func configureTrailingContainerView() {
-        trailingContainerView.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
-        trailingContainerView.pinTrailingToSuperview(padding: trailingContainerAnimator.sidePadding)
+    private func configureContainer(_ container: RootViewContainer, animator: RootContainerAnimator, panTarget: Selector) {
+        container.pinEdgesVerticalToSuperview(layoutArea: .layoutMargins)
+        container.pin(width: containerWidth)
         
-        trailingContainerView.pin(width: containerWidth)
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: panTarget)
         
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.pannedTrailingContainer(_:)))
         panRecognizer.delegate = self
+        container.addGestureRecognizer(panRecognizer)
         
-        trailingContainerView.addGestureRecognizer(panRecognizer)
-        
-        trailingContainerAnimator.updatedState = { [weak self] _ in
+        animator.updatedState = { [weak self] _ in
             self?.updateAdditionalSafeAreaInsets()
         }
+
+        addChild(container.contentViewController)
+        container.contentViewController.didMove(toParent: self)
     }
     
     private func configureLocationAccesView() {
@@ -167,7 +164,8 @@ extension RootViewController {
         locationAccesView.pinCenterHorizontalToSuperview(layoutArea: .layoutMargins)
         locationAccesView.pin(width: 414, relation: .lessThanOrEqual)
         locationAccesView.pinEdgesHorizontalToSuperview(layoutArea: .layoutMargins, relation: .greaterThanOrEqual)
-        locationAccesView.pinBottomToSuperview()
+        locationAccesView.pinBottomToSuperview(layoutArea: .safeArea, relation: .greaterThanOrEqual)
+        locationAccesView.pinBottomToSuperview(padding: 20, relation: .greaterThanOrEqual)
         
         locationAccesView.delegate = self
     }
@@ -264,12 +262,8 @@ extension RootViewController {
         
         switch displayMode {
         case .leadingContainer:
-            addChild(leadingSideMenuModel.viewController)
-
             leadingContainerAnimator.willShow()
         case .trailingContainer:
-            addChild(trailingSideMenuModel.viewController)
-            
             trailingContainerAnimator.willShow()
         case .main:
             overlayAnimator.willHide()
@@ -287,13 +281,9 @@ extension RootViewController {
         switch previousDisplayMode {
         case .leadingContainer:
             leadingContainerAnimator.didHide()
-            leadingSideMenuModel.viewController.removeFromParent()
-            leadingSideMenuModel.viewController.didMove(toParent: nil)
             leadingSideMenuModel.didDismiss()
         case .trailingContainer:
             trailingContainerAnimator.didHide()
-            trailingSideMenuModel.viewController.removeFromParent()
-            trailingSideMenuModel.viewController.didMove(toParent: nil)
             trailingSideMenuModel.didDismiss()
         case .main:
             overlayAnimator.didShow()
@@ -302,10 +292,8 @@ extension RootViewController {
         switch displayMode {
         case .leadingContainer:
             leadingContainerAnimator.didShow()
-            leadingSideMenuModel.viewController.didMove(toParent: self)
         case .trailingContainer:
             trailingContainerAnimator.didShow()
-            trailingSideMenuModel.viewController.didMove(toParent: self)
         case .main:
             overlayAnimator.didHide()
         }

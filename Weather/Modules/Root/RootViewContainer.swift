@@ -3,7 +3,7 @@ import UIKit
 internal final class RootViewContainer: UIView {
     private let contentContainer = UIView()
     
-    private var contentViewController: UIViewController
+    internal let contentViewController: UIViewController
     
     internal init(contentViewController: UIViewController) {
         self.contentViewController = contentViewController

@@ -147,7 +147,7 @@ extension RequestLocationAccessView {
     
     private func layoutMaskLayer() {
         maskLayer.frame = bounds
-        maskLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 2, dy: 2), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+        maskLayer.path = UIBezierPath(roundedRect: bounds.insetBy(dx: 2, dy: 2), byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 20, height: 20)).cgPath
     }
 }
 
