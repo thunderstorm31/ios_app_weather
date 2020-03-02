@@ -61,7 +61,6 @@ internal final class HomeViewModel {
         }
         
         cityStorageService.add(city, origin: .map)
-        updateWeather(for: city)
         
         completion(.added(city))
     }
@@ -93,8 +92,9 @@ extension HomeViewModel: CityStorageServiceDelegate {
         switch origin {
         case .search, .deviceLocation:
             delegate?.centerOn(city)
+            updateWeather(for: city)
         case .map:
-            break
+            updateWeather(for: city)
         }
     }
 }
