@@ -62,7 +62,7 @@ extension CityDetailsViewController.View {
         
         closeButtonGradientView.startPoint = CGPoint(x: 1, y: 0)
         closeButtonGradientView.endPoint = CGPoint(x: 0, y: 1)
-        closeButtonGradientView.locations = [0, 0.4, 0.5, 1]
+        closeButtonGradientView.locations = [0, 0.3, 0.45, 1]
     }
     
     private func configureCloseButton() {
