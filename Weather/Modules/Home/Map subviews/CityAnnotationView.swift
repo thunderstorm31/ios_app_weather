@@ -6,7 +6,7 @@ internal final class CityAnnotationView: MKAnnotationView {
     private let backgroundShapeLayer = CAShapeLayer()
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let weatherIconView = UIImageView()
-    
+        
     internal override var annotation: MKAnnotation? {
         didSet {
             (oldValue as? HomeViewMapAnnotation)?.delegate = nil
@@ -34,6 +34,8 @@ extension CityAnnotationView {
     private func configureViews() {
         disableTranslateAutoresizingMask()
         pin(size: CGSize(width: 35, height: 52))
+        
+        centerOffset = CGPoint(x: 0, y: -26) 
         
         layer.addSublayer(backgroundShapeLayer)
         
