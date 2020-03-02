@@ -203,8 +203,19 @@ extension RootViewController {
             return
         }
         
-        mainViewController.additionalSafeAreaInsets.left = leadingContainerAnimator.currentPanning
-        mainViewController.additionalSafeAreaInsets.right = trailingContainerAnimator.currentPanning
+        switch leadingContainerAnimator.state {
+        case .hidden, .visible:
+            mainViewController.additionalSafeAreaInsets.left = leadingContainerAnimator.currentPanning
+        case .panning:
+            break
+        }
+        
+        switch trailingContainerAnimator.state {
+        case .hidden, .visible:
+            mainViewController.additionalSafeAreaInsets.right = trailingContainerAnimator.currentPanning
+        case .panning:
+            break
+        }
     }
 }
 
